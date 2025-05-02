@@ -1,4 +1,0 @@
-package es.upm.etsisi.fis.logica;
-
-public class Casilla {
-}

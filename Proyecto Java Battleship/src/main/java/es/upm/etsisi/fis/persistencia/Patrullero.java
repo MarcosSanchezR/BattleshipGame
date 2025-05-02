@@ -1,0 +1,26 @@
+package es.upm.etsisi.fis.logica;
+
+public class Patrullero extends Barco{
+
+    public static final int TAMANIO_PATRULLERO = 2;
+    public static final int HABILIDADES_PATRULLERO = 1;
+
+    public Patrullero() {
+        super(TAMANIO_PATRULLERO, HABILIDADES_PATRULLERO);
+    }
+
+    @Override
+    public boolean usarHabilidadEspecial(){
+        boolean puedeUsarHabilidad = super.usarHabilidadEspecial();
+        if(puedeUsarHabilidad){
+            habilidadPatrullero();
+        }
+        return puedeUsarHabilidad;
+    }
+
+    //@TODO: Implementar RF #18752
+    private void habilidadPatrullero(){
+
+    }
+
+}
