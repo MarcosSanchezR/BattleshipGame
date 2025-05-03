@@ -1,4 +1,4 @@
-package es.upm.etsisi.fis.logica;
+package es.upm.etsisi.fis.persistencia;
 
 public class Casilla {
 
@@ -26,6 +26,10 @@ public class Casilla {
 
     public int getColumna() {
         return columna;
+    }
+
+    public void marcarComoImpactada(){
+        impactada = true;
     }
 
 }

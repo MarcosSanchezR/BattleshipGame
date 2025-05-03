@@ -1,4 +1,4 @@
-package es.upm.etsisi.fis.logica;
+package es.upm.etsisi.fis.persistencia;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -55,7 +55,7 @@ public abstract class Barco {
             if(!casilla.isImpactada()){
                 casillaVivaEncontrada = true;
             }
-        }while(casillaVivaEncontrada && iterator.hasNext());
+        }while(!casillaVivaEncontrada && iterator.hasNext());
 
         boolean barcoHundido = !casillaVivaEncontrada;
         if(barcoHundido != this.hundido){

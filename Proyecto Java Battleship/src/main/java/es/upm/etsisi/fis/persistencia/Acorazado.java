@@ -1,4 +1,4 @@
-package es.upm.etsisi.fis.logica;
+package es.upm.etsisi.fis.persistencia;
 
 public class Acorazado extends Barco{
 
