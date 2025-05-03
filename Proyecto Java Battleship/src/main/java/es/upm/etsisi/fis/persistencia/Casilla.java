@@ -6,8 +6,8 @@ public class Casilla {
     private final int fila;
     private final int columna;
 
-    public Casilla(boolean impactada, int fila, int columna) {
-        this.impactada = impactada;
+    public Casilla(int fila, int columna) {
+        this.impactada = false;
         this.fila = fila;
         this.columna = columna;
     }
