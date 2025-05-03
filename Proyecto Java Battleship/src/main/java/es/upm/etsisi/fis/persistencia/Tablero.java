@@ -2,6 +2,7 @@ package es.upm.etsisi.fis.persistencia;
 
 public class Tablero {
 
+    //@TODO: Implementar borrado en cascada con casillas
     public static final int DIMENSION_TABLERO = 10;
 
     private final Casilla[][] casillas;

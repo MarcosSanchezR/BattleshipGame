@@ -14,6 +14,4 @@ public record Ataque(
         this(id_counter++, impactoABarco, casillaAtacada, atacante);
     }
 
-
-
 }
