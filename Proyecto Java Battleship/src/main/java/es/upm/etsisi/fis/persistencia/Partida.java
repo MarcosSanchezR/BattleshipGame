@@ -11,8 +11,8 @@ public class Partida {
     private double puntuacionJugador;
     private double puntuacionMaquina;
 
-    private Jugador jugador;
-    private Jugador maquina;
+    private final Jugador jugador;
+    private final Jugador maquina;
     private final Tablero tableroJugador;
     private final Tablero tableroMaquina;
 
@@ -27,24 +27,81 @@ public class Partida {
         this.tableroJugador = new Tablero(jugador);
         this.tableroMaquina = new Tablero(maquina);
 
-        jugador.aniadirPartida(this);
-        jugador.setTablero(tableroJugador);
+        this.jugador.aniadirPartida(this);
+        this.jugador.setTablero(tableroJugador);
 
-        maquina.aniadirPartida(this);
-        maquina.setTablero(tableroMaquina);
+        this.maquina.aniadirPartida(this);
+        this.maquina.setTablero(tableroMaquina);
+    }
+
+    public static int getId_counter() {
+        return id_counter;
+    }
+
+    public static void setId_counter(int id_counter) {
+        Partida.id_counter = id_counter;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getTurnos() {
+        return turnos;
+    }
+
+    public void setTurnos(int turnos) {
+        this.turnos = turnos;
+    }
+
+    public double getPuntuacionJugador() {
+        return puntuacionJugador;
+    }
+
+    public void setPuntuacionJugador(double puntuacionJugador) {
+        this.puntuacionJugador = puntuacionJugador;
+    }
+
+    public double getPuntuacionMaquina() {
+        return puntuacionMaquina;
+    }
+
+    public void setPuntuacionMaquina(double puntuacionMaquina) {
+        this.puntuacionMaquina = puntuacionMaquina;
+    }
+
+    public Jugador getJugador() {
+        return jugador;
+    }
+
+    public Jugador getMaquina() {
+        return maquina;
+    }
+
+    public Tablero getTableroJugador() {
+        return tableroJugador;
+    }
+
+    public Tablero getTableroMaquina() {
+        return tableroMaquina;
     }
 
     private Jugador concederTurnoInicial(){
-        maquina.setTurno(false);
-        jugador.setTurno(true);
-        return jugador;
+        this.maquina.setTurno(false);
+        this.jugador.setTurno(true);
+        return this.jugador;
     }
 
     private Jugador cambiarTurnos(){
         boolean turnoJugador = jugador.isTurno();
-        jugador.setTurno(!turnoJugador);
-        maquina.setTurno(turnoJugador);
+        this.jugador.setTurno(!turnoJugador);
+        this.maquina.setTurno(turnoJugador);
+        this.turnos++;
 
-        return (jugador.isTurno()) ? jugador : maquina;
+        return (this.jugador.isTurno()) ? this.jugador : this.maquina;
     }
 }
