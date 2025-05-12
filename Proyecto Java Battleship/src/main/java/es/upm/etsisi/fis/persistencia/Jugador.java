@@ -3,7 +3,7 @@ package es.upm.etsisi.fis.persistencia;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Jugador {
+public abstract class Jugador {
 
     private boolean turno;
 

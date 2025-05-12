@@ -27,10 +27,9 @@ public class Partida {
         this.tableroJugador = new Tablero(jugador);
         this.tableroMaquina = new Tablero(maquina);
 
-        this.jugador.aniadirPartida(this);
         this.jugador.setTablero(tableroJugador);
+        this.jugador.setTurno(true);
 
-        this.maquina.aniadirPartida(this);
         this.maquina.setTablero(tableroMaquina);
     }
 
@@ -90,18 +89,16 @@ public class Partida {
         return tableroMaquina;
     }
 
-    private Jugador concederTurnoInicial(){
-        this.maquina.setTurno(false);
-        this.jugador.setTurno(true);
-        return this.jugador;
+    public static Partida inicializarPartida(Jugador humano, Jugador maquina){
+        Partida partida = new Partida(humano, maquina);
+        humano.setPartida(partida);
     }
 
-    private Jugador cambiarTurnos(){
+    public Jugador cambiarTurnos(){
         boolean turnoJugador = jugador.isTurno();
         this.jugador.setTurno(!turnoJugador);
         this.maquina.setTurno(turnoJugador);
         this.turnos++;
-
         return (this.jugador.isTurno()) ? this.jugador : this.maquina;
     }
 }
