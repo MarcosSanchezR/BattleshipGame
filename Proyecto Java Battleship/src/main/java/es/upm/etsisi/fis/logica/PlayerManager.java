@@ -12,4 +12,6 @@ public class PlayerManager implements IPlayerManager {
     public PlayerManager() {
         this.jugadores = new ArrayList<>();
     }
+
+
 }
