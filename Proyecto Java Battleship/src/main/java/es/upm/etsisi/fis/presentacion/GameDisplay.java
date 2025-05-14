@@ -29,11 +29,7 @@ public class GameDisplay implements IGameDisplay {
     }
 
     private String getCoordenadas(){
-        try{
-
-        } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
-        }
+        return "";
     }
 
 }

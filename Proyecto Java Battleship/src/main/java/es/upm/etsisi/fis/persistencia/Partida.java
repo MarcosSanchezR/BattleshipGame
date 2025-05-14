@@ -1,7 +1,5 @@
 package es.upm.etsisi.fis.persistencia;
 
-import java.util.Random;
-
 public class Partida {
 
     private static int id_counter = 0;
@@ -91,7 +89,9 @@ public class Partida {
 
     public static Partida inicializarPartida(Jugador humano, Jugador maquina){
         Partida partida = new Partida(humano, maquina);
-
+        humano.setCurrentGame(partida);
+        maquina.setCurrentGame(partida);
+        return partida;
     }
 
     public Jugador cambiarTurnos(){
