@@ -91,7 +91,7 @@ public class Partida {
 
     public static Partida inicializarPartida(Jugador humano, Jugador maquina){
         Partida partida = new Partida(humano, maquina);
-        humano.setPartida(partida);
+
     }
 
     public Jugador cambiarTurnos(){

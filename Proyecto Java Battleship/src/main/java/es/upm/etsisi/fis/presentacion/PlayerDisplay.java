@@ -2,7 +2,7 @@ package es.upm.etsisi.fis.presentacion;
 
 import es.upm.etsisi.fis.logica.IPlayerManager;
 
-public class Display implements NotLoggedDisplayInterface, LoggedPlayerDisplayInterface {
+public class PlayerDisplay implements IPlayerDisplay {
 
     private IPlayerManager playerManager;
 

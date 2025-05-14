@@ -11,6 +11,8 @@ public abstract class Jugador {
     private List<Ataque> ataquesRealizados;
     private List<Partida> partidasJugadas;
 
+    private Partida currentGame;
+
     public Jugador() {
         this.turno = false;
         this.tablero = null;
@@ -54,4 +56,9 @@ public abstract class Jugador {
         partidasJugadas.add(partida);
     }
 
+    public Partida getCurrentGame() {
+        return currentGame;
+    }
+
+    public void setCurrentGame(Partida partida) {}
 }
