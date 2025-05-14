@@ -30,6 +30,7 @@ public class GameDisplay implements IGameDisplay {
         return playerManager;
     }
 
+    // @TODO: Implementar RF #18769
     @Override
     public void realizarAtaque() {
         // Leer coordenadas (fila, columna)
