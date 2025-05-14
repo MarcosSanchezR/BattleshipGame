@@ -15,6 +15,9 @@ public class PlayerManager implements IPlayerManager {
         this.jugadores = new ArrayList<>();
     }
 
+    public List<Jugador> getJugadores() {
+        return jugadores;
+    }
 
     @Override
     public JugadorHumano getLoggedUser() {

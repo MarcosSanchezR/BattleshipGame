@@ -2,11 +2,20 @@ package es.upm.etsisi.fis.logica;
 
 import es.upm.etsisi.fis.persistencia.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class GameManager implements IGameManager {
 
-    private List<Partida> partidas;
+    private final List<Partida> partidas;
+
+    public GameManager() {
+        this.partidas = new ArrayList<>();
+    }
+
+    public List<Partida> getPartidas() {
+        return partidas;
+    }
 
     @Override
     public Ataque realizarAtaque(int fila, int columna, Jugador jugadorAtacante) {
