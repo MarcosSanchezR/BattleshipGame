@@ -1,7 +1,5 @@
 package es.upm.etsisi.fis.presentacion;
 
-import java.util.Scanner;
-
 public class UI {
 
     private final IPlayerDisplay playerDisplay;
@@ -18,6 +16,24 @@ public class UI {
 
     public IGameDisplay getGameDisplay() {
         return gameDisplay;
+    }
+
+    private void showIntro() {
+        System.out.println("BATTLESHIP - ETSISI'S EDITION");
+        //@TODO: Hacer que esto funcione.
+        System.out.println("Pulsa cualquier tecla para comenzar. (AUN NO FUNCIONA)");
+        do{
+            continue;
+        }while(false);
+    }
+
+    public void run(){
+        showIntro();
+        // Lógica del programa
+        boolean exit = false;
+        do{
+
+        }while(!exit);
     }
 
 }

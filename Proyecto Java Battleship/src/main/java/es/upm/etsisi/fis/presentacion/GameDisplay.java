@@ -10,8 +10,25 @@ public class GameDisplay implements IGameDisplay {
 
     private final Scanner scanner = new Scanner(System.in);
 
-    private IGameManager gameManager;
-    private IPlayerManager playerManager;
+    private final IGameManager gameManager;
+    private final IPlayerManager playerManager;
+
+    public GameDisplay(IGameManager gameManager, IPlayerManager playerManager) {
+        this.gameManager = gameManager;
+        this.playerManager = playerManager;
+    }
+
+    public Scanner getScanner() {
+        return scanner;
+    }
+
+    public IGameManager getGameManager() {
+        return gameManager;
+    }
+
+    public IPlayerManager getPlayerManager() {
+        return playerManager;
+    }
 
     @Override
     public void realizarAtaque() {
