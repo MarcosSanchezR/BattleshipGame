@@ -19,3 +19,4 @@ public class GameManager implements IGameManager {
         return tableroObjetivo.atacarCasilla(fila, columna);
     }
 }
+//eeeeeeeeeeee

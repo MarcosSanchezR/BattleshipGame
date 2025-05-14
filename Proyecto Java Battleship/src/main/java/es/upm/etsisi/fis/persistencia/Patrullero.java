@@ -10,16 +10,16 @@ public class Patrullero extends Barco{
     }
 
     @Override
-    public boolean usarHabilidadEspecial(){
-        boolean puedeUsarHabilidad = super.usarHabilidadEspecial();
+    public boolean usarHabilidadEspecial(Tablero tableroEnemigo){
+        boolean puedeUsarHabilidad = super.usarHabilidadEspecial(tableroEnemigo);
         if(puedeUsarHabilidad){
-            habilidadPatrullero();
+            habilidadPatrullero(tableroEnemigo);
         }
         return puedeUsarHabilidad;
     }
 
     //@TODO: Implementar RF #18752
-    private void habilidadPatrullero(){
+    private void habilidadPatrullero(Tablero tableroEnemigo){
 
     }
 

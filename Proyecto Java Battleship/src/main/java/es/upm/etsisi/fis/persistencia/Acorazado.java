@@ -10,16 +10,16 @@ public class Acorazado extends Barco{
     }
 
     @Override
-    public boolean usarHabilidadEspecial(){
-        boolean puedeUsarHabilidad = super.usarHabilidadEspecial();
+    public boolean usarHabilidadEspecial(Tablero tableroEnemigo){
+        boolean puedeUsarHabilidad = super.usarHabilidadEspecial(tableroEnemigo);
         if(puedeUsarHabilidad){
-            habilidadAcorazado();
+            habilidadAcorazado(tableroEnemigo);
         }
         return puedeUsarHabilidad;
     }
 
     //@TODO: Implementar RF #18751
-    private void habilidadAcorazado(){
+    private void habilidadAcorazado(Tablero tableroEnemigo){
 
     }
 

@@ -63,7 +63,7 @@ public abstract class Barco {
         }
     }
 
-    public boolean usarHabilidadEspecial(){
+    public boolean usarHabilidadEspecial(Tablero tableroEnemigo){
         return habilidadesRestantes > 0;
     }
 }
