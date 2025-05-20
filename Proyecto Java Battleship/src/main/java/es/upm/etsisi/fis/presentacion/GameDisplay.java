@@ -34,7 +34,12 @@ public class GameDisplay implements IGameDisplay {
     @Override
     public void realizarAtaque() {
         // Leer coordenadas (fila, columna)
-        int fila = 0, columna = 0;
+        System.out.print("VAS A REALIZAR UN ATAQUE");
+        System.out.print("Introduce la FILA que quieras atacar (0-9): ");
+        int fila = scanner.nextInt();
+        System.out.print("Introduce la COLUMNA que quieras atacar (0-9): ");
+        int columna = scanner.nextInt();
+        // int fila = 0, columna = 0;
         // Llamada a ControladorPartida.realizarAtaque(fila, columna)
 
         Jugador jugadorAtacante = playerManager.getLoggedUser();
