@@ -6,5 +6,5 @@ public interface IPlayerDisplay {
     void mostrarCerrarSesion();
     void mostrarAltaUsuario();
     void mostrarIniciarSesion();
-
+    void mostrarMenu();
 }
