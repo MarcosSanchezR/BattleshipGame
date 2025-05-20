@@ -9,6 +9,8 @@ public class PlayerDisplay implements IPlayerDisplay {
 
     private final IPlayerManager playerManager;
 
+    private final Scanner sc = new Scanner(System.in);
+
     public PlayerDisplay(PlayerManager playerManager) {
         this.playerManager = playerManager;
     }
@@ -19,7 +21,6 @@ public class PlayerDisplay implements IPlayerDisplay {
 
     @Override
     public void mostrarAltaUsuario() {
-        Scanner sc = new Scanner(System.in);
         System.out.println("---------- REGISTRO USUARIO ----------");
         System.out.println("Username: ");
         String username = sc.nextLine();
@@ -32,18 +33,16 @@ public class PlayerDisplay implements IPlayerDisplay {
 
     @Override
     public void mostrarBajaUsuario() {
-        Scanner sc = new Scanner(System.in);
         System.out.println("---------- BAJA USUARIO ----------");
-        System.out.println("Correo: ");
+        System.out.print("Correo: ");
         String correo = sc.nextLine();
-        System.out.println("Contraseña: ");
+        System.out.print("Contraseña: ");
         String contrasena = sc.nextLine();
         //playermanager.dardebaja
     }
 
     @Override
     public void mostrarIniciarSesion() {
-        Scanner sc = new Scanner(System.in);
         System.out.println("---------- INICIAR SESION ----------");
         System.out.println("Correo: ");
         String correo = sc.nextLine();
@@ -59,22 +58,21 @@ public class PlayerDisplay implements IPlayerDisplay {
 
     @Override
     public void mostrarMenu(){
-        Scanner sc = new Scanner(System.in);
         while(true){
             if(playerManager.getLoggedUser() == null){
-                mostrarMenuSinLogin(sc);
+                mostrarMenuSinLogin();
             }
             else{
-                mostrarMenuLogado(sc);
+                mostrarMenuLogado();
             }
         }
     }
 
-    private void mostrarMenuSinLogin(Scanner sc){
+    private void mostrarMenuSinLogin(){
         System.out.println("---------- MENU PRINCIPAL ----------");
         System.out.println("1 - Iniciar Sesion");
         System.out.println("2 - Registrarse");
-        System.out.println("Por favor, elija una opción: ");
+        System.out.print("Por favor, elija una opción: ");
         int opcion = sc.nextInt();
 
         switch(opcion){
@@ -89,16 +87,17 @@ public class PlayerDisplay implements IPlayerDisplay {
         }
     }
 
-    private void mostrarMenuLogado(Scanner sc){
+    private void mostrarMenuLogado(){
         System.out.println("---------- MENU PRINCIPAL ----------");
         System.out.println("1 - Jugar partida");
         System.out.println("2 - Darse de baja");
-        System.out.println("2 - Cerrar sesion");
-        System.out.println("Por favor, elija una opción: ");
+        System.out.println("3 - Cerrar sesion");
+        System.out.print("Por favor, elija una opción: ");
         int opcion = sc.nextInt();
 
         switch(opcion){
             case 1:
+                //jugarpartida
                 break;
             case 2:
                 mostrarBajaUsuario();
