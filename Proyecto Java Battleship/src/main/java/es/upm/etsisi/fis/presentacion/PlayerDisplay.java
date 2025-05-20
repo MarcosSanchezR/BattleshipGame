@@ -32,17 +32,29 @@ public class PlayerDisplay implements IPlayerDisplay {
 
     @Override
     public void mostrarBajaUsuario() {
-
+        Scanner sc = new Scanner(System.in);
+        System.out.println("---------- BAJA USUARIO ----------");
+        System.out.println("Correo: ");
+        String correo = sc.nextLine();
+        System.out.println("Contraseña: ");
+        String contrasena = sc.nextLine();
+        //playermanager.dardebaja
     }
 
     @Override
     public void mostrarIniciarSesion() {
-
+        Scanner sc = new Scanner(System.in);
+        System.out.println("---------- INICIAR SESION ----------");
+        System.out.println("Correo: ");
+        String correo = sc.nextLine();
+        System.out.println("Contraseña: ");
+        String contrasena = sc.nextLine();
+        //playermanager.iniciarsesion
     }
 
     @Override
     public void mostrarCerrarSesion() {
-
+        //playermanager.cerrarsesion
     }
 
     @Override
