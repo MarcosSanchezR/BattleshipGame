@@ -19,7 +19,15 @@ public class PlayerDisplay implements IPlayerDisplay {
 
     @Override
     public void mostrarAltaUsuario() {
-
+        Scanner sc = new Scanner(System.in);
+        System.out.println("---------- REGISTRO USUARIO ----------");
+        System.out.println("Username: ");
+        String username = sc.nextLine();
+        System.out.println("Correo: ");
+        String correo = sc.nextLine();
+        System.out.println("Contraseña: ");
+        String contrasena = sc.nextLine();
+        //playermanager.dardealta
     }
 
     @Override
