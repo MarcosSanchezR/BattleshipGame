@@ -65,7 +65,7 @@ public class PlayerDisplay implements IPlayerDisplay {
                 mostrarAltaUsuario();
                 break;
             default:
-                System.out.println("Opcion no valida");
+                System.out.println("Opcion no valida.");
         }
     }
 
@@ -86,7 +86,7 @@ public class PlayerDisplay implements IPlayerDisplay {
             case 3:
                 mostrarCerrarSesion();
             default:
-                System.out.println("Opcion no valida");
+                System.out.println("Opcion no valida.");
         }
     }
 }
