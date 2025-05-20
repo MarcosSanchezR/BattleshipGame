@@ -27,4 +27,25 @@ public class PlayerManager implements IPlayerManager {
     public void setLoggedUser(JugadorHumano loggedUser) {
         this.loggedUser = loggedUser;
     }
+
+    @Override
+    public boolean darDeAlta(String username, String correo, String contra){
+        return false;
+    }
+
+    @Override
+    public boolean darDeBaja(String correo, String contra){
+        return false;
+    }
+
+    @Override
+    public boolean iniciarSesion(String correo, String contra){
+        return false;
+    }
+
+    @Override
+    public void cerrarSesion(){
+    }
+
+
 }

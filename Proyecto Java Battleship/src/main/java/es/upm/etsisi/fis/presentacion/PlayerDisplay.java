@@ -28,7 +28,7 @@ public class PlayerDisplay implements IPlayerDisplay {
         String correo = sc.nextLine();
         System.out.println("Contraseña: ");
         String contrasena = sc.nextLine();
-        //playermanager.dardealta
+        boolean registro = playerManager.darDeAlta(username, correo, contrasena);
     }
 
     @Override
@@ -38,7 +38,7 @@ public class PlayerDisplay implements IPlayerDisplay {
         String correo = sc.nextLine();
         System.out.print("Contraseña: ");
         String contrasena = sc.nextLine();
-        //playermanager.dardebaja
+        boolean baja = playerManager.darDeBaja(correo, contrasena);
     }
 
     @Override
@@ -48,12 +48,12 @@ public class PlayerDisplay implements IPlayerDisplay {
         String correo = sc.nextLine();
         System.out.println("Contraseña: ");
         String contrasena = sc.nextLine();
-        //playermanager.iniciarsesion
+        boolean login = playerManager.iniciarSesion(correo, contrasena);
     }
 
     @Override
     public void mostrarCerrarSesion() {
-        //playermanager.cerrarsesion
+        playerManager.cerrarSesion();
     }
 
     @Override
