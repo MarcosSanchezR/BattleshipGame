@@ -7,4 +7,6 @@ public interface IGameManager {
 
     Ataque realizarAtaque(int fila, int columna, Jugador jugadorAtacante);
 
+    int pedirFila();
+
 }

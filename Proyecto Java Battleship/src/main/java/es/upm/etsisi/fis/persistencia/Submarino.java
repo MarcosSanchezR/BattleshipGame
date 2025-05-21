@@ -12,8 +12,8 @@ public class Submarino extends Barco {
     }
 
     @Override
-    public boolean usarHabilidadEspecial(Tablero tableroEnemigo){
-        boolean puedeUsarHabilidad = super.usarHabilidadEspecial(tableroEnemigo);
+    public boolean usarHabilidadEspecial(){
+        boolean puedeUsarHabilidad = super.usarHabilidadEspecial();
         if(puedeUsarHabilidad){
             habilidadSubmarino();
         }

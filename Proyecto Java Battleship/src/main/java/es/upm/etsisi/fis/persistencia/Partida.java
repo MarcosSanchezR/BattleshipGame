@@ -1,5 +1,7 @@
 package es.upm.etsisi.fis.persistencia;
 
+import es.upm.etsisi.fis.logica.GameManager;
+
 public class Partida {
 
     private static int id_counter = 0;
@@ -13,6 +15,7 @@ public class Partida {
     private final Jugador maquina;
     private final Tablero tableroJugador;
     private final Tablero tableroMaquina;
+    private GameManager gameManager;
 
     public Partida(Jugador jugador, Jugador maquina) {
         this.id = id_counter++;
@@ -85,6 +88,14 @@ public class Partida {
 
     public Tablero getTableroMaquina() {
         return tableroMaquina;
+    }
+
+    public GameManager getGameManager() {
+        return gameManager;
+    }
+
+    public void setGameManager(GameManager gameManager) {
+        this.gameManager = gameManager;
     }
 
     public static Partida inicializarPartida(Jugador humano, Jugador maquina){

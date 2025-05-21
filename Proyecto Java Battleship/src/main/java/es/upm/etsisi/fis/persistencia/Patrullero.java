@@ -10,17 +10,21 @@ public class Patrullero extends Barco{
     }
 
     @Override
-    public boolean usarHabilidadEspecial(Tablero tableroEnemigo){
-        boolean puedeUsarHabilidad = super.usarHabilidadEspecial(tableroEnemigo);
+    public boolean usarHabilidadEspecial(){
+        boolean puedeUsarHabilidad = super.usarHabilidadEspecial();
         if(puedeUsarHabilidad){
-            habilidadPatrullero(tableroEnemigo);
+            habilidadPatrullero();
         }
         return puedeUsarHabilidad;
     }
 
     //@TODO: Implementar RF #18752
-    private void habilidadPatrullero(Tablero tableroEnemigo){
-
+    private void habilidadPatrullero(){
+        int fila = super.getTablero().getPropietario().getPartidasJugadas().getLast().getGameManager().pedirFila();
+        Jugador jugador = super.getTablero().getPropietario();
+        Tablero tableroEnemigo = super.getTablero().getPropietario().getPartidasJugadas().getLast()
+                .getGameManager().getTableroRival(jugador);
+        tableroEnemigo.getFila(fila);
     }
 
 }

@@ -51,6 +51,12 @@ public class GameDisplay implements IGameDisplay {
 
     }
 
+    @Override
+    public int pedirFila() {
+        System.out.println("Seleccione una fila para revelar");
+        return scanner.nextInt();
+    }
+
     private String getCoordenadas(){
         return "";
     }

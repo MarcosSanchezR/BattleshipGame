@@ -10,16 +10,16 @@ public class Portaviones extends Barco{
     }
 
     @Override
-    public boolean usarHabilidadEspecial(Tablero tableroEnemigo){
-        boolean puedeUsarHabilidad = super.usarHabilidadEspecial(tableroEnemigo);
+    public boolean usarHabilidadEspecial(){
+        boolean puedeUsarHabilidad = super.usarHabilidadEspecial();
         if(puedeUsarHabilidad){
-            habilidadPortaaviones(tableroEnemigo);
+            habilidadPortaaviones();
         }
         return puedeUsarHabilidad;
     }
 
     //@TODO: Implementar RF #18745
-    private void habilidadPortaaviones(Tablero tableroEnemigo){
+    private void habilidadPortaaviones(){
 
     }
 
