@@ -1,5 +1,7 @@
 package es.upm.etsisi.fis.state;
 
+import es.upm.etsisi.fis.logica.GameManager;
+
 public class Portaviones extends Barco{
 
     public static final int TAMANIO_PORTAAVIONES = 4;
@@ -10,17 +12,17 @@ public class Portaviones extends Barco{
     }
 
     @Override
-    public boolean usarHabilidadEspecial(Tablero tableroEnemigo){
-        boolean puedeUsarHabilidad = super.usarHabilidadEspecial(tableroEnemigo);
+    public boolean usarHabilidadEspecial(){
+        boolean puedeUsarHabilidad = super.usarHabilidadEspecial();
         if(puedeUsarHabilidad){
-            habilidadPortaaviones(tableroEnemigo);
+            habilidadPortaaviones();
         }
         return puedeUsarHabilidad;
     }
 
     //@TODO: Implementar RF #18745
-    private void habilidadPortaaviones(Tablero tableroEnemigo){
-
+    private void habilidadPortaaviones(){
+        GameManager.getInstance().getGameDisplay().realizarAtaque();
     }
 
 }

@@ -1,5 +1,7 @@
 package es.upm.etsisi.fis.state;
 
+import java.util.List;
+
 public class Submarino extends Barco {
 
     public static final int TAMANIO_SUBMARINO = 3;
@@ -10,8 +12,8 @@ public class Submarino extends Barco {
     }
 
     @Override
-    public boolean usarHabilidadEspecial(Tablero tableroEnemigo){
-        boolean puedeUsarHabilidad = super.usarHabilidadEspecial(tableroEnemigo);
+    public boolean usarHabilidadEspecial(){
+        boolean puedeUsarHabilidad = super.usarHabilidadEspecial();
         if(puedeUsarHabilidad){
             habilidadSubmarino();
         }
@@ -20,7 +22,12 @@ public class Submarino extends Barco {
 
     //@TODO: Implementar RF #18739
     private void habilidadSubmarino(){
-
+        List<Casilla> lista= super.getCasillasOcupadas();
+        for (Casilla casilla : lista){
+            if (casilla.isImpactada()){
+                casilla.setImpactada(false);
+            }
+        }
     }
 
 }
