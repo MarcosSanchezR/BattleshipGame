@@ -74,7 +74,6 @@ public class PlayerDisplay implements IPlayerDisplay {
         System.out.println("2 - Registrarse");
         System.out.print("Por favor, elija una opción: ");
         int opcion = sc.nextInt();
-
         switch(opcion){
             case 1:
                 mostrarIniciarSesion();
