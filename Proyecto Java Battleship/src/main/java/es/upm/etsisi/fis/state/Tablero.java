@@ -36,5 +36,7 @@ public class Tablero {
     public Ataque atacarCasilla(int fila, int columna){
         return null;
     }
-
+    private void mostrarTableroRival ( ){
+    }
+    private void mostrarMiTablero(){}
 }
