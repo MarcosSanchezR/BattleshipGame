@@ -36,7 +36,26 @@ public class Tablero {
     public Ataque atacarCasilla(int fila, int columna){
         return null;
     }
-    private void mostrarTableroRival ( ){
+    private void mostrarTableroRival() {
+        System.out.println("Tablero del Rival:");
+        for (int i = 0; i < DIMENSION_TABLERO; i++) {
+            for (int j = 0; j < DIMENSION_TABLERO; j++) {
+                Casilla casilla = casillas[i][j];
+                System.out.print(casilla.isImpactada() ? " X " : "\uD83C\uDF0A");
+            }
+            System.out.println();
+        }
     }
-    private void mostrarMiTablero(){}
+//si la casilla no ha sido impactada 🌊 si ha sido impactada X , en mi tablero no he puesto como ver los barcos
+
+    private void mostrarMiTablero() {
+        System.out.println("Mi Tablero:");
+        for (int i = 0; i < DIMENSION_TABLERO; i++) {
+            for (int j = 0; j < DIMENSION_TABLERO; j++) {
+                Casilla casilla = casillas[i][j];
+                System.out.print(casilla.isImpactada() ? " X " : "\uD83C\uDF0A");
+            }
+            System.out.println();
+        }
+    }
 }
