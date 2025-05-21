@@ -7,6 +7,10 @@ public record Ataque(
         Casilla casillaAtacada,
         Jugador atacante
 ){
+
+    // prueba commit
+    // prueba numero 2
+
     private static int id_counter = 0;
 
     public Ataque(boolean impactoABarco, Casilla casillaAtacada, Jugador atacante) {

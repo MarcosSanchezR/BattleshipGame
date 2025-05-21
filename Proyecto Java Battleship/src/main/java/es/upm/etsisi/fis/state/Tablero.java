@@ -36,6 +36,10 @@ public class Tablero {
         return propietario;
     }
 
+    public Casilla[] getFila(int i){
+        return casillas[i];
+    }
+
     //@TODO: Implementar RF #18769
     public Ataque atacarCasilla(int fila, int columna, Jugador atacante) {
         if (fila < 0 || fila >= DIMENSION_TABLERO || columna < 0 || columna >= DIMENSION_TABLERO) {

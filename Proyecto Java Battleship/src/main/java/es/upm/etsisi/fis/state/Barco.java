@@ -9,6 +9,7 @@ public abstract class Barco {
     private boolean hundido;
     private final int tamanio;
     private int habilidadesRestantes;
+    private Tablero tablero;
 
     private List<Casilla> casillasOcupadas;
 
@@ -16,7 +17,7 @@ public abstract class Barco {
         this.hundido = false;
         this.tamanio = tamanio;
         this.habilidadesRestantes = habilidadesRestantes;
-        this.casillasOcupadas = new ArrayList<Casilla>(tamanio);
+        this.casillasOcupadas = new ArrayList<>(tamanio);
     }
 
     public boolean isHundido() {
@@ -47,6 +48,14 @@ public abstract class Barco {
         this.casillasOcupadas = casillasOcupadas;
     }
 
+    public Tablero getTablero() {
+        return tablero;
+    }
+
+    public void setTablero(Tablero tablero) {
+        this.tablero = tablero;
+    }
+
     public void actualizarEstado(){
         boolean casillaVivaEncontrada = false;
         Iterator<Casilla> iterator = casillasOcupadas.iterator();
@@ -63,11 +72,7 @@ public abstract class Barco {
         }
     }
 
-    public boolean usarHabilidadEspecial(Tablero tableroEnemigo){
+    public boolean usarHabilidadEspecial(){
         return habilidadesRestantes > 0;
     }
 }
-
-// comentario prueba
-
-// prueba final slhndoed
