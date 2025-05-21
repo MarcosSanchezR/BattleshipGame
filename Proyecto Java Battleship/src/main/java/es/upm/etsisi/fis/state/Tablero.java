@@ -37,9 +37,35 @@ public class Tablero {
     }
 
     //@TODO: Implementar RF #18769
-    public Ataque atacarCasilla(int fila, int columna){
-        return null;
+    public Ataque atacarCasilla(int fila, int columna, Jugador atacante) {
+        if (fila < 0 || fila >= DIMENSION_TABLERO || columna < 0 || columna >= DIMENSION_TABLERO) {
+            throw new IllegalArgumentException("Coordenadas fuera del rango del tablero.");
+        }
+
+        Casilla casilla = casillas[fila][columna];
+
+        // Si ya fue impactada, no repetimos el ataque
+        if (casilla.isImpactada()) {
+            System.out.println("La casilla ya fue atacada.");
+            return new Ataque(false, casilla, atacante);
+        }
+
+        // Marcar la casilla como impactada
+        casilla.marcarComoImpactada();
+
+        // Verificar si la casilla pertenece a algún barco
+        boolean impactoABarco = false;
+        for (Barco barco : barcosPropios) {
+            if (barco.getCasillasOcupadas().contains(casilla)) {
+                impactoABarco = true;
+                barco.actualizarEstado(); // Actualiza estado (hundido o no)
+                break;
+            }
+        }
+
+        return new Ataque(impactoABarco, casilla, atacante);
     }
+
     private void mostrarTableroRival() {
         System.out.println("Tablero del Rival:");
         for (int i = 0; i < DIMENSION_TABLERO; i++) {

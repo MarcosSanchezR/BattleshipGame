@@ -25,6 +25,6 @@ public class GameManager implements IGameManager {
 
         Tablero tableroObjetivo = (jugadorAtacante.equals(unJugador)) ? otroJugador.getTablero() :
                 unJugador.getTablero();
-        return tableroObjetivo.atacarCasilla(fila, columna);
+        return tableroObjetivo.atacarCasilla(fila, columna,jugadorAtacante);
     }
 }
