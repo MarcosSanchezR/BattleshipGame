@@ -1,7 +1,7 @@
 package es.upm.etsisi.fis.logica;
 
-import es.upm.etsisi.fis.persistencia.Ataque;
-import es.upm.etsisi.fis.persistencia.Jugador;
+import es.upm.etsisi.fis.state.Ataque;
+import es.upm.etsisi.fis.state.Jugador;
 
 public interface IGameManager {
 

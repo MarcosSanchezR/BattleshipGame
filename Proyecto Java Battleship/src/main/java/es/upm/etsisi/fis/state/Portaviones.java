@@ -1,6 +1,6 @@
 package es.upm.etsisi.fis.state;
 
-import es.upm.etsisi.fis.logica.GameManager;
+import es.upm.etsisi.fis.logic.GameManager;
 
 public class Portaviones extends Barco{
 

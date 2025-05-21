@@ -1,7 +1,7 @@
-package es.upm.etsisi.fis.logica;
+package es.upm.etsisi.fis.logic;
 
-import es.upm.etsisi.fis.persistencia.*;
-import es.upm.etsisi.fis.presentacion.GameDisplay;
+import es.upm.etsisi.fis.state.*;
+import es.upm.etsisi.fis.display.GameDisplay;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -53,7 +53,7 @@ public class GameManager implements IGameManager {
 
          Tablero tableroObjetivo= getTableroRival(jugadorAtacante);
 
-        return tableroObjetivo.atacarCasilla(fila, columna);
+        return tableroObjetivo.atacarCasilla(fila, columna, jugadorAtacante);
     }
 
     public Tablero getTableroRival(Jugador jugadorAtacante){
