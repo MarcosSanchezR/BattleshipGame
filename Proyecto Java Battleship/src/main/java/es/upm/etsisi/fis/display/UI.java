@@ -1,4 +1,4 @@
-package es.upm.etsisi.fis.presentacion;
+package es.upm.etsisi.fis.display;
 
 public class UI {
 

@@ -1,7 +1,7 @@
-package es.upm.etsisi.fis.logica;
+package es.upm.etsisi.fis.logic;
 
-import es.upm.etsisi.fis.persistencia.Jugador;
-import es.upm.etsisi.fis.persistencia.JugadorHumano;
+import es.upm.etsisi.fis.state.Jugador;
+import es.upm.etsisi.fis.state.JugadorHumano;
 
 import java.util.ArrayList;
 import java.util.List;

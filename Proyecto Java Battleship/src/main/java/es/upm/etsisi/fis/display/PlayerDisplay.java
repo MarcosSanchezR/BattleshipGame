@@ -1,7 +1,7 @@
-package es.upm.etsisi.fis.presentacion;
+package es.upm.etsisi.fis.display;
 
-import es.upm.etsisi.fis.logica.IPlayerManager;
-import es.upm.etsisi.fis.logica.PlayerManager;
+import es.upm.etsisi.fis.logic.IPlayerManager;
+import es.upm.etsisi.fis.logic.PlayerManager;
 
 import java.util.Scanner;
 

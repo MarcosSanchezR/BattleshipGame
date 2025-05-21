@@ -1,6 +1,6 @@
-package es.upm.etsisi.fis.logica;
+package es.upm.etsisi.fis.logic;
 
-import es.upm.etsisi.fis.persistencia.*;
+import es.upm.etsisi.fis.state.*;
 
 import java.util.ArrayList;
 import java.util.List;

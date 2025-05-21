@@ -1,4 +1,4 @@
-package es.upm.etsisi.fis.persistencia;
+package es.upm.etsisi.fis.state;
 
 public class Partida {
 

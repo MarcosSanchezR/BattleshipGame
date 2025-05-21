@@ -1,10 +1,10 @@
 package es.upm.etsisi.fis;
 
-import es.upm.etsisi.fis.logica.GameManager;
-import es.upm.etsisi.fis.logica.PlayerManager;
-import es.upm.etsisi.fis.presentacion.GameDisplay;
-import es.upm.etsisi.fis.presentacion.PlayerDisplay;
-import es.upm.etsisi.fis.presentacion.UI;
+import es.upm.etsisi.fis.logic.GameManager;
+import es.upm.etsisi.fis.logic.PlayerManager;
+import es.upm.etsisi.fis.display.GameDisplay;
+import es.upm.etsisi.fis.display.PlayerDisplay;
+import es.upm.etsisi.fis.display.UI;
 
 public class App {
 

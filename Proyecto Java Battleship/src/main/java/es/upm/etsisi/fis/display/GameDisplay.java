@@ -1,8 +1,8 @@
-package es.upm.etsisi.fis.presentacion;
+package es.upm.etsisi.fis.display;
 
-import es.upm.etsisi.fis.logica.IGameManager;
-import es.upm.etsisi.fis.logica.IPlayerManager;
-import es.upm.etsisi.fis.persistencia.Jugador;
+import es.upm.etsisi.fis.logic.IGameManager;
+import es.upm.etsisi.fis.logic.IPlayerManager;
+import es.upm.etsisi.fis.state.Jugador;
 
 import java.util.Scanner;
 
