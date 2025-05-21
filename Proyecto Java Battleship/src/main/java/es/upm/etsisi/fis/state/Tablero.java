@@ -1,5 +1,8 @@
 package es.upm.etsisi.fis.state;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Tablero {
 
     //@TODO: Implementar borrado en cascada con casillas
@@ -7,6 +10,7 @@ public class Tablero {
 
     private final Casilla[][] casillas;
     private final Jugador propietario;
+    private final List<Barco> barcosPropios = new ArrayList<>();
 
     public Tablero(Jugador propietario) {
         this.propietario = propietario;
@@ -41,21 +45,45 @@ public class Tablero {
         for (int i = 0; i < DIMENSION_TABLERO; i++) {
             for (int j = 0; j < DIMENSION_TABLERO; j++) {
                 Casilla casilla = casillas[i][j];
-                System.out.print(casilla.isImpactada() ? " X " : "\uD83C\uDF0A");
+                if (casilla.isImpactada()) {
+                    System.out.print(" X ");
+                } else {
+                    System.out.print(" 🌊 ");
+                }
             }
             System.out.println();
         }
     }
-//si la casilla no ha sido impactada 🌊 si ha sido impactada X , en mi tablero no he puesto como ver los barcos
+
+private boolean casillaTieneBarco(Casilla casilla) {
+    for (Barco barco : barcosPropios) {
+        if (barco.getCasillasOcupadas().contains(casilla)) {
+            return true;
+        }
+    }
+    return false;
+}
 
     private void mostrarMiTablero() {
         System.out.println("Mi Tablero:");
         for (int i = 0; i < DIMENSION_TABLERO; i++) {
             for (int j = 0; j < DIMENSION_TABLERO; j++) {
                 Casilla casilla = casillas[i][j];
-                System.out.print(casilla.isImpactada() ? " X " : "\uD83C\uDF0A");
+                boolean tieneBarco = casillaTieneBarco(casilla);
+
+                if (tieneBarco && casilla.isImpactada()) {
+                    System.out.print(" X "); // Barco impactado
+                } else if (tieneBarco) {
+                    System.out.print(" B "); // Barco sin impactar
+                } else if (casilla.isImpactada()) {
+                    System.out.print(" * "); // Agua impactada
+                } else {
+                    System.out.print(" \uD83C\uDF0A "); // Agua no impactada
+                }
             }
             System.out.println();
         }
     }
+
+
 }
