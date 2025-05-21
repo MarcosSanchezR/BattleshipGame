@@ -1,5 +1,7 @@
 package es.upm.etsisi.fis.persistencia;
 
+import es.upm.etsisi.fis.logica.GameManager;
+
 public class Portaviones extends Barco{
 
     public static final int TAMANIO_PORTAAVIONES = 4;
@@ -20,7 +22,7 @@ public class Portaviones extends Barco{
 
     //@TODO: Implementar RF #18745
     private void habilidadPortaaviones(){
-
+        GameManager.getInstance().getGameDisplay().realizarAtaque();
     }
 
 }

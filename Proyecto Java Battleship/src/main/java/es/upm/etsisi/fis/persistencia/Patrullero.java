@@ -1,5 +1,7 @@
 package es.upm.etsisi.fis.persistencia;
 
+import es.upm.etsisi.fis.logica.GameManager;
+
 public class Patrullero extends Barco{
 
     public static final int TAMANIO_PATRULLERO = 2;
@@ -20,10 +22,9 @@ public class Patrullero extends Barco{
 
     //@TODO: Implementar RF #18752
     private void habilidadPatrullero(){
-        int fila = super.getTablero().getPropietario().getPartidasJugadas().getLast().getGameManager().pedirFila();
+        int fila = GameManager.getInstance().pedirFila();
         Jugador jugador = super.getTablero().getPropietario();
-        Tablero tableroEnemigo = super.getTablero().getPropietario().getPartidasJugadas().getLast()
-                .getGameManager().getTableroRival(jugador);
+        Tablero tableroEnemigo = GameManager.getInstance().getTableroRival(jugador);
         tableroEnemigo.getFila(fila);
     }
 

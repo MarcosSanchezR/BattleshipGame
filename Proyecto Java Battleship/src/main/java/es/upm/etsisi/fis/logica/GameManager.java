@@ -8,11 +8,16 @@ import java.util.List;
 
 public class GameManager implements IGameManager {
 
+    private static final GameManager instance = new GameManager();
     private final List<Partida> partidas;
     private GameDisplay gameDisplay;
 
     public GameManager() {
         this.partidas = new ArrayList<>();
+    }
+
+    public static GameManager getInstance(){
+        return instance;
     }
 
     public List<Partida> getPartidas() {
@@ -28,8 +33,26 @@ public class GameManager implements IGameManager {
     }
 
     @Override
-    public Ataque realizarAtaque(int fila, int columna, Jugador jugadorAtacante) {
+    public Ataque realizarAtaque(Jugador jugadorAtacante) {
+        int fila = 0;
+        int columna = 0;
+         while (fila == 0 || columna == 0){
+            String coordenadas= gameDisplay.realizarAtaque();
+            String[] partes = coordenadas.split(",");
+            if (partes.length ==2){
+             try {
+                 fila = Integer.parseInt(partes[0].trim());
+                 columna = Integer.parseInt(partes[1].trim());
+             }catch (NumberFormatException _){
+                 System.out.println("La coordenada introducida debe ser numerica");
+             }
+            }else{
+                System.out.println("No has respetado el formato");
+         }
+         }
+
          Tablero tableroObjetivo= getTableroRival(jugadorAtacante);
+
         return tableroObjetivo.atacarCasilla(fila, columna);
     }
 

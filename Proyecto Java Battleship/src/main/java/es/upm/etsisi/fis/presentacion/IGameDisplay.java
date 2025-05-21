@@ -2,9 +2,10 @@ package es.upm.etsisi.fis.presentacion;
 
 public interface IGameDisplay {
 
-    void realizarAtaque();
+    String realizarAtaque();
     void confirmacionHabilidad();
     int pedirFila();
+    int pedirColumna();
 
 
 }

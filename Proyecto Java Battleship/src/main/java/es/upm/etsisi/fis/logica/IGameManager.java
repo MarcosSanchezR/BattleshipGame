@@ -5,7 +5,7 @@ import es.upm.etsisi.fis.persistencia.Jugador;
 
 public interface IGameManager {
 
-    Ataque realizarAtaque(int fila, int columna, Jugador jugadorAtacante);
+    Ataque realizarAtaque(Jugador jugadorAtacante);
 
     int pedirFila();
 

@@ -32,18 +32,10 @@ public class GameDisplay implements IGameDisplay {
 
     // @TODO: Implementar RF #18769
     @Override
-    public void realizarAtaque() {
+    public String realizarAtaque() {
         // Leer coordenadas (fila, columna)
         System.out.print("VAS A REALIZAR UN ATAQUE");
-        System.out.print("Introduce la FILA que quieras atacar (0-9): ");
-        int fila = scanner.nextInt();
-        System.out.print("Introduce la COLUMNA que quieras atacar (0-9): ");
-        int columna = scanner.nextInt();
-        // int fila = 0, columna = 0;
-        // Llamada a ControladorPartida.realizarAtaque(fila, columna)
-
-        Jugador jugadorAtacante = playerManager.getLoggedUser();
-        gameManager.realizarAtaque(fila, columna, jugadorAtacante);
+        return getCoordenadas();
     }
 
     @Override
@@ -53,12 +45,21 @@ public class GameDisplay implements IGameDisplay {
 
     @Override
     public int pedirFila() {
-        System.out.println("Seleccione una fila para revelar");
+        System.out.println("Seleccione una fila");
         return scanner.nextInt();
     }
 
+    @Override
+    public int pedirColumna() {
+        System.out.println("Seleccione una columna");
+        return scanner.nextInt();
+    }
+
+
     private String getCoordenadas(){
-        return "";
+        System.out.println("Introduce la coordenada (formato: x,y): ");
+        if (scanner.hasNextLine()) scanner.nextLine();
+        return scanner.nextLine();
     }
 
 }
