@@ -16,7 +16,7 @@ public abstract class Barco {
         this.hundido = false;
         this.tamanio = tamanio;
         this.habilidadesRestantes = habilidadesRestantes;
-        this.casillasOcupadas = new ArrayList<Casilla>(tamanio);
+        this.casillasOcupadas = new ArrayList<>(tamanio);
     }
 
     public boolean isHundido() {
@@ -67,7 +67,3 @@ public abstract class Barco {
         return habilidadesRestantes > 0;
     }
 }
-
-// comentario prueba
-
-// prueba final slhndoed
