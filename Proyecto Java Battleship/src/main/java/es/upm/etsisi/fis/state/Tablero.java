@@ -67,49 +67,60 @@ public class Tablero {
         for (int i = 0; i < DIMENSION_TABLERO; i++) {
             for (int j = 0; j < DIMENSION_TABLERO; j++) {
                 Casilla casilla = casillas[i][j];
+                boolean ocupado = false;
+
+                // Comprobar si la casilla está ocupada por algún barco enemigo
+                for (Barco barco : barcosPropios) {  // Aquí barcosPropios serían los barcos del rival en este tablero
+                    if (barco.getCasillasOcupadas().contains(casilla)) {
+                        ocupado = true;
+                    }
+                }
+
                 if (casilla.isImpactada()) {
-                    System.out.print(" X ");
+                    if (ocupado) {
+                        System.out.print(" 💥 ");  // Barco impactado
+                    } else {
+                        System.out.print(" X ");    // Agua impactada (fuego fallido)
+                    }
                 } else {
-                    System.out.print(" 🌊 ");
+                    System.out.print(" 🌊 ");       // Agua sin impacto
                 }
             }
             System.out.println();
         }
     }
 
-
-
-private boolean casillaTieneBarco(Casilla casilla) {
-        boolean tieneBarco = false;
-        for (Barco barco : barcosPropios) {
-            if (barco.getCasillasOcupadas().contains(casilla)) {
-                tieneBarco = true;
-            }
-        }
-
-        return tieneBarco;
-    }
 
     private void mostrarMiTablero() {
         System.out.println("Mi Tablero:");
         for (int i = 0; i < DIMENSION_TABLERO; i++) {
             for (int j = 0; j < DIMENSION_TABLERO; j++) {
                 Casilla casilla = casillas[i][j];
-                boolean tieneBarco = casillaTieneBarco(casilla);
-
-                if (tieneBarco && casilla.isImpactada()) {
-                    System.out.print(" X "); // Barco impactado
-                } else if (tieneBarco) {
-                    System.out.print(" B "); // Barco sin impactar
-                } else if (casilla.isImpactada()) {
-                    System.out.print(" * "); // Agua impactada
+                boolean ocupado = false;
+                // Recorremos los barcos para ver si la casilla está ocupada
+                for (Barco barco : barcosPropios) {
+                    if (barco.getCasillasOcupadas().contains(casilla)) {
+                        ocupado = true;
+                    }
+                }
+                if (ocupado) {
+                    if (casilla.isImpactada()) {
+                        System.out.print(" 💥 ");  // Barco impactado
+                    } else {
+                        System.out.print(" 🚢 ");  // Barco intacto
+                    }
                 } else {
-                    System.out.print(" \uD83C\uDF0A "); // Agua no impactada
+                    if (casilla.isImpactada()) {
+                        System.out.print(" X ");    // Agua impactada (fuego fallido)
+                    } else {
+                        System.out.print(" 🌊 ");   // Agua sin impacto
+                    }
                 }
             }
             System.out.println();
         }
     }
+
 
 
 }
