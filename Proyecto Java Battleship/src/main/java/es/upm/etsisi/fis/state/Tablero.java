@@ -44,22 +44,18 @@ public class Tablero {
 
         Casilla casilla = casillas[fila][columna];
 
-        // Si ya fue impactada, no repetimos el ataque
         if (casilla.isImpactada()) {
             System.out.println("La casilla ya fue atacada.");
             return new Ataque(false, casilla, atacante);
         }
 
-        // Marcar la casilla como impactada
         casilla.marcarComoImpactada();
 
-        // Verificar si la casilla pertenece a algún barco
         boolean impactoABarco = false;
         for (Barco barco : barcosPropios) {
             if (barco.getCasillasOcupadas().contains(casilla)) {
                 impactoABarco = true;
-                barco.actualizarEstado(); // Actualiza estado (hundido o no)
-                break;
+                barco.actualizarEstado(); // Se actualiza el estado de todos los barcos
             }
         }
 
@@ -81,14 +77,18 @@ public class Tablero {
         }
     }
 
+
+
 private boolean casillaTieneBarco(Casilla casilla) {
-    for (Barco barco : barcosPropios) {
-        if (barco.getCasillasOcupadas().contains(casilla)) {
-            return true;
+        boolean tieneBarco = false;
+        for (Barco barco : barcosPropios) {
+            if (barco.getCasillasOcupadas().contains(casilla)) {
+                tieneBarco = true;
+            }
         }
+
+        return tieneBarco;
     }
-    return false;
-}
 
     private void mostrarMiTablero() {
         System.out.println("Mi Tablero:");
