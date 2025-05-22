@@ -1,5 +1,8 @@
 package es.upm.etsisi.fis.state;
 
+import es.upm.etsisi.fis.logic.GameManager;
+import es.upm.etsisi.fis.logic.IGameManager;
+
 import java.util.Objects;
 
 public class JugadorHumano extends Jugador {
@@ -60,14 +63,8 @@ public class JugadorHumano extends Jugador {
         return Objects.hashCode(correo);
     }
 
-    //@TODO: Implementar RF#18604
-    public boolean iniciarSesion() {
-        return false;
+    @Override
+    public String getCoordenadasAtaque() {
+        return GameManager.getInstance().pedirCoordenadas();
     }
-
-    //@TODO: Implementar RF#18605
-    public boolean cerrarSesion() {
-        return false;
-    }
-
 }

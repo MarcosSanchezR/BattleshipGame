@@ -37,9 +37,14 @@ public class GameManager implements IGameManager {
     public void jugar(JugadorHumano jugadorHumano) {
         Maquina maquina = crearMaquina();
         Partida partida = new Partida(jugadorHumano, maquina);
+
         partidas.add(partida);
+        jugadorHumano.aniadirPartida(partida);
+        maquina.aniadirPartida(partida);
+
         jugadorHumano.setCurrentGame(partida);
         maquina.setCurrentGame(partida);
+
         jugar(partida);
     }
 
@@ -50,8 +55,9 @@ public class GameManager implements IGameManager {
         Jugador otroJugador = otroTablero.getPropietario();
         boolean partidaAcabada = false;
         do{
-            Jugador leToca = partida.cambiarTurnos();
-            //@TODO: Acabar
+            Jugador leToca = partida.getJugadorConTurno();
+            Ataque ataque = realizarAtaque(leToca);
+
         }while(!partidaAcabada);
     }
 
@@ -63,22 +69,7 @@ public class GameManager implements IGameManager {
 
     @Override
     public Ataque realizarAtaque(Jugador jugadorAtacante) {
-        int fila = 0;
-        int columna = 0;
-        while (fila == 0 || columna == 0) {
-            String coordenadas = gameDisplay.realizarAtaque();
-            String[] partes = coordenadas.split(",");
-            if (partes.length == 2) {
-                try {
-                    fila = Integer.parseInt(partes[0].trim());
-                    columna = Integer.parseInt(partes[1].trim());
-                } catch (NumberFormatException _) {
-                    System.out.println("La coordenada introducida debe ser numerica");
-                }
-            } else {
-                System.out.println("No has respetado el formato");
-            }
-        }
+        String coordenadas = jugadorAtacante.getCoordenadasAtaque();
 
         Tablero tableroObjetivo = getTableroRival(jugadorAtacante);
 
@@ -101,5 +92,9 @@ public class GameManager implements IGameManager {
                     "1");
         }
         return fila;
+    }
+
+    public String pedirCoordenadas() {
+        this.gameDisplay.getCoordenadas();
     }
 }

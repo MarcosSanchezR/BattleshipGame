@@ -32,6 +32,7 @@ public class Partida {
         this.jugador.setTurno(true);
 
         this.maquina.setTablero(tableroMaquina);
+        this.maquina.setTurno(false);
     }
 
     public static int getId_counter() {
@@ -106,4 +107,7 @@ public class Partida {
         return (this.jugador.isTurno()) ? this.jugador : this.maquina;
     }
 
+    public Jugador getJugadorConTurno() {
+        return (jugador.isTurno()) ? jugador : this.maquina;
+    }
 }

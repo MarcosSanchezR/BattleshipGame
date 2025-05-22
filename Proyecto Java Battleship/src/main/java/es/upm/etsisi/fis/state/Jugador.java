@@ -52,14 +52,17 @@ public abstract class Jugador {
         this.partidasJugadas = partidasJugadas;
     }
 
-    public void aniadirPartida(Partida partida) {
-        partidasJugadas.add(partida);
-    }
-
     public Partida getCurrentGame() {
         return currentGame;
     }
 
-    public void setCurrentGame(Partida partida) {
+    public void setCurrentGame(Partida currentGame) {
+        this.currentGame = currentGame;
+    }
+
+    public abstract String getCoordenadasAtaque();
+
+    public void aniadirPartida(Partida partida) {
+        partidasJugadas.add(partida);
     }
 }
