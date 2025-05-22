@@ -19,8 +19,8 @@ public class Maquina extends Jugador{
         Random rand = new Random();
 
         // Devuelve [1,11) == [1,10]
-        int fila = rand.nextInt(1, 11);
-        int columna = rand.nextInt(1, 11);
+        int fila = rand.nextInt(1, Tablero.DIMENSION_TABLERO+1);
+        int columna = rand.nextInt(1, Tablero.DIMENSION_TABLERO+1);
         return new int[]{fila, columna};
     }
 }

@@ -70,18 +70,14 @@ public class GameManager implements IGameManager {
     @Override
     public Ataque realizarAtaqueReglamentario(Jugador jugadorAtacante) {
         Tablero tableroObjetivo = getTableroRival(jugadorAtacante);
-        Ataque ataqueRealizado = realizarAtaqueBasico(jugadorAtacante, tableroObjetivo);
-
-        //@TODO: Acabar lógica del ataque reglamentario
-
-        return ataqueRealizado;
-    }
-
-    private Ataque realizarAtaqueBasico(Jugador jugadorAtacante, Tablero tableroObjetivo) {
         int[] coordenadas = jugadorAtacante.getCoordenadasAtaque();
         int fila = coordenadas[0]-1;
         int columna = coordenadas[1]-1;
-        return tableroObjetivo.atacarCasilla(fila, columna, jugadorAtacante);
+        Ataque ataqueRealizado = tableroObjetivo.atacarCasilla(fila, columna, jugadorAtacante);
+
+        //@TODO: Comprobar si se acaba la partida
+
+        return ataqueRealizado;
     }
 
     public Tablero getTableroRival(Jugador jugadorAtacante) {
@@ -94,11 +90,10 @@ public class GameManager implements IGameManager {
 
     @Override
     public int pedirFila() {
-        int fila = gameDisplay.pedirFila() - 1;
-        if (fila > 9 || fila < 0) {
-            throw new IllegalArgumentException("La fila esta fuera de los limites del tablero: 10 >= " + fila + " >= " +
-                    "1");
-        }
+        int fila;
+        do {
+            fila = gameDisplay.pedirFila();
+        } while (coordenadaValida(fila));
         return fila;
     }
 
@@ -117,6 +112,6 @@ public class GameManager implements IGameManager {
     }
 
     private boolean coordenadaValida(int coordenada) {
-        return coordenada >= 1 && coordenada <= 10;
+        return coordenada >= 1 && coordenada <= Tablero.DIMENSION_TABLERO;
     }
 }

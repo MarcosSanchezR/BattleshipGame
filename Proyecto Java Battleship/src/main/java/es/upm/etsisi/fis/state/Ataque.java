@@ -5,16 +5,14 @@ public record Ataque(
         boolean impactoABarco,
 
         Casilla casillaAtacada,
-        Jugador atacante
+        Jugador atacante,
+        Tablero tableroAtacado
 ) {
-
-    // prueba commit
-    // prueba numero 2
 
     private static int id_counter = 0;
 
-    public Ataque(boolean impactoABarco, Casilla casillaAtacada, Jugador atacante) {
-        this(id_counter++, impactoABarco, casillaAtacada, atacante);
+    public Ataque(boolean impactoABarco, Casilla casillaAtacada, Jugador atacante, Tablero tableroAtacado) {
+        this(id_counter++, impactoABarco, casillaAtacada, atacante, tableroAtacado);
     }
 
 }

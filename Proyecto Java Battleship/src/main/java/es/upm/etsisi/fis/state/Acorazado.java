@@ -24,17 +24,16 @@ public class Acorazado extends Barco {
     //@TODO: Implementar RF #18751
     private void habilidadAcorazado() {
         Jugador jugador = super.getTablero().getPropietario();
-        Tablero tableroEnemigo = GameManager.getInstance().getTableroRival(jugador);
-        GameDisplay gameDisplay = GameManager.getInstance().getGameDisplay();
-        String coordenadas = gameDisplay.getCoordenadas();
-        String[] partes = coordenadas.split(",");
-        int filSeleccionada = Integer.parseInt(partes[0]);
-        int colSeleccionada = Integer.parseInt(partes[1]);
-        tableroEnemigo.atacarCasilla(filSeleccionada,colSeleccionada,jugador);
-        tableroEnemigo.atacarCasilla(filSeleccionada+1,colSeleccionada,jugador);
-        tableroEnemigo.atacarCasilla(filSeleccionada-1,colSeleccionada,jugador);
-        tableroEnemigo.atacarCasilla(filSeleccionada,colSeleccionada+1,jugador);
-        tableroEnemigo.atacarCasilla(filSeleccionada,colSeleccionada-1,jugador);
+        Ataque ataqueRealizado = GameManager.getInstance().realizarAtaqueReglamentario(jugador);
+        Casilla atacada = ataqueRealizado.casillaAtacada();
+        int fila = atacada.getFila();
+        int columna = atacada.getColumna();
+        Tablero tableroEnemigo= ataqueRealizado.tableroAtacado();
+        tableroEnemigo.atacarCasilla(fila,columna,jugador);
+        tableroEnemigo.atacarCasilla(fila+1,columna,jugador);
+        tableroEnemigo.atacarCasilla(fila,columna+1,jugador);
+        tableroEnemigo.atacarCasilla(fila-1,columna,jugador);
+        tableroEnemigo.atacarCasilla(fila,columna-1,jugador);
 
     }
 

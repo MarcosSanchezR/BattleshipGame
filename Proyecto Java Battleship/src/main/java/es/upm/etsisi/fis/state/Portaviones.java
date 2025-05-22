@@ -16,21 +16,17 @@ public class Portaviones extends Barco {
     public boolean usarHabilidadEspecial() {
         boolean puedeUsarHabilidad = super.usarHabilidadEspecial();
         if (puedeUsarHabilidad) {
-            habilidadPortaaviones();
+            Ataque ataque = habilidadPortaaviones();
         }
         return puedeUsarHabilidad;
     }
 
     //@TODO: Implementar RF #18745
-    private void habilidadPortaaviones() {
+    private Ataque habilidadPortaaviones() {
         Jugador jugador = super.getTablero().getPropietario();
-        GameDisplay display = GameManager.getInstance().getGameDisplay();
-        Tablero tableroEnemigo = GameManager.getInstance().getTableroRival(jugador);
-        String coordenadas = display.getCoordenadas();
-        String[] partes = coordenadas.split(",");
-        int fila = Integer.parseInt(partes[0].trim());
-        int columna = Integer.parseInt(partes[1].trim());
-        tableroEnemigo.atacarCasilla(fila, columna, jugador);
+        Ataque ataqueRealizado = GameManager.getInstance().realizarAtaqueReglamentario(jugador);
+        jugador.aniadirAtaque(ataqueRealizado);
+        return ataqueRealizado;
     }
 
 }

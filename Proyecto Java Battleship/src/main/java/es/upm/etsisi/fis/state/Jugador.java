@@ -65,4 +65,8 @@ public abstract class Jugador {
     public void aniadirPartida(Partida partida) {
         partidasJugadas.add(partida);
     }
+
+    public boolean aniadirAtaque(Ataque ataqueRealizado) {
+        return this.ataquesRealizados.add(ataqueRealizado);
+    }
 }

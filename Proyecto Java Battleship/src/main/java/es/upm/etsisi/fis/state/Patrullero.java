@@ -22,7 +22,8 @@ public class Patrullero extends Barco {
 
     //@TODO: Implementar RF #18752
     private void habilidadPatrullero() {
-        int fila = GameManager.getInstance().pedirFila();
+        // Recibe [1,10] -> declara [0,9], dentro del rango.
+        int fila = GameManager.getInstance().pedirFila() - 1;
         Jugador jugador = super.getTablero().getPropietario();
         Tablero tableroEnemigo = GameManager.getInstance().getTableroRival(jugador);
         tableroEnemigo.getFila(fila);

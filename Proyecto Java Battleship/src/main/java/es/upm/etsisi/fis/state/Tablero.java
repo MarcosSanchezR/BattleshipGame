@@ -1,5 +1,7 @@
 package es.upm.etsisi.fis.state;
 
+import es.upm.etsisi.fis.logic.GameManager;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,16 +43,16 @@ public class Tablero {
     }
 
     //@TODO: Implementar RF #18769
-    public Ataque atacarCasilla(int fila, int columna, Jugador atacante) {
-        if (fila < 0 || fila >= DIMENSION_TABLERO || columna < 0 || columna >= DIMENSION_TABLERO) {
-            throw new IllegalArgumentException("Coordenadas fuera del rango del tablero.");
-        }
-
+    public Ataque atacarCasilla(int fila, int columna, Jugador jugadorAtacante) {
+        // Comprobación de coordenadas ya realizada al tomar las coordenadas; no puede comprobar el modelo
         Casilla casilla = casillas[fila][columna];
+        Tablero tableroAtacado = GameManager.getInstance().getTableroRival(jugadorAtacante);
 
+        //@TODO: Lógica mal hecha; la casilla no se puede atacar si ya está impactada (el submarino la marca como no
+        // impactada de nuevo)
         if (casilla.isImpactada()) {
             System.out.println("La casilla ya fue atacada.");
-            return new Ataque(false, casilla, atacante);
+            return new Ataque(false, casilla, jugadorAtacante, tableroAtacado);
         }
 
         casilla.marcarComoImpactada();
@@ -63,7 +65,7 @@ public class Tablero {
             }
         }
 
-        return new Ataque(impactoABarco, casilla, atacante);
+        return new Ataque(impactoABarco, casilla, jugadorAtacante, tableroAtacado);
     }
 
     private void mostrarTableroRival() {
