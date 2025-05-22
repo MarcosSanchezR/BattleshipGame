@@ -142,7 +142,7 @@ public class Partida {
             puntuacion -= 20;
         }
 
-        HAY QUE TENER EN CUENTA TAMBIEN EL EMPATE
+        HAY QUE TENER EN CUENTA TAMBIEN EL EMPATE.
 
          */
 
