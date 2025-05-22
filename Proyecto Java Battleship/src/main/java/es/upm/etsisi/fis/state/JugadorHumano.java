@@ -1,7 +1,6 @@
 package es.upm.etsisi.fis.state;
 
 import es.upm.etsisi.fis.logic.GameManager;
-import es.upm.etsisi.fis.logic.IGameManager;
 
 import java.util.Objects;
 
@@ -64,7 +63,7 @@ public class JugadorHumano extends Jugador {
     }
 
     @Override
-    public String getCoordenadasAtaque() {
+    public int[] getCoordenadasAtaque() {
         return GameManager.getInstance().pedirCoordenadas();
     }
 }

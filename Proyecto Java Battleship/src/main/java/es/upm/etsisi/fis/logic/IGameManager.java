@@ -8,7 +8,7 @@ public interface IGameManager {
 
     void jugar(JugadorHumano jugadorHumano);
 
-    Ataque realizarAtaque(Jugador jugadorAtacante);
+    Ataque realizarAtaqueReglamentario(Jugador jugadorAtacante);
 
     int pedirFila();
 

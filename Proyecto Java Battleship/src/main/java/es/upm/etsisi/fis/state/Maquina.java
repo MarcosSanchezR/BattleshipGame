@@ -1,10 +1,6 @@
 package es.upm.etsisi.fis.state;
 
-import com.sun.security.auth.module.UnixSystem;
-
 import java.util.Random;
-import java.util.Scanner;
-import java.util.Timer;
 
 public class Maquina extends Jugador{
 
@@ -19,12 +15,12 @@ public class Maquina extends Jugador{
     }
 
     @Override
-    public String getCoordenadasAtaque() {
+    public int[] getCoordenadasAtaque() {
         Random rand = new Random();
 
         // Devuelve [1,11) == [1,10]
         int fila = rand.nextInt(1, 11);
         int columna = rand.nextInt(1, 11);
-        return fila + "," + columna;
+        return new int[]{fila, columna};
     }
 }

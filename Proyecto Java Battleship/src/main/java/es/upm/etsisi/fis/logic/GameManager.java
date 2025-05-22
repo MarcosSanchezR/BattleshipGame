@@ -56,7 +56,7 @@ public class GameManager implements IGameManager {
         boolean partidaAcabada = false;
         do{
             Jugador leToca = partida.getJugadorConTurno();
-            Ataque ataque = realizarAtaque(leToca);
+            Ataque ataque = realizarAtaqueReglamentario(leToca);
 
         }while(!partidaAcabada);
     }
@@ -68,11 +68,19 @@ public class GameManager implements IGameManager {
 
 
     @Override
-    public Ataque realizarAtaque(Jugador jugadorAtacante) {
-        String coordenadas = jugadorAtacante.getCoordenadasAtaque();
-
+    public Ataque realizarAtaqueReglamentario(Jugador jugadorAtacante) {
         Tablero tableroObjetivo = getTableroRival(jugadorAtacante);
+        Ataque ataqueRealizado = realizarAtaqueBasico(jugadorAtacante, tableroObjetivo);
 
+        //@TODO: Acabar lógica del ataque reglamentario
+
+        return ataqueRealizado;
+    }
+
+    private Ataque realizarAtaqueBasico(Jugador jugadorAtacante, Tablero tableroObjetivo) {
+        int[] coordenadas = jugadorAtacante.getCoordenadasAtaque();
+        int fila = coordenadas[0]-1;
+        int columna = coordenadas[1]-1;
         return tableroObjetivo.atacarCasilla(fila, columna, jugadorAtacante);
     }
 
@@ -94,7 +102,21 @@ public class GameManager implements IGameManager {
         return fila;
     }
 
-    public String pedirCoordenadas() {
-        this.gameDisplay.getCoordenadas();
+    public int[] pedirCoordenadas() {
+        int fila;
+        int columna;
+        String input;
+        do {
+            input = gameDisplay.getCoordenadas();
+            String[] filaYColumna = input.split(",");
+            fila = Integer.parseInt(filaYColumna[0].trim());
+            columna = Integer.parseInt(filaYColumna[1].trim());
+        } while (!(coordenadaValida(columna) && coordenadaValida(fila)));
+
+        return new int[]{fila, columna};
+    }
+
+    private boolean coordenadaValida(int coordenada) {
+        return coordenada >= 1 && coordenada <= 10;
     }
 }

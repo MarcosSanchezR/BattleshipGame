@@ -60,7 +60,7 @@ public abstract class Jugador {
         this.currentGame = currentGame;
     }
 
-    public abstract String getCoordenadasAtaque();
+    public abstract int[] getCoordenadasAtaque();
 
     public void aniadirPartida(Partida partida) {
         partidasJugadas.add(partida);
