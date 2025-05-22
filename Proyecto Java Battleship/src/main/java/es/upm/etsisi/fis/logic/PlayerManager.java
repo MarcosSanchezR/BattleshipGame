@@ -2,6 +2,7 @@ package es.upm.etsisi.fis.logic;
 
 import es.upm.etsisi.fis.state.JugadorHumano;
 import servidor.ExternalLDAP;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,6 +42,7 @@ public class PlayerManager implements IPlayerManager {
         jugadores.add(jugadorHumano);
         return true;
     }
+
     //Método que devuelve el jugador que coincida con el correo y contraseña que se pasen
     // por parámetros de la lista de jugadores
     public JugadorHumano JugadorExistente(String correo, String contra) {
@@ -51,6 +53,7 @@ public class PlayerManager implements IPlayerManager {
         }
         return null;
     }
+
     //devuelve true si te puedes dar de baja false si no puedes
     @Override
     public boolean darDeBaja(String correo, String contra) {
@@ -64,21 +67,21 @@ public class PlayerManager implements IPlayerManager {
 
     //devuelve true si ha podido iniciar sesion false si no ha podido
     @Override
-    public boolean iniciarSesion(String correo, String contra){
-        JugadorHumano jugadorEncontrado=JugadorExistente(correo,contra);
-        if (jugadorEncontrado==null){
+    public boolean iniciarSesion(String correo, String contra) {
+        JugadorHumano jugadorEncontrado = JugadorExistente(correo, contra);
+        if (jugadorEncontrado == null) {
             return false;
-        }
-        else {
-            this.loggedUser=jugadorEncontrado;
+        } else {
+            this.loggedUser = jugadorEncontrado;
             return true;
         }
     }
+
     //pone el usuario actual a null
     @Override
-    public void cerrarSesion(){
-        if (loggedUser!=null){
-            loggedUser=null;
+    public void cerrarSesion() {
+        if (loggedUser != null) {
+            loggedUser = null;
         }
     }
 }

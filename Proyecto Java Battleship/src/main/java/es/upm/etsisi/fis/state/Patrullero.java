@@ -2,7 +2,7 @@ package es.upm.etsisi.fis.state;
 
 import es.upm.etsisi.fis.logic.GameManager;
 
-public class Patrullero extends Barco{
+public class Patrullero extends Barco {
 
     public static final int TAMANIO_PATRULLERO = 2;
     public static final int HABILIDADES_PATRULLERO = 1;
@@ -12,16 +12,16 @@ public class Patrullero extends Barco{
     }
 
     @Override
-    public boolean usarHabilidadEspecial(){
+    public boolean usarHabilidadEspecial() {
         boolean puedeUsarHabilidad = super.usarHabilidadEspecial();
-        if(puedeUsarHabilidad){
+        if (puedeUsarHabilidad) {
             habilidadPatrullero();
         }
         return puedeUsarHabilidad;
     }
 
     //@TODO: Implementar RF #18752
-    private void habilidadPatrullero(){
+    private void habilidadPatrullero() {
         int fila = GameManager.getInstance().pedirFila();
         Jugador jugador = super.getTablero().getPropietario();
         Tablero tableroEnemigo = GameManager.getInstance().getTableroRival(jugador);

@@ -57,24 +57,23 @@ public class PlayerDisplay implements IPlayerDisplay {
     }
 
     @Override
-    public void mostrarMenu(){
-        while(true){
-            if(playerManager.getLoggedUser() == null){
+    public void mostrarMenu() {
+        while (true) {
+            if (playerManager.getLoggedUser() == null) {
                 mostrarMenuSinLogin();
-            }
-            else{
+            } else {
                 mostrarMenuLogado();
             }
         }
     }
 
-    private void mostrarMenuSinLogin(){
+    private void mostrarMenuSinLogin() {
         System.out.println("---------- MENU PRINCIPAL ----------");
         System.out.println("1 - Iniciar Sesion");
         System.out.println("2 - Registrarse");
         System.out.print("Por favor, elija una opción: ");
         int opcion = sc.nextInt();
-        switch(opcion){
+        switch (opcion) {
             case 1:
                 mostrarIniciarSesion();
                 break;
@@ -86,7 +85,7 @@ public class PlayerDisplay implements IPlayerDisplay {
         }
     }
 
-    private void mostrarMenuLogado(){
+    private void mostrarMenuLogado() {
         System.out.println("---------- MENU PRINCIPAL ----------");
         System.out.println("1 - Jugar partida");
         System.out.println("2 - Darse de baja");
@@ -94,7 +93,7 @@ public class PlayerDisplay implements IPlayerDisplay {
         System.out.print("Por favor, elija una opción: ");
         int opcion = sc.nextInt();
 
-        switch(opcion){
+        switch (opcion) {
             case 1:
                 //jugarpartida
                 break;

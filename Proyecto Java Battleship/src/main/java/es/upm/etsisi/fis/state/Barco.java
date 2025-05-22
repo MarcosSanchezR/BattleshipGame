@@ -56,23 +56,23 @@ public abstract class Barco {
         this.tablero = tablero;
     }
 
-    public void actualizarEstado(){
+    public void actualizarEstado() {
         boolean casillaVivaEncontrada = false;
         Iterator<Casilla> iterator = casillasOcupadas.iterator();
-        do{
+        do {
             Casilla casilla = iterator.next();
-            if(!casilla.isImpactada()){
+            if (!casilla.isImpactada()) {
                 casillaVivaEncontrada = true;
             }
-        }while(!casillaVivaEncontrada && iterator.hasNext());
+        } while (!casillaVivaEncontrada && iterator.hasNext());
 
         boolean barcoHundido = !casillaVivaEncontrada;
-        if(barcoHundido != this.hundido){
+        if (barcoHundido != this.hundido) {
             this.hundido = barcoHundido;
         }
     }
 
-    public boolean usarHabilidadEspecial(){
+    public boolean usarHabilidadEspecial() {
         return habilidadesRestantes > 0;
     }
 }

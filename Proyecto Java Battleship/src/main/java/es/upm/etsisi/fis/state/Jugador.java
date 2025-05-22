@@ -60,5 +60,6 @@ public abstract class Jugador {
         return currentGame;
     }
 
-    public void setCurrentGame(Partida partida) {}
+    public void setCurrentGame(Partida partida) {
+    }
 }

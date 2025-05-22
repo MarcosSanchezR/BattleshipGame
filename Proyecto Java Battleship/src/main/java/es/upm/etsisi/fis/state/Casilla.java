@@ -29,7 +29,7 @@ public class Casilla {
         return columna;
     }
 
-    public void marcarComoImpactada(){
+    public void marcarComoImpactada() {
         impactada = true;
     }
 

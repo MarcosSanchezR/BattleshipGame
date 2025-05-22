@@ -2,7 +2,6 @@ package es.upm.etsisi.fis.display;
 
 import es.upm.etsisi.fis.logic.IGameManager;
 import es.upm.etsisi.fis.logic.IPlayerManager;
-import es.upm.etsisi.fis.state.Jugador;
 
 import java.util.Scanner;
 
@@ -56,11 +55,10 @@ public class GameDisplay implements IGameDisplay {
     }
 
 
-    private String getCoordenadas(){
+    private String getCoordenadas() {
         System.out.println("Introduce la coordenada (formato: x,y): ");
         if (scanner.hasNextLine()) scanner.nextLine();
         return scanner.nextLine();
     }
 
 }
-//ttst

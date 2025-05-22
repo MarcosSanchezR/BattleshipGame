@@ -22,18 +22,18 @@ public class UI {
         System.out.println("BATTLESHIP - ETSISI'S EDITION");
         //@TODO: Hacer que esto funcione.
         System.out.println("Pulsa cualquier tecla para comenzar. (AUN NO FUNCIONA)");
-        do{
+        do {
             continue;
-        }while(false);
+        } while (false);
     }
 
-    public void run(){
+    public void run() {
         showIntro();
         // Lógica del programa
         boolean exit = false;
-        do{
+        do {
 
-        }while(!exit);
+        } while (!exit);
     }
 
 }

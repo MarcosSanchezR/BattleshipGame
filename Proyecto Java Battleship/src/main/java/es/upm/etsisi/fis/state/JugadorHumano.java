@@ -66,7 +66,7 @@ public class JugadorHumano extends Jugador {
     }
 
     //@TODO: Implementar RF#18605
-    public boolean cerrarSesion(){
+    public boolean cerrarSesion() {
         return false;
     }
 

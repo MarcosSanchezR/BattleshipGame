@@ -1,10 +1,10 @@
 package es.upm.etsisi.fis;
 
-import es.upm.etsisi.fis.logic.GameManager;
-import es.upm.etsisi.fis.logic.PlayerManager;
 import es.upm.etsisi.fis.display.GameDisplay;
 import es.upm.etsisi.fis.display.PlayerDisplay;
 import es.upm.etsisi.fis.display.UI;
+import es.upm.etsisi.fis.logic.GameManager;
+import es.upm.etsisi.fis.logic.PlayerManager;
 
 public class App {
 
@@ -19,7 +19,7 @@ public class App {
         this.ui.run();
     }
 
-    public static void main(String[] args ){
+    public static void main(String[] args) {
         GameManager gameManager = new GameManager();
         PlayerManager playerManager = new PlayerManager();
 

@@ -6,7 +6,7 @@ public record Ataque(
 
         Casilla casillaAtacada,
         Jugador atacante
-){
+) {
 
     // prueba commit
     // prueba numero 2

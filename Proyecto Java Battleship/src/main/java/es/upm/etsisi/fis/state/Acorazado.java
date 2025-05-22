@@ -1,6 +1,6 @@
 package es.upm.etsisi.fis.state;
 
-public class Acorazado extends Barco{
+public class Acorazado extends Barco {
 
     public static final int TAMANIO_ACORAZADO = 4;
     public static final int HABILIDADES_ACORAZADO = TAMANIO_ACORAZADO;
@@ -10,16 +10,16 @@ public class Acorazado extends Barco{
     }
 
     @Override
-    public boolean usarHabilidadEspecial(){
+    public boolean usarHabilidadEspecial() {
         boolean puedeUsarHabilidad = super.usarHabilidadEspecial();
-        if(puedeUsarHabilidad){
+        if (puedeUsarHabilidad) {
             habilidadAcorazado();
         }
         return puedeUsarHabilidad;
     }
 
     //@TODO: Implementar RF #18751
-    private void habilidadAcorazado(){
+    private void habilidadAcorazado() {
 
     }
 

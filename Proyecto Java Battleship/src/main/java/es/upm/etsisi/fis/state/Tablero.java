@@ -17,7 +17,7 @@ public class Tablero {
         casillas = inicializarCasillas();
     }
 
-    private Casilla[][] inicializarCasillas(){
+    private Casilla[][] inicializarCasillas() {
         Casilla[][] result = new Casilla[DIMENSION_TABLERO][DIMENSION_TABLERO];
         for (int i = 0; i < DIMENSION_TABLERO; i++) {
             for (int j = 0; j < DIMENSION_TABLERO; j++) {
@@ -36,7 +36,7 @@ public class Tablero {
         return propietario;
     }
 
-    public Casilla[] getFila(int i){
+    public Casilla[] getFila(int i) {
         return casillas[i];
     }
 
@@ -77,6 +77,7 @@ public class Tablero {
                 for (Barco barco : barcosPropios) {  // Aquí barcosPropios serían los barcos del rival en este tablero
                     if (barco.getCasillasOcupadas().contains(casilla)) {
                         ocupado = true;
+                        break;
                     }
                 }
 
@@ -105,6 +106,7 @@ public class Tablero {
                 for (Barco barco : barcosPropios) {
                     if (barco.getCasillasOcupadas().contains(casilla)) {
                         ocupado = true;
+                        break;
                     }
                 }
                 if (ocupado) {
