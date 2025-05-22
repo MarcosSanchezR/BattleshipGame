@@ -5,7 +5,7 @@ import es.upm.etsisi.fis.logic.IPlayerManager;
 
 import java.util.Scanner;
 
-public class GameDisplay implements IGameDisplay {
+public class GameDisplay implements IGameDisplay, GameMenu {
 
     private final Scanner scanner = new Scanner(System.in);
 
@@ -27,6 +27,16 @@ public class GameDisplay implements IGameDisplay {
 
     public IPlayerManager getPlayerManager() {
         return playerManager;
+    }
+
+    @Override
+    public void iniciarPartida() {
+
+    }
+
+    @Override
+    public void mostrarPuntuaciones() {
+
     }
 
     // @TODO: Implementar RF #18769
