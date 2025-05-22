@@ -77,9 +77,9 @@ public class Tablero {
 
                 // Comprobar si la casilla está ocupada por algún barco enemigo
                 for (Barco barco : barcosPropios) { // Aquí barcosPropios serían los barcos del rival en este tablero
-                    if (!ocupado && barco.getCasillasOcupadas().contains(casilla)) {
+                    if (barco.getCasillasOcupadas().contains(casilla)) {
                         ocupado = true;
-                        break;
+
                     }
                 }
 
@@ -106,9 +106,9 @@ public class Tablero {
 
                 // Recorremos los barcos para ver si la casilla está ocupada
                 for (Barco barco : barcosPropios) {
-                    if (!ocupado && barco.getCasillasOcupadas().contains(casilla)) {
+                    if (barco.getCasillasOcupadas().contains(casilla)) {
                         ocupado = true;
-                        break;
+
                     }
                 }
 
