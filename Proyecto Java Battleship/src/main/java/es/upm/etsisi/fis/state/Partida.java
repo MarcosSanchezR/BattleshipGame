@@ -136,7 +136,9 @@ public class Partida {
         /*
         if(jugador ha ganado){
             puntuacion += 20;
-        } else{
+        }
+
+        else{
             puntuacion -= 20;
         }
 
