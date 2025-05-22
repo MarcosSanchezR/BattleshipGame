@@ -111,7 +111,7 @@ public class PlayerDisplay implements PlayerMenu {
 
         switch (opcion) {
             case 1:
-                //jugarpartida
+                //jugar partida
                 break;
             case 2:
                 mostrarBajaUsuario();
