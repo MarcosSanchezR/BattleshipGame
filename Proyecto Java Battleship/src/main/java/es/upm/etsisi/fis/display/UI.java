@@ -9,19 +9,19 @@ public class UI {
 
     private static final Scanner sc = new Scanner(System.in);
 
-    private final IPlayerDisplay playerDisplay;
-    private final IGameDisplay gameDisplay;
+    private final PlayerMenu playerDisplay;
+    private final GameMenu gameDisplay;
 
-    public UI(IPlayerDisplay playerDisplay, IGameDisplay gameDisplay) {
+    public UI(PlayerMenu playerDisplay, GameMenu gameDisplay) {
         this.playerDisplay = playerDisplay;
         this.gameDisplay = gameDisplay;
     }
 
-    public IPlayerDisplay getPlayerDisplay() {
+    public PlayerMenu getPlayerDisplay() {
         return playerDisplay;
     }
 
-    public IGameDisplay getGameDisplay() {
+    public GameMenu getGameDisplay() {
         return gameDisplay;
     }
 
@@ -53,7 +53,7 @@ public class UI {
                 option = showLoggedMenu();
                 switch (option) {
                     case 1 -> gameDisplay.iniciarPartida();
-                    case 2 -> gameDisplay.mostrarTop10Puntuaciones();
+                    case 2 -> gameDisplay.mostrarPuntuaciones();
                     case 3 -> {
                         playerDisplay.mostrarCerrarSesion();
                         exit = true;

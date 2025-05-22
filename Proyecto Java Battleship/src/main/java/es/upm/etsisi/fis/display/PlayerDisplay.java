@@ -2,12 +2,10 @@ package es.upm.etsisi.fis.display;
 
 import es.upm.etsisi.fis.logic.IPlayerManager;
 import es.upm.etsisi.fis.logic.PlayerManager;
-import es.upm.etsisi.fis.state.JugadorHumano;
 
-import java.util.Optional;
 import java.util.Scanner;
 
-public class PlayerDisplay implements IPlayerDisplay {
+public class PlayerDisplay implements PlayerMenu {
 
     private final IPlayerManager playerManager;
 
