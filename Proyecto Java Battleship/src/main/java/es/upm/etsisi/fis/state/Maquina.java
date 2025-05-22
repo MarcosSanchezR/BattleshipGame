@@ -1,11 +1,15 @@
 package es.upm.etsisi.fis.state;
 
-public class Maquina {
+import com.sun.security.auth.module.UnixSystem;
+
+import java.util.Timer;
+
+public class Maquina extends Jugador{
 
     private final String id;
 
-    public Maquina(String id) {
-        this.id = id;
+    public Maquina() {
+        this.id = "Maquina_FACIL_" + System.currentTimeMillis();
     }
 
     public String getId() {

@@ -35,8 +35,19 @@ public class GameManager implements IGameManager {
 
     @Override
     public void iniciarPartida(JugadorHumano jugadorHumano) {
-
+        Maquina maquina = crearMaquina();
+        Partida partida = new Partida(jugadorHumano, maquina);
+        partidas.add(partida);
+        jugadorHumano.setCurrentGame(partida);
+        maquina.setCurrentGame(partida);
+        //@TODO: Lógica de juego (otros métodos)
     }
+
+
+    private Maquina crearMaquina() {
+        return new Maquina();
+    }
+
 
     @Override
     public Ataque realizarAtaque(Jugador jugadorAtacante) {

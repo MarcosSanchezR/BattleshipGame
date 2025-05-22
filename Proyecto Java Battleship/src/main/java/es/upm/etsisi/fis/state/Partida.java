@@ -98,13 +98,6 @@ public class Partida {
         this.gameManager = gameManager;
     }
 
-    public static Partida inicializarPartida(Jugador humano, Jugador maquina) {
-        Partida partida = new Partida(humano, maquina);
-        humano.setCurrentGame(partida);
-        maquina.setCurrentGame(partida);
-        return partida;
-    }
-
     public Jugador cambiarTurnos() {
         boolean turnoJugador = jugador.isTurno();
         this.jugador.setTurno(!turnoJugador);
@@ -112,4 +105,5 @@ public class Partida {
         this.turnos++;
         return (this.jugador.isTurno()) ? this.jugador : this.maquina;
     }
+
 }
