@@ -14,11 +14,6 @@ public class App {
         this.ui = ui;
     }
 
-    public void start() {
-        // Inicializar lo que toque cuando hagamos persistencia.
-        this.ui.run();
-    }
-
     public static void main(String[] args) {
         GameManager gameManager = new GameManager();
         PlayerManager playerManager = new PlayerManager();
@@ -29,6 +24,11 @@ public class App {
         App battleship = new App(new UI(playerDisplay, gameDisplay));
 
         battleship.start();
+    }
+
+    public void start() {
+        // Inicializar lo que toque cuando hagamos persistencia.
+        this.ui.run();
     }
 
 }

@@ -1,6 +1,5 @@
 package es.upm.etsisi.fis.state;
 
-import es.upm.etsisi.fis.display.GameDisplay;
 import es.upm.etsisi.fis.logic.GameManager;
 
 public class Acorazado extends Barco {
@@ -28,13 +27,12 @@ public class Acorazado extends Barco {
         Casilla atacada = ataqueRealizado.casillaAtacada();
         int fila = atacada.getFila();
         int columna = atacada.getColumna();
-        Tablero tableroEnemigo= ataqueRealizado.tableroAtacado();
-        tableroEnemigo.atacarCasilla(fila,columna,jugador);
-        tableroEnemigo.atacarCasilla(fila+1,columna,jugador);
-        tableroEnemigo.atacarCasilla(fila,columna+1,jugador);
-        tableroEnemigo.atacarCasilla(fila-1,columna,jugador);
-        tableroEnemigo.atacarCasilla(fila,columna-1,jugador);
-
+        Tablero tableroEnemigo = ataqueRealizado.tableroAtacado();
+        tableroEnemigo.atacarCasilla(fila, columna, jugador);
+        tableroEnemigo.atacarCasilla(fila + 1, columna, jugador);
+        tableroEnemigo.atacarCasilla(fila, columna + 1, jugador);
+        tableroEnemigo.atacarCasilla(fila - 1, columna, jugador);
+        tableroEnemigo.atacarCasilla(fila, columna - 1, jugador);
     }
 
 }

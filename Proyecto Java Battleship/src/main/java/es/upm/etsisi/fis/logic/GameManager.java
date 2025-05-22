@@ -54,11 +54,11 @@ public class GameManager implements IGameManager {
         Jugador jugador = tablero.getPropietario();
         Jugador otroJugador = otroTablero.getPropietario();
         boolean partidaAcabada = false;
-        do{
+        do {
             Jugador leToca = partida.getJugadorConTurno();
             Ataque ataque = realizarAtaqueReglamentario(leToca);
 
-        }while(!partidaAcabada);
+        } while (!partidaAcabada);
     }
 
 
@@ -71,8 +71,8 @@ public class GameManager implements IGameManager {
     public Ataque realizarAtaqueReglamentario(Jugador jugadorAtacante) {
         Tablero tableroObjetivo = getTableroRival(jugadorAtacante);
         int[] coordenadas = jugadorAtacante.getCoordenadasAtaque();
-        int fila = coordenadas[0]-1;
-        int columna = coordenadas[1]-1;
+        int fila = coordenadas[0] - 1;
+        int columna = coordenadas[1] - 1;
         Ataque ataqueRealizado = tableroObjetivo.atacarCasilla(fila, columna, jugadorAtacante);
 
         //@TODO: Comprobar si se acaba la partida

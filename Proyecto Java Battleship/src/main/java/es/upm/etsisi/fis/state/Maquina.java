@@ -2,7 +2,7 @@ package es.upm.etsisi.fis.state;
 
 import java.util.Random;
 
-public class Maquina extends Jugador{
+public class Maquina extends Jugador {
 
     private final String id;
 
@@ -19,8 +19,8 @@ public class Maquina extends Jugador{
         Random rand = new Random();
 
         // Devuelve [1,11) == [1,10]
-        int fila = rand.nextInt(1, Tablero.DIMENSION_TABLERO+1);
-        int columna = rand.nextInt(1, Tablero.DIMENSION_TABLERO+1);
+        int fila = rand.nextInt(1, Tablero.DIMENSION_TABLERO + 1);
+        int columna = rand.nextInt(1, Tablero.DIMENSION_TABLERO + 1);
         return new int[]{fila, columna};
     }
 }

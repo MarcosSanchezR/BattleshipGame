@@ -35,9 +35,9 @@ public class UI {
     public void run() {
         showIntro();
         boolean exit;
-        do{
+        do {
             exit = menu();
-        }while(!exit);
+        } while (!exit);
     }
 
     public boolean menu() {

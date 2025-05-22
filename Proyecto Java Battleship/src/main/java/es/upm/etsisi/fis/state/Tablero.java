@@ -79,6 +79,7 @@ public class Tablero {
                 for (Barco barco : barcosPropios) { // Aquí barcosPropios serían los barcos del rival en este tablero
                     if (!ocupado && barco.getCasillasOcupadas().contains(casilla)) {
                         ocupado = true;
+                        break;
                     }
                 }
 
@@ -107,6 +108,7 @@ public class Tablero {
                 for (Barco barco : barcosPropios) {
                     if (!ocupado && barco.getCasillasOcupadas().contains(casilla)) {
                         ocupado = true;
+                        break;
                     }
                 }
 
