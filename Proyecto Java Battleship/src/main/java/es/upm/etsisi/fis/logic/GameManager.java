@@ -34,13 +34,25 @@ public class GameManager implements IGameManager {
     }
 
     @Override
-    public void iniciarPartida(JugadorHumano jugadorHumano) {
+    public void jugar(JugadorHumano jugadorHumano) {
         Maquina maquina = crearMaquina();
         Partida partida = new Partida(jugadorHumano, maquina);
         partidas.add(partida);
         jugadorHumano.setCurrentGame(partida);
         maquina.setCurrentGame(partida);
-        //@TODO: Lógica de juego (otros métodos)
+        jugar(partida);
+    }
+
+    private void jugar(Partida partida) {
+        Tablero tablero = partida.getTableroJugador();
+        Tablero otroTablero = partida.getTableroMaquina();
+        Jugador jugador = tablero.getPropietario();
+        Jugador otroJugador = otroTablero.getPropietario();
+        boolean partidaAcabada = false;
+        do{
+            Jugador leToca = partida.cambiarTurnos();
+            //@TODO: Acabar
+        }while(!partidaAcabada);
     }
 
 
