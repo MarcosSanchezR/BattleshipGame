@@ -1,6 +1,10 @@
 package es.upm.etsisi.fis.display;
 
+import es.upm.etsisi.fis.logic.IPlayerManager;
+
 public interface IPlayerDisplay {
+
+    IPlayerManager getPlayerManager();
 
     void mostrarBajaUsuario();
 
@@ -11,4 +15,5 @@ public interface IPlayerDisplay {
     void mostrarIniciarSesion();
 
     void mostrarMenu();
+
 }
