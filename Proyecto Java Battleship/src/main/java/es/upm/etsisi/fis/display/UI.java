@@ -75,16 +75,20 @@ public class UI {
     }
 
     private int showNotLoggedMenu() {
-        String menu = "1. Darse de alta\n" +
-                "2. Iniciar sesión\n";
+        String menu = """
+                1. Darse de alta
+                2. Iniciar sesión
+                """;
         System.out.print(menu);
         return sc.nextInt();
     }
 
     private int showLoggedMenu() {
-        String menu = "1. Jugar partida\n" +
-                "2. Cerrar sesión\n" +
-                "3. Darse de baja\n";
+        String menu = """
+                1. Jugar partida
+                2. Cerrar sesión
+                3. Darse de baja
+                """;
         System.out.print(menu);
         return sc.nextInt();
     }
