@@ -1,10 +1,7 @@
 package es.upm.etsisi.fis.logic;
 
 import es.upm.etsisi.fis.display.GameDisplay;
-import es.upm.etsisi.fis.state.Ataque;
-import es.upm.etsisi.fis.state.Jugador;
-import es.upm.etsisi.fis.state.Partida;
-import es.upm.etsisi.fis.state.Tablero;
+import es.upm.etsisi.fis.state.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,6 +31,11 @@ public class GameManager implements IGameManager {
 
     public void setGameDisplay(GameDisplay gameDisplay) {
         this.gameDisplay = gameDisplay;
+    }
+
+    @Override
+    public void iniciarPartida(JugadorHumano jugadorHumano) {
+
     }
 
     @Override

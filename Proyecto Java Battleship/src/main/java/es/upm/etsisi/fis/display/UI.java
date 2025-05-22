@@ -27,45 +27,47 @@ public class UI {
 
     private void showIntro() {
         System.out.println("BATTLESHIP - ETSISI'S EDITION");
-        System.out.println("Pulsa cualquier tecla para comenzar.");
+        System.out.println("Pulsa ENTER para comenzar.");
         sc.nextLine();
         System.out.println();
     }
 
     public void run() {
         showIntro();
-        menu();
+        boolean exit;
+        do{
+            exit = menu();
+        }while(!exit);
     }
 
-    public void menu() {
-        boolean exit = false;
-        do{
-            Optional<JugadorHumano> loggedUser = getLoggedUser();
-            int option;
-            if (loggedUser.isEmpty()) {
-                option = showNotLoggedMenu();
-                switch (option) {
-                    case 1 -> playerDisplay.mostrarAltaUsuario();
-                    case 2 -> playerDisplay.mostrarIniciarSesion();
-                    default -> throw new IllegalArgumentException("Opcion no valida");
-                }
-            } else {
-                option = showLoggedMenu();
-                switch (option) {
-                    case 1 -> gameDisplay.iniciarPartida();
-                    case 2 -> gameDisplay.mostrarPuntuaciones();
-                    case 3 -> {
-                        playerDisplay.mostrarCerrarSesion();
-                        exit = true;
-                    }
-                    case 4 -> {
-                        playerDisplay.mostrarBajaUsuario();
-                        exit = true;
-                    }
-                    default -> throw new IllegalArgumentException("Opcion no valida");
-                }
+    public boolean menu() {
+        Optional<JugadorHumano> loggedUser = getLoggedUser();
+        boolean result = false;
+        int option;
+        if (loggedUser.isEmpty()) {
+            option = showNotLoggedMenu();
+            switch (option) {
+                case 1 -> playerDisplay.mostrarAltaUsuario();
+                case 2 -> playerDisplay.mostrarIniciarSesion();
+                default -> throw new IllegalArgumentException("Opcion no valida");
             }
-        }while(!exit);
+        } else {
+            option = showLoggedMenu();
+            switch (option) {
+                case 1 -> gameDisplay.iniciarPartida();
+                case 2 -> gameDisplay.mostrarPuntuaciones();
+                case 3 -> {
+                    playerDisplay.mostrarCerrarSesion();
+                    result = true;
+                }
+                case 4 -> {
+                    playerDisplay.mostrarBajaUsuario();
+                    result = true;
+                }
+                default -> throw new IllegalArgumentException("Opcion no valida");
+            }
+        }
+        return result;
     }
 
     private Optional<JugadorHumano> getLoggedUser() {

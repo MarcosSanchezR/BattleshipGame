@@ -2,6 +2,7 @@ package es.upm.etsisi.fis.display;
 
 import es.upm.etsisi.fis.logic.IGameManager;
 import es.upm.etsisi.fis.logic.IPlayerManager;
+import es.upm.etsisi.fis.state.JugadorHumano;
 
 import java.util.Scanner;
 
@@ -31,7 +32,8 @@ public class GameDisplay implements IGameDisplay, GameMenu {
 
     @Override
     public void iniciarPartida() {
-
+        JugadorHumano jugadorHumano = playerManager.getLoggedUser();
+        gameManager.iniciarPartida(jugadorHumano);
     }
 
     @Override
