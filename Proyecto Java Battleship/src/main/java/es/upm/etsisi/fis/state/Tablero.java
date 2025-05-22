@@ -74,10 +74,9 @@ public class Tablero {
                 boolean ocupado = false;
 
                 // Comprobar si la casilla está ocupada por algún barco enemigo
-                for (Barco barco : barcosPropios) {  // Aquí barcosPropios serían los barcos del rival en este tablero
-                    if (barco.getCasillasOcupadas().contains(casilla)) {
+                for (Barco barco : barcosPropios) { // Aquí barcosPropios serían los barcos del rival en este tablero
+                    if (!ocupado && barco.getCasillasOcupadas().contains(casilla)) {
                         ocupado = true;
-                        break;
                     }
                 }
 
@@ -95,20 +94,20 @@ public class Tablero {
         }
     }
 
-
     private void mostrarMiTablero() {
         System.out.println("Mi Tablero:");
         for (int i = 0; i < DIMENSION_TABLERO; i++) {
             for (int j = 0; j < DIMENSION_TABLERO; j++) {
                 Casilla casilla = casillas[i][j];
                 boolean ocupado = false;
+
                 // Recorremos los barcos para ver si la casilla está ocupada
                 for (Barco barco : barcosPropios) {
-                    if (barco.getCasillasOcupadas().contains(casilla)) {
+                    if (!ocupado && barco.getCasillasOcupadas().contains(casilla)) {
                         ocupado = true;
-                        break;
                     }
                 }
+
                 if (ocupado) {
                     if (casilla.isImpactada()) {
                         System.out.print(" 💥 ");  // Barco impactado
@@ -126,7 +125,4 @@ public class Tablero {
             System.out.println();
         }
     }
-/// DSADsa
-
-
 }
