@@ -12,6 +12,7 @@ import java.util.List;
 public class GameManager implements IGameManager {
 
     private static final GameManager instance = new GameManager();
+
     private final List<Partida> partidas;
     private GameDisplay gameDisplay;
 
