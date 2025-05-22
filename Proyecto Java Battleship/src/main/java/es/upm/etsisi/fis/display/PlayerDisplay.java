@@ -30,6 +30,11 @@ public class PlayerDisplay implements PlayerMenu {
         System.out.println("Contraseña: ");
         String contrasena = sc.nextLine();
         boolean registro = playerManager.darDeAlta(username, correo, contrasena);
+        if(registro){
+            System.out.println("Usuario registrado con éxito");
+        } else{
+            System.out.println("Error al registrar usuario");
+        }
     }
 
     @Override
@@ -40,6 +45,11 @@ public class PlayerDisplay implements PlayerMenu {
         System.out.print("Contraseña: ");
         String contrasena = sc.nextLine();
         boolean baja = playerManager.darDeBaja(correo, contrasena);
+        if(baja){
+            System.out.println("Usuario eliminado con éxito");
+        } else{
+            System.out.println("No se pudo eliminar el usuario");
+        }
     }
 
     @Override
@@ -50,6 +60,11 @@ public class PlayerDisplay implements PlayerMenu {
         System.out.println("Contraseña: ");
         String contrasena = sc.nextLine();
         boolean login = playerManager.iniciarSesion(correo, contrasena);
+        if(login){
+            System.out.println("Sesión iniciada correctamente");
+        } else{
+            System.out.println("Credenciales incorrectas");
+        }
     }
 
     @Override
