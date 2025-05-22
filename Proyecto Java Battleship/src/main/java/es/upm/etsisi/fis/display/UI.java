@@ -75,17 +75,17 @@ public class UI {
     }
 
     private int showNotLoggedMenu() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("1. Darse de alta\n");
-        sb.append("2. Iniciar sesión\n");
+        String menu = "1. Darse de alta\n" +
+                "2. Iniciar sesión\n";
+        System.out.print(menu);
         return sc.nextInt();
     }
 
     private int showLoggedMenu() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("1. Jugar partida\n");
-        sb.append("2. Cerrar sesión\n");
-        sb.append("3. Darse de baja\n");
+        String menu = "1. Jugar partida\n" +
+                "2. Cerrar sesión\n" +
+                "3. Darse de baja\n";
+        System.out.print(menu);
         return sc.nextInt();
     }
 
