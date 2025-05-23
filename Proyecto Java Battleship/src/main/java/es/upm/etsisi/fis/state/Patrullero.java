@@ -26,7 +26,11 @@ public class Patrullero extends Barco {
         int fila = GameManager.getInstance().pedirFila() - 1;
         Jugador jugador = super.getTablero().getPropietario();
         Tablero tableroEnemigo = GameManager.getInstance().getTableroRival(jugador);
-        tableroEnemigo.getFila(fila);
-    }
 
+        Casilla[] casillasFila = tableroEnemigo.getFila(fila);
+
+        for (Casilla casilla : casillasFila) {
+            casilla.marcarRevelada();
+        }
+    }
 }
