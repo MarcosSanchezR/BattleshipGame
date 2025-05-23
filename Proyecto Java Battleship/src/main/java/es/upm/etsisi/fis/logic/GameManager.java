@@ -54,11 +54,22 @@ public class GameManager implements IGameManager {
         Jugador jugador = tablero.getPropietario();
         Jugador otroJugador = otroTablero.getPropietario();
         boolean partidaAcabada = false;
+        Jugador leToca = partida.getJugadorConTurno();
         do {
-            Jugador leToca = partida.getJugadorConTurno();
             Ataque ataque = realizarAtaqueReglamentario(leToca);
-
+            leToca = partida.cambiarTurnos();
+            if(ataque.impactoABarco() && true){
+                //@TODO: Pedir confirmación de habilidad SOLAMENTE si el barco pudiera realizarla (sustituir
+                // comprobación por && true)
+            }
+            partidaAcabada = comprobarFinPartida();
         } while (!partidaAcabada);
+        //@TODO: Lógica de puntuaciones AQUÍ
+    }
+
+    //@TODO: Implementar acabar partida
+    private boolean comprobarFinPartida() {
+        return false;
     }
 
 
