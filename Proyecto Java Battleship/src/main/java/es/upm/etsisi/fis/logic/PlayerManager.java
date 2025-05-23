@@ -60,6 +60,7 @@ public class PlayerManager implements IPlayerManager {
         JugadorHumano jugador = JugadorExistente(correo, contra);
         if (jugador != null) {
             jugadores.remove(jugador);
+            cerrarSesion();
             return true;
         }
         return false;
@@ -81,7 +82,7 @@ public class PlayerManager implements IPlayerManager {
     @Override
     public void cerrarSesion() {
         if (loggedUser != null) {
-            loggedUser = null;
+            setLoggedUser(null);
         }
     }
 }

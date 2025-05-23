@@ -58,11 +58,9 @@ public class UI {
                 case 2 -> gameDisplay.mostrarPuntuaciones();
                 case 3 -> {
                     playerDisplay.mostrarCerrarSesion();
-                    result = true;
                 }
                 case 4 -> {
                     playerDisplay.mostrarBajaUsuario();
-                    result = true;
                 }
                 default -> throw new IllegalArgumentException("Opcion no valida");
             }
@@ -86,8 +84,9 @@ public class UI {
     private int showLoggedMenu() {
         String menu = """
                 1. Jugar partida
-                2. Cerrar sesión
-                3. Darse de baja
+                2. Mostrar puntuaciones
+                3. Cerrar sesión
+                4. Darse de baja
                 """;
         System.out.print(menu);
         return sc.nextInt();

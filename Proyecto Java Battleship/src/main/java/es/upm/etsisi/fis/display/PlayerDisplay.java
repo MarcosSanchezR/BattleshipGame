@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 public class PlayerDisplay implements PlayerMenu {
 
-    private final IPlayerManager playerManager;
+    private final PlayerManager playerManager;
 
     private final Scanner sc = new Scanner(System.in);
 
@@ -70,6 +70,7 @@ public class PlayerDisplay implements PlayerMenu {
     @Override
     public void mostrarCerrarSesion() {
         playerManager.cerrarSesion();
+        System.out.println("Sesion cerrada");
     }
 
     @Override
