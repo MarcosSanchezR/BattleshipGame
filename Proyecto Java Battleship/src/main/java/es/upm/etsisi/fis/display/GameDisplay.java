@@ -3,6 +3,7 @@ package es.upm.etsisi.fis.display;
 import es.upm.etsisi.fis.logic.IGameManager;
 import es.upm.etsisi.fis.logic.IPlayerManager;
 import es.upm.etsisi.fis.state.JugadorHumano;
+import es.upm.etsisi.fis.state.Partida;
 
 import java.util.Scanner;
 
@@ -71,6 +72,22 @@ public class GameDisplay implements IGameDisplay, GameMenu {
         System.out.println("Introduce la coordenada (formato: x,y): ");
         if (scanner.hasNextLine()) scanner.nextLine();
         return scanner.nextLine();
+    }
+
+    public void mostrarPuntuacion() {
+    }
+
+    public void mostrarTop10Puntuaciones(){
+    }
+
+    @Override
+    public void mostrarTablero() {
+
+    }
+
+    @Override
+    public void mostrarTableroEnemigo(){
+
     }
 
 }

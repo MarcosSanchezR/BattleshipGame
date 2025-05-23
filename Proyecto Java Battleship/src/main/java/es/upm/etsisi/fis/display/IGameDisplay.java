@@ -10,5 +10,9 @@ public interface IGameDisplay {
 
     int pedirColumna();
 
+    void mostrarTablero();
+
+    void mostrarTableroEnemigo();
+
 
 }
