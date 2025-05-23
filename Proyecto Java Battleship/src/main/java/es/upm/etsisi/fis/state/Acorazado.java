@@ -20,7 +20,7 @@ public class Acorazado extends Barco {
         return puedeUsarHabilidad;
     }
 
-    //@TODO: Implementar RF #18751
+
     private void habilidadAcorazado() {
         Jugador jugador = super.getTablero().getPropietario();
         Ataque ataqueRealizado = GameManager.getInstance().realizarAtaqueReglamentario(jugador);

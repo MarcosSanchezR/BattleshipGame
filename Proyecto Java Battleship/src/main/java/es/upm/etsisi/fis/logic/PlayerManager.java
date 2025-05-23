@@ -7,11 +7,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PlayerManager implements IPlayerManager {
+    private ExternalLDAP ldap;
 
     private final List<JugadorHumano> jugadores;
     private JugadorHumano loggedUser;
 
-    public PlayerManager() {
+   public PlayerManager() {
+        this.jugadores = new ArrayList<>();
+    }
+    public PlayerManager(ExternalLDAP ldap){
+        this.ldap = ldap;
         this.jugadores = new ArrayList<>();
     }
 
@@ -31,7 +36,7 @@ public class PlayerManager implements IPlayerManager {
     //metodo que devuelve true si se da de alta un jugador
     @Override
     public boolean darDeAlta(String username, String correo, String contra) {
-        String nombreCifrado = ExternalLDAP.LoginLDAP();
+        String nombreCifrado = ldap.LoginLDAP();
         if (nombreCifrado == null) {
             return false;
         }

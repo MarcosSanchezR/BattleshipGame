@@ -1,6 +1,7 @@
 package es.upm.etsisi.fis.state;
 
-public record Ataque(
+public record
+Ataque(
         int id,
         boolean impactoABarco,
 
