@@ -34,7 +34,7 @@ public class GameManager implements IGameManager {
     }
 
     @Override
-    public void jugar(JugadorHumano jugadorHumano) {
+    public void crearPartida(JugadorHumano jugadorHumano) {
         Maquina maquina = crearMaquina();
         Partida partida = new Partida(jugadorHumano, maquina);
 
@@ -45,10 +45,10 @@ public class GameManager implements IGameManager {
         jugadorHumano.setCurrentGame(partida);
         maquina.setCurrentGame(partida);
 
-        jugar(partida);
+        jugarPartida(partida);
     }
 
-    private void jugar(Partida partida) {
+    private void jugarPartida(Partida partida) {
         Tablero tablero = partida.getTableroJugador();
         Tablero otroTablero = partida.getTableroMaquina();
         Jugador jugador = tablero.getPropietario();

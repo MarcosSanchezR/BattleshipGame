@@ -10,8 +10,9 @@ public class Tablero {
     //@TODO: Implementar borrado en cascada con casillas
     public static final int DIMENSION_TABLERO = 10;
 
-    private final Casilla[][] casillas;
     private final Jugador propietario;
+
+    private final Casilla[][] casillas;
     private final List<Barco> barcosPropios = new ArrayList<>();
 
     public Tablero(Jugador propietario) {
@@ -30,12 +31,16 @@ public class Tablero {
         return result;
     }
 
+    public Jugador getPropietario() {
+        return propietario;
+    }
+
     public Casilla[][] getCasillas() {
         return casillas;
     }
 
-    public Jugador getPropietario() {
-        return propietario;
+    public List<Barco> getBarcosPropios() {
+        return barcosPropios;
     }
 
     public Casilla[] getFila(int i) {

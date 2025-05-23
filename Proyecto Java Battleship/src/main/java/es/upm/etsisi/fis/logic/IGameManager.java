@@ -6,7 +6,7 @@ import es.upm.etsisi.fis.state.JugadorHumano;
 
 public interface IGameManager {
 
-    void jugar(JugadorHumano jugadorHumano);
+    void crearPartida(JugadorHumano jugadorHumano);
 
     Ataque realizarAtaqueReglamentario(Jugador jugadorAtacante);
 

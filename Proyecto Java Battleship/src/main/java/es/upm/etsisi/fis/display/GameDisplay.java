@@ -31,9 +31,9 @@ public class GameDisplay implements IGameDisplay, GameMenu {
     }
 
     @Override
-    public void iniciarPartida() {
+    public void jugar() {
         JugadorHumano jugadorHumano = playerManager.getLoggedUser();
-        gameManager.jugar(jugadorHumano);
+        gameManager.crearPartida(jugadorHumano);
     }
 
     @Override

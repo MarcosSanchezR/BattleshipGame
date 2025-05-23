@@ -54,7 +54,7 @@ public class UI {
         } else {
             option = showLoggedMenu();
             switch (option) {
-                case 1 -> gameDisplay.iniciarPartida();
+                case 1 -> gameDisplay.jugar();
                 case 2 -> gameDisplay.mostrarPuntuaciones();
                 case 3 -> {
                     playerDisplay.mostrarCerrarSesion();
