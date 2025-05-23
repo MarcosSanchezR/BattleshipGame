@@ -2,6 +2,8 @@ package es.upm.etsisi.fis.state;
 
 import es.upm.etsisi.fis.logic.GameManager;
 
+import java.util.List;
+
 public class Partida {
 
     private static int id_counter = 0;
@@ -110,4 +112,41 @@ public class Partida {
     public Jugador getJugadorConTurno() {
         return (jugador.isTurno()) ? jugador : this.maquina;
     }
+
+    public double calcularPuntuacion(Jugador jugador){
+        List<Ataque> ataquesRealizados = jugador.getAtaquesRealizados();
+        Tablero tableroEnemigo = getTableroMaquina();
+        double puntuacion = 0;
+
+        for (Ataque ataque : ataquesRealizados){
+            Casilla casilla = ataque.casillaAtacada();
+            if(casilla.tieneBarco()){
+                Barco barco = casilla.getBarco();
+                barco.actualizarEstado();
+                if(barco.isHundido()){
+                    puntuacion += 5;
+                } else{
+                    puntuacion += 2;
+                }
+            } else {
+                puntuacion -= 1;
+            }
+        }
+
+        /*
+        if(jugador ha ganado){
+            puntuacion += 20;
+        }
+
+        else{
+            puntuacion -= 20;
+        }
+
+        HAY QUE TENER EN CUENTA TAMBIEN EL EMPATE.
+
+         */
+
+        return puntuacion;
+    }
+
 }

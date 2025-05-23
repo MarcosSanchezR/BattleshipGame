@@ -40,4 +40,8 @@ public class Casilla {
     public void setBarco(Barco barco) {
         this.barco = barco;
     }
+
+    public boolean tieneBarco() {
+        return this.barco != null;
+    }
 }
