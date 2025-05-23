@@ -26,6 +26,7 @@ public class Submarino extends Barco {
         for (Casilla casilla : lista) {
             if (casilla.isImpactada()) {
                 casilla.setImpactada(false);
+                casilla.setRevelada(true);  // se quita el impacto pero ya se queda revelada y sabes donde esta
             }
         }
     }
