@@ -8,6 +8,7 @@ import es.upm.etsisi.fis.logic.PlayerManager;
 
 public class App {
 
+
     private final UI ui;
 
     public App(UI ui) {
@@ -15,7 +16,8 @@ public class App {
     }
 
     public static void main(String[] args) {
-        GameManager gameManager = new GameManager();
+
+       GameManager gameManager = new GameManager();
         PlayerManager playerManager = new PlayerManager();
 
         GameDisplay gameDisplay = new GameDisplay(gameManager, playerManager);

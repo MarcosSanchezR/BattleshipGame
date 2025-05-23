@@ -87,7 +87,13 @@ public class Tablero {
 
                     }
                 }
-
+            if(casilla.isRevelada()){
+                if(casilla.tieneBarco()){
+                System.out.print(" 🚢 "); // Barco revelado
+            }else {
+                    System.out.print(" 🌊 "); //Agua revelada
+                }
+            }
                 if (casilla.isImpactada()) {
                     if (ocupado) {
                         System.out.print(" 💥 ");  // Barco impactado
@@ -95,7 +101,7 @@ public class Tablero {
                         System.out.print(" X ");    // Agua impactada (fuego fallido)
                     }
                 } else {
-                    System.out.print(" 🌊 ");       // Agua sin impacto
+                    System.out.print(" ☁️ ");       // Agua sin impacto (niebla de guerra)
                 }
             }
             System.out.println();
