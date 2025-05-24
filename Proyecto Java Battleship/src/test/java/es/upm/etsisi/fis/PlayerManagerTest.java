@@ -1,7 +1,7 @@
-package es.upm.etsisi.fis.logic;
-import org.junit.*;
+package es.upm.etsisi.fis;
+import es.upm.etsisi.fis.logic.PlayerManager;
 
-import static org.junit.Assert.*;
+import static org.junit.*;
 
 public class PlayerManagerTest {
     @BeforeClass

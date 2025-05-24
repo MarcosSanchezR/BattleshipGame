@@ -8,7 +8,7 @@
   <packaging>jar</packaging>
 
   <name>Proyecto_Java_Battleship</name>
-  <url>http://maven.apache.org</url>
+  <url>https://maven.apache.org</url>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -21,7 +21,6 @@
           <version>5.10.0</version>
           <scope>test</scope>
       </dependency>
-
   </dependencies>
     <build>
         <plugins>
