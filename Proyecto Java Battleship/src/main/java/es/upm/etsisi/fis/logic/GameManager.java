@@ -62,16 +62,31 @@ public class GameManager implements IGameManager {
                 //@TODO: Pedir confirmación de habilidad SOLAMENTE si el barco pudiera realizarla (sustituir
                 // comprobación por && true)
             }
-            partidaAcabada = comprobarFinPartida();
+            partidaAcabada = comprobarFinPartida(partida);
         } while (!partidaAcabada);
         //@TODO: Lógica de puntuaciones AQUÍ
     }
 
     //@TODO: Implementar acabar partida
-    private boolean comprobarFinPartida() {
-        return false;
+    private boolean comprobarFinPartida(Partida partida) {
+        boolean usuarioHundido = comprobarTableroHundido(partida.getTableroJugador());
+        boolean maquinaHundida = comprobarTableroHundido(partida.getTableroMaquina());
+
+        return (usuarioHundido || maquinaHundida);
     }
 
+    private boolean comprobarTableroHundido(Tablero tablero){
+        boolean hundido = true;
+
+        for (Barco barco:tablero.getBarcosPropios()){
+            for (Casilla casilla: barco.getCasillasOcupadas()){
+                if (casilla.isImpactada()){
+                    hundido = false;
+                }
+            }
+        }
+        return hundido;
+    }
 
     private Maquina crearMaquina() {
         return new Maquina();
