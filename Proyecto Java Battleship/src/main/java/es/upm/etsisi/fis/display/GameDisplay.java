@@ -3,7 +3,6 @@ package es.upm.etsisi.fis.display;
 import es.upm.etsisi.fis.logic.IGameManager;
 import es.upm.etsisi.fis.logic.IPlayerManager;
 import es.upm.etsisi.fis.state.JugadorHumano;
-import es.upm.etsisi.fis.state.Partida;
 
 import java.util.Scanner;
 
@@ -51,8 +50,9 @@ public class GameDisplay implements IGameDisplay, GameMenu {
     }
 
     @Override
-    public void confirmacionHabilidad() {
-
+    public boolean getConfirmacionHabilidad() {
+        System.out.print("¿Quieres activar la habilidad especial de tu barco? (S/N)");
+        return scanner.nextLine().trim().equalsIgnoreCase("S");
     }
 
     @Override

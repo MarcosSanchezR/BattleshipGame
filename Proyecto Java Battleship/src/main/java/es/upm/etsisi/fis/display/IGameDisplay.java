@@ -4,7 +4,7 @@ public interface IGameDisplay {
 
     String realizarAtaque();
 
-    void confirmacionHabilidad();
+    boolean getConfirmacionHabilidad();
 
     int pedirFila();
 

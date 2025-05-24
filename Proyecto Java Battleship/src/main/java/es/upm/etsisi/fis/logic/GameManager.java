@@ -6,7 +6,7 @@ import es.upm.etsisi.fis.state.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GameManager implements IGameManager, Subscriber {
+public class GameManager implements IGameManager {
 
     private static final GameManager instance = new GameManager();
 
@@ -51,23 +51,21 @@ public class GameManager implements IGameManager, Subscriber {
     private void jugarPartida(Partida partida) {
         Tablero tablero = partida.getTableroJugador();
         Tablero otroTablero = partida.getTableroMaquina();
-        Jugador jugador = tablero.getPropietario();
-        Jugador otroJugador = otroTablero.getPropietario();
         boolean partidaAcabada = false;
         Jugador leToca = partida.getJugadorConTurno();
         do {
             Ataque ataque = realizarAtaqueReglamentario(leToca);
-            leToca = partida.cambiarTurnos();
-            if(ataque.impactoABarco() && true){
-                //@TODO: Pedir confirmación de habilidad SOLAMENTE si el barco pudiera realizarla (sustituir
-                // comprobación por && true)
+            Jugador victima = ataque.tableroAtacado().getPropietario();
+            if(ataque.impactoABarco() && victima.confirmacionHabilidad()){
+                Barco barcoAtacado = ataque.casillaAtacada().getBarco();
+                barcoAtacado.usarHabilidadEspecial();
             }
             partidaAcabada = comprobarFinPartida(partida);
+            leToca = partida.cambiarTurnos();
         } while (!partidaAcabada);
         //@TODO: Lógica de puntuaciones AQUÍ
     }
 
-    //@TODO: Implementar acabar partida
     private boolean comprobarFinPartida(Partida partida) {
         boolean usuarioHundido = comprobarTableroHundido(partida.getTableroJugador());
         boolean maquinaHundida = comprobarTableroHundido(partida.getTableroMaquina());
@@ -85,6 +83,7 @@ public class GameManager implements IGameManager, Subscriber {
                 }
             }
         }
+
         return hundido;
     }
 
@@ -99,11 +98,8 @@ public class GameManager implements IGameManager, Subscriber {
         int[] coordenadas = jugadorAtacante.getCoordenadasAtaque();
         int fila = coordenadas[0] - 1;
         int columna = coordenadas[1] - 1;
-        Ataque ataqueRealizado = tableroObjetivo.atacarCasilla(fila, columna, jugadorAtacante);
 
-        //@TODO: Comprobar si se acaba la partida
-
-        return ataqueRealizado;
+        return tableroObjetivo.atacarCasilla(fila, columna, jugadorAtacante);
     }
 
     public Tablero getTableroRival(Jugador jugadorAtacante) {
@@ -120,6 +116,7 @@ public class GameManager implements IGameManager, Subscriber {
         do {
             fila = gameDisplay.pedirFila();
         } while (coordenadaValida(fila));
+
         return fila;
     }
 
@@ -139,5 +136,9 @@ public class GameManager implements IGameManager, Subscriber {
 
     private boolean coordenadaValida(int coordenada) {
         return coordenada >= 1 && coordenada <= Tablero.DIMENSION_TABLERO;
+    }
+
+    public boolean pedirConfirmacionHabilidad() {
+        return gameDisplay.getConfirmacionHabilidad();
     }
 }

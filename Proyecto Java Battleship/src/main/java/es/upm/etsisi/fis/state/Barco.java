@@ -9,14 +9,17 @@ public abstract class Barco {
     private boolean hundido;
     private final int tamanio;
     private int habilidadesRestantes;
-    private Tablero tablero;
+    private final Tablero tablero;
+    private final EventManager eventManager;
 
     private List<Casilla> casillasOcupadas;
 
-    public Barco(int tamanio, int habilidadesRestantes) {
+    public Barco(int tamanio, int habilidadesRestantes, Tablero tablero, EventManager eventManager) {
         this.hundido = false;
         this.tamanio = tamanio;
         this.habilidadesRestantes = habilidadesRestantes;
+        this.tablero = tablero;
+        this.eventManager = eventManager;
         this.casillasOcupadas = new ArrayList<>(tamanio);
     }
 
@@ -52,8 +55,8 @@ public abstract class Barco {
         return tablero;
     }
 
-    public void setTablero(Tablero tablero) {
-        this.tablero = tablero;
+    public EventManager getEventManager() {
+        return eventManager;
     }
 
     public void actualizarEstado() {
@@ -72,7 +75,11 @@ public abstract class Barco {
         }
     }
 
-    public boolean usarHabilidadEspecial() {
+    public boolean tieneHabilidadesRestantes(){
         return habilidadesRestantes > 0;
+    }
+
+    public void usarHabilidadEspecial(){
+        habilidadesRestantes--;
     }
 }

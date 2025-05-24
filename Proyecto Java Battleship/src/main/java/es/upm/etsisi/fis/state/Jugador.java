@@ -69,4 +69,6 @@ public abstract class Jugador {
     public boolean aniadirAtaque(Ataque ataqueRealizado) {
         return this.ataquesRealizados.add(ataqueRealizado);
     }
+
+    public abstract boolean confirmacionHabilidad();
 }

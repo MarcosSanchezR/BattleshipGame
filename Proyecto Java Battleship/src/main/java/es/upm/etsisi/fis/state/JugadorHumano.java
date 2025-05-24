@@ -66,4 +66,9 @@ public class JugadorHumano extends Jugador {
     public int[] getCoordenadasAtaque() {
         return GameManager.getInstance().pedirCoordenadas();
     }
+
+    @Override
+    public boolean confirmacionHabilidad() {
+        return GameManager.getInstance().pedirConfirmacionHabilidad();
+    }
 }

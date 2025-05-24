@@ -23,4 +23,9 @@ public class Maquina extends Jugador {
         int columna = rand.nextInt(1, Tablero.DIMENSION_TABLERO + 1);
         return new int[]{fila, columna};
     }
+
+    @Override
+    public boolean confirmacionHabilidad() {
+        return true;
+    }
 }
