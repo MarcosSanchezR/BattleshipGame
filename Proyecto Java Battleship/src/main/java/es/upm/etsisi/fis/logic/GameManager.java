@@ -6,7 +6,7 @@ import es.upm.etsisi.fis.state.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GameManager implements IGameManager {
+public class GameManager implements IGameManager, Subscriber {
 
     private static final GameManager instance = new GameManager();
 
