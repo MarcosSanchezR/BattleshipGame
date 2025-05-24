@@ -48,22 +48,41 @@ public class GameManager implements IGameManager {
         jugarPartida(partida);
     }
 
+    private Maquina crearMaquina() {
+        return new Maquina();
+    }
+
     private void jugarPartida(Partida partida) {
-        Tablero tablero = partida.getTableroJugador();
-        Tablero otroTablero = partida.getTableroMaquina();
-        boolean partidaAcabada = false;
+        boolean partidaAcabada;
         Jugador leToca = partida.getJugadorConTurno();
         do {
-            Ataque ataque = realizarAtaqueReglamentario(leToca);
+            Ataque ataque = realizarAtaqueReglamentario(leToca, getTableroRival(leToca));
             Jugador victima = ataque.tableroAtacado().getPropietario();
-            if(ataque.impactoABarco() && victima.confirmacionHabilidad()){
-                Barco barcoAtacado = ataque.casillaAtacada().getBarco();
+            if(ataque.barcoImpactado().isPresent() && victima.confirmacionHabilidad()){
+                Barco barcoAtacado = ataque.barcoImpactado().get();
                 barcoAtacado.usarHabilidadEspecial();
             }
             partidaAcabada = comprobarFinPartida(partida);
             leToca = partida.cambiarTurnos();
         } while (!partidaAcabada);
         //@TODO: Lógica de puntuaciones AQUÍ
+    }
+
+    public Tablero getTableroRival(Jugador jugadorAtacante) {
+        Partida partida = jugadorAtacante.getCurrentGame();
+        Jugador unJugador = partida.getJugador();
+        Jugador otroJugador = partida.getMaquina();
+
+        return (jugadorAtacante.equals(unJugador)) ? otroJugador.getTablero() : unJugador.getTablero();
+    }
+
+    @Override
+    public Ataque realizarAtaqueReglamentario(Jugador jugadorAtacante, Tablero tableroObjetivo) {
+        int[] coordenadas = jugadorAtacante.getCoordenadasAtaque();
+        int fila = coordenadas[0] - 1;
+        int columna = coordenadas[1] - 1;
+
+        return tableroObjetivo.atacarCasilla(fila, columna, jugadorAtacante);
     }
 
     private boolean comprobarFinPartida(Partida partida) {
@@ -85,29 +104,6 @@ public class GameManager implements IGameManager {
         }
 
         return hundido;
-    }
-
-    private Maquina crearMaquina() {
-        return new Maquina();
-    }
-
-
-    @Override
-    public Ataque realizarAtaqueReglamentario(Jugador jugadorAtacante) {
-        Tablero tableroObjetivo = getTableroRival(jugadorAtacante);
-        int[] coordenadas = jugadorAtacante.getCoordenadasAtaque();
-        int fila = coordenadas[0] - 1;
-        int columna = coordenadas[1] - 1;
-
-        return tableroObjetivo.atacarCasilla(fila, columna, jugadorAtacante);
-    }
-
-    public Tablero getTableroRival(Jugador jugadorAtacante) {
-        Partida partida = jugadorAtacante.getCurrentGame();
-        Jugador unJugador = partida.getJugador();
-        Jugador otroJugador = partida.getMaquina();
-
-        return (jugadorAtacante.equals(unJugador)) ? otroJugador.getTablero() : unJugador.getTablero();
     }
 
     @Override

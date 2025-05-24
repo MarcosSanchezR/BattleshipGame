@@ -4,6 +4,7 @@ import es.upm.etsisi.fis.logic.GameManager;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class Tablero {
 
@@ -47,30 +48,29 @@ public class Tablero {
         return casillas[i];
     }
 
-    //@TODO: Implementar RF #18769
     public Ataque atacarCasilla(int fila, int columna, Jugador jugadorAtacante) {
         // Comprobación de coordenadas ya realizada al tomar las coordenadas; no puede comprobar el modelo
         Casilla casilla = casillas[fila][columna];
         Tablero tableroAtacado = GameManager.getInstance().getTableroRival(jugadorAtacante);
 
-        //@TODO: Lógica mal hecha; la casilla no se puede atacar si ya está impactada (el submarino la marca como no
+        //@FIXME: Lógica mal hecha; la casilla no se puede atacar si ya está impactada (el submarino la marca como no
         // impactada de nuevo)
         if (casilla.isImpactada()) {
             System.out.println("La casilla ya fue atacada.");
-            return new Ataque(false, casilla, jugadorAtacante, tableroAtacado);
+            return new Ataque(Optional.empty(), casilla, jugadorAtacante, tableroAtacado);
         }
-
         casilla.marcarComoImpactada();
 
-        boolean impactoABarco = false;
+        Optional<Barco> barcoImpactado = Optional.empty();
         for (Barco barco : barcosPropios) {
             if (barco.getCasillasOcupadas().contains(casilla)) {
-                impactoABarco = true;
+                barcoImpactado = Optional.of(barco);
                 barco.actualizarEstado(); // Se actualiza el estado de todos los barcos
             }
+            //@FIXME: Corregir este for anidado con un while/do-while
         }
 
-        return new Ataque(impactoABarco, casilla, jugadorAtacante, tableroAtacado);
+        return new Ataque(barcoImpactado, casilla, jugadorAtacante, tableroAtacado);
     }
 
     private void mostrarTableroRival() {
@@ -84,7 +84,7 @@ public class Tablero {
                 for (Barco barco : barcosPropios) { // Aquí barcosPropios serían los barcos del rival en este tablero
                     if (barco.getCasillasOcupadas().contains(casilla)) {
                         ocupado = true;
-
+                        //@FIXME: Corregir este for anidado con un while/do-while
                     }
                 }
             if(casilla.isRevelada()){
