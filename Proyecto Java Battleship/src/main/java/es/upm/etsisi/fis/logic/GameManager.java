@@ -100,6 +100,7 @@ public class GameManager implements IGameManager {
                 if (casilla.isImpactada()){
                     hundido = false;
                 }
+                //@FIXME: Corregir este for anidado con un while/do-while
             }
         }
 
