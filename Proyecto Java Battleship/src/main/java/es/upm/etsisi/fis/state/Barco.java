@@ -9,18 +9,17 @@ public abstract class Barco {
     private boolean hundido;
     private final int tamanio;
     private int habilidadesRestantes;
-    private final Tablero tablero;
-    private final EventManager eventManager;
+    private Tablero tablero;
+    private final String nombre;
 
     private List<Casilla> casillasOcupadas;
 
-    public Barco(int tamanio, int habilidadesRestantes, Tablero tablero, EventManager eventManager) {
+    public Barco(int tamanio, int habilidadesRestantes, Tablero tablero, String nombre) {
         this.hundido = false;
         this.tamanio = tamanio;
         this.habilidadesRestantes = habilidadesRestantes;
-        this.tablero = tablero;
-        this.eventManager = eventManager;
         this.casillasOcupadas = new ArrayList<>(tamanio);
+        this.nombre = nombre;
     }
 
     public boolean isHundido() {
@@ -55,8 +54,8 @@ public abstract class Barco {
         return tablero;
     }
 
-    public EventManager getEventManager() {
-        return eventManager;
+    public void setTablero(Tablero tablero){
+        this.tablero = tablero;
     }
 
     public void actualizarEstado() {

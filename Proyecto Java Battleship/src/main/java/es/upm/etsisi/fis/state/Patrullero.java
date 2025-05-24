@@ -8,7 +8,7 @@ public class Patrullero extends Barco {
     public static final int HABILIDADES_PATRULLERO = 1;
 
     public Patrullero() {
-        super(TAMANIO_PATRULLERO, HABILIDADES_PATRULLERO);
+        super(TAMANIO_PATRULLERO, HABILIDADES_PATRULLERO, "patrullero");
     }
 
     @Override

@@ -120,8 +120,8 @@ public class Partida {
 
         for (Ataque ataque : ataquesRealizados){
             Casilla casilla = ataque.casillaAtacada();
-            if(casilla.tieneBarco()){
-                Barco barco = casilla.getBarco();
+            if(casilla.getBarco().isPresent()){
+                Barco barco = casilla.getBarco().get();
                 barco.actualizarEstado();
                 if(barco.isHundido()){
                     puntuacion += 5;

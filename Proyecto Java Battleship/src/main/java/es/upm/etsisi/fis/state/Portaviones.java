@@ -8,7 +8,7 @@ public class Portaviones extends Barco {
     public static final int HABILIDADES_PORTAAVIONES = TAMANIO_PORTAAVIONES;
 
     public Portaviones() {
-        super(TAMANIO_PORTAAVIONES, HABILIDADES_PORTAAVIONES);
+        super(TAMANIO_PORTAAVIONES, HABILIDADES_PORTAAVIONES, "portaaviones");
     }
 
     @Override

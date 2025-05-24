@@ -1,12 +1,14 @@
 package es.upm.etsisi.fis.state;
 
+import java.util.Optional;
+
 public class Casilla {
 
     private boolean impactada;
     private boolean revelada;
     private final int fila;
     private final int columna;
-    private Barco barco;
+    private Optional<Barco> barco;
 
     public Casilla(int fila, int columna) {
         this.impactada = false;
@@ -45,15 +47,12 @@ public class Casilla {
 
     public void marcarRevelada(){ revelada=true;}
 
-    public Barco getBarco() {
+    public Optional<Barco> getBarco() {
         return barco;
     }
 
-    public void setBarco(Barco barco) {
-        this.barco = barco;
+    public void setBarco(Optional<Barco> barco) {
+        this.barco = barco.isPresent() ? barco : Optional.empty();
     }
 
-    public boolean tieneBarco() {
-        return this.barco != null;
-    }
 }

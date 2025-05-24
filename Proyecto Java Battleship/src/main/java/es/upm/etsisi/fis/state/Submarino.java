@@ -8,7 +8,7 @@ public class Submarino extends Barco {
     public static final int HABILIDADES_SUBMARINO = 1;
 
     public Submarino() {
-        super(TAMANIO_SUBMARINO, HABILIDADES_SUBMARINO);
+        super(TAMANIO_SUBMARINO, HABILIDADES_SUBMARINO, "submarino");
     }
 
     @Override
