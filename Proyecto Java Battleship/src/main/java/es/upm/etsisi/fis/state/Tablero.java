@@ -88,7 +88,7 @@ public class Tablero {
                     }
                 }
             if(casilla.isRevelada()){
-                if(casilla.tieneBarco()){
+                if(casilla.getBarco().isPresent()){
                 System.out.print(" 🚢 "); // Barco revelado
             }else {
                     System.out.print(" 🌊 "); //Agua revelada

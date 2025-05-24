@@ -10,14 +10,16 @@ public abstract class Barco {
     private final int tamanio;
     private int habilidadesRestantes;
     private Tablero tablero;
+    private final String nombre;
 
     private List<Casilla> casillasOcupadas;
 
-    public Barco(int tamanio, int habilidadesRestantes) {
+    public Barco(int tamanio, int habilidadesRestantes, String nombre) {
         this.hundido = false;
         this.tamanio = tamanio;
         this.habilidadesRestantes = habilidadesRestantes;
         this.casillasOcupadas = new ArrayList<>(tamanio);
+        this.nombre = nombre;
     }
 
     public boolean isHundido() {

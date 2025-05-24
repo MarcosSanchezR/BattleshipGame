@@ -8,7 +8,7 @@ public class Acorazado extends Barco {
     public static final int HABILIDADES_ACORAZADO = TAMANIO_ACORAZADO;
 
     public Acorazado() {
-        super(TAMANIO_ACORAZADO, HABILIDADES_ACORAZADO);
+        super(TAMANIO_ACORAZADO, HABILIDADES_ACORAZADO, "acorazado");
     }
 
     @Override
