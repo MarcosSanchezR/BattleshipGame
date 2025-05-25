@@ -119,14 +119,21 @@ public class GameManager implements IGameManager {
     @Override
     public void jugarPartida(Partida partida) {
         boolean partidaAcabada;
+        Jugador humano = partida.getJugador();
+        Jugador maquina = partida.getMaquina();
         Jugador leToca = partida.getJugadorConTurno();
         do {
-            gameDisplay.mostrarMiTablero(partida);
-            gameDisplay.mostrarTableroEnemigo(partida);
+            if(leToca.equals(humano)){
+                gameDisplay.mostrarMiTablero(partida);
+                gameDisplay.mostrarTableroEnemigo(partida);
+            }
             Ataque ataque;
             do {
                 ataque = realizarAtaqueReglamentario(leToca, getTableroRival(leToca));
-            }while (casillaImpactada(ataque, leToca));
+                if(ataque==null){
+                    System.out.println("Casilla atacada. Introduce otra.");
+                }
+            }while (ataque==null);
             Jugador victima = ataque.tableroAtacado().getPropietario();
             if(ataque.barcoImpactado().isPresent()){
                 Barco barcoAtacado = ataque.barcoImpactado().get();
@@ -139,8 +146,6 @@ public class GameManager implements IGameManager {
             leToca = partida.cambiarTurnos();
         } while (!partidaAcabada);
 
-        Jugador humano = partida.getJugador();
-        Jugador maquina = partida.getMaquina();
         double puntuacionHumano = partida.calcularPuntuacion(humano);
         double puntuacionMaquina = partida.calcularPuntuacion(maquina);
         Jugador ganador;
