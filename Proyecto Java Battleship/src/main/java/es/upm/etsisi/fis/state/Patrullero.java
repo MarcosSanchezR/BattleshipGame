@@ -17,7 +17,6 @@ public class Patrullero extends Barco {
         habilidadPatrullero();
     }
 
-    //@TODO: Implementar RF #18752
     private void habilidadPatrullero() {
         // Recibe [1,10] -> declara [0,9], dentro del rango.
         int fila = GameManager.getInstance().pedirFila() - 1;

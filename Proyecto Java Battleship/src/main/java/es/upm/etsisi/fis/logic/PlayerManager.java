@@ -28,7 +28,6 @@ public class PlayerManager implements IPlayerManager {
         this.loggedUser = loggedUser;
     }
 
-    //metodo que devuelve true si se da de alta un jugador
     public boolean darDeAlta(String username, String correo, String contra) {
         String nombreCifrado = ExternalLDAP.LoginLDAP();
         if (nombreCifrado == null) {
@@ -42,8 +41,6 @@ public class PlayerManager implements IPlayerManager {
         return true;
     }
 
-    //Método que devuelve el jugador que coincida con el correo y contraseña que se pasen
-    // por parámetros de la lista de jugadores
     public JugadorHumano JugadorExistente(String correo, String contra) {
         for (JugadorHumano jugador : jugadores) {
             if (jugador.getCorreo().equals(correo) && jugador.getPassword().equals(contra)) {
@@ -53,7 +50,6 @@ public class PlayerManager implements IPlayerManager {
         return null;
     }
 
-    //devuelve true si te puedes dar de baja false si no puedes
     public boolean darDeBaja(String correo, String contra) {
         JugadorHumano jugador = JugadorExistente(correo, contra);
         if (jugador != null) {
@@ -64,7 +60,6 @@ public class PlayerManager implements IPlayerManager {
         return false;
     }
 
-    //devuelve true si ha podido iniciar sesion false si no ha podido
     public boolean iniciarSesion(String correo, String contra) {
         JugadorHumano jugadorEncontrado = JugadorExistente(correo, contra);
         if (jugadorEncontrado == null) {
@@ -75,7 +70,6 @@ public class PlayerManager implements IPlayerManager {
         }
     }
 
-    //pone el usuario actual a null
     public void cerrarSesion() {
         if (loggedUser != null) {
             setLoggedUser(null);

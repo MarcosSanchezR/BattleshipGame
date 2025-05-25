@@ -70,8 +70,6 @@ public class GameManager implements IGameManager {
             colocarBarco(otroBarco, otroTablero);
         }
     }
-
-    //@TODO: Implementar esto
     private void colocarBarco(Barco barco, Tablero tablero) {
         int size = barco.getTamanio();
         Random random = new Random();

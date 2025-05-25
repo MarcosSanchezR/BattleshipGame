@@ -17,7 +17,6 @@ public class Submarino extends Barco {
         habilidadSubmarino();
     }
 
-    //@TODO: Implementar RF #18739
     private void habilidadSubmarino() {
         List<Casilla> lista = super.getCasillasOcupadas();
         for (Casilla casilla : lista) {

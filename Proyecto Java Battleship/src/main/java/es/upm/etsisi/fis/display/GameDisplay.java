@@ -64,7 +64,6 @@ public class GameDisplay implements IGameDisplay, GameMenu {
 
     }
 
-    // @TODO: Implementar RF #18769
     @Override
     public void mostrarMiTablero(Partida partida){
         System.out.println("Mi Tablero:");

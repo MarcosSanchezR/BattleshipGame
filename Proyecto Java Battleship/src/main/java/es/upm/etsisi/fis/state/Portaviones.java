@@ -17,7 +17,6 @@ public class Portaviones extends Barco {
         habilidadPortaaviones();
     }
 
-    //@TODO: Implementar RF #18745
     private void habilidadPortaaviones() {
         Jugador jugador = super.getTablero().getPropietario();
         Tablero tableroObjetivo = GameManager.getInstance().getTableroRival(jugador);

@@ -8,7 +8,6 @@ import java.util.Optional;
 
 public class Tablero {
 
-    //@TODO: Implementar borrado en cascada con casillas
     public static final int DIMENSION_TABLERO = 10;
 
     private final Jugador propietario;
