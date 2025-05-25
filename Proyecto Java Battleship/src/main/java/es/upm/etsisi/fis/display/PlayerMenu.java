@@ -14,6 +14,4 @@ public interface PlayerMenu {
 
     void mostrarIniciarSesion();
 
-    void mostrarMenu();
-
 }
