@@ -76,10 +76,6 @@ public class GameDisplay implements IGameDisplay, GameMenu {
     }
 
     @Override
-    public void mostrarPuntuacion() {
-    }
-
-    @Override
     public void mostrarTop10Puntuaciones(){
     }
 

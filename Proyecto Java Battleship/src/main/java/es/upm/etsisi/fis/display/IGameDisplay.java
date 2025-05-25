@@ -16,10 +16,6 @@ public interface IGameDisplay {
 
     int pedirFila();
 
-    void mostrarPuntuacion();
-
-    void mostrarTop10Puntuaciones();
-
     int pedirColumna();
 
 
