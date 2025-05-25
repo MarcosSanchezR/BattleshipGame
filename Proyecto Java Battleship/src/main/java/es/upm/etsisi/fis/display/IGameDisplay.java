@@ -3,6 +3,7 @@ package es.upm.etsisi.fis.display;
 import es.upm.etsisi.fis.state.Jugador;
 
 import es.upm.etsisi.fis.state.Barco;
+import es.upm.etsisi.fis.state.Partida;
 
 public interface IGameDisplay {
 
@@ -10,9 +11,9 @@ public interface IGameDisplay {
 
     boolean getConfirmacionHabilidad(Barco barco);
 
-    void mostrarMiTablero();
+    void mostrarMiTablero(Partida partida);
 
-    void mostrarTableroEnemigo();
+    void mostrarTableroEnemigo(Partida partida);
 
     void mostrarPuntuacion(Jugador jugador, double m, double j);
 

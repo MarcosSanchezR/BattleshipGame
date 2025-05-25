@@ -10,14 +10,12 @@ import java.util.Scanner;
 public class GameDisplay implements IGameDisplay, GameMenu {
 
     private final Scanner scanner = new Scanner(System.in);
-    private final Partida partida;
     private final IGameManager gameManager;
     private final IPlayerManager playerManager;
 
     public GameDisplay(IGameManager gameManager, IPlayerManager playerManager) {
         this.gameManager = gameManager;
         this.playerManager = playerManager;
-        this.partida = null;
     }
 
     public Scanner getScanner() {
@@ -69,7 +67,7 @@ public class GameDisplay implements IGameDisplay, GameMenu {
 
     // @TODO: Implementar RF #18769
     @Override
-    public void mostrarMiTablero() {
+    public void mostrarMiTablero(Partida partida){
         System.out.println("Mi Tablero:");
         Tablero miTablero = partida.getTableroJugador();
         List<Barco> barcosPropios = partida.getTableroJugador().getBarcosPropios();
@@ -112,7 +110,47 @@ public class GameDisplay implements IGameDisplay, GameMenu {
         System.out.println("Seleccione una fila");
         return scanner.nextInt();
     }
-        public void mostrarTableroEnemigo () {
+    @Override
+    public void mostrarTableroEnemigo(Partida partida){
+        System.out.println("Tablero del Rival:");
+        Tablero miTablero = partida.getTableroMaquina();
+        List<Barco> barcosPropios = partida.getTableroMaquina().getBarcosPropios();
+        Casilla[][] casillas = miTablero.getCasillas();
+
+        for (int i = 0; i < Tablero.DIMENSION_TABLERO; i++) {
+            for (int j = 0; j < Tablero.DIMENSION_TABLERO; j++) {
+                Casilla casilla = casillas[i][j];
+                boolean ocupado = false;
+
+                int x = 0;
+                while (x < barcosPropios.size() && !ocupado) {
+                    Barco barco = barcosPropios.get(x);
+                    if (barco.getCasillasOcupadas().contains(casilla)) {
+                        ocupado = true;
+                    }
+                    x++;
+                }
+
+                if(casilla.isRevelada()){
+                    if(casilla.getBarco().isPresent()){
+                        System.out.print(" 🚢 "); // Barco revelado
+                    }else {
+                        System.out.print(" 🌊 "); //Agua revelada
+                    }
+                }
+                if (casilla.isImpactada()) {
+                    if (ocupado) {
+                        System.out.print(" 💥 ");  // Barco impactado
+                    } else {
+                        System.out.print(" X ");    // Agua impactada (fuego fallido)
+                    }
+                } else {
+                    System.out.print(" ☁️ ");       // Agua sin impacto (niebla de guerra)
+                }
+            }
+            System.out.println();
         }
+    }
+
 
 }
