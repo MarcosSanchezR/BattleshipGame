@@ -106,8 +106,11 @@ public class GameDisplay implements IGameDisplay, GameMenu {
 
     @Override
     public int getFila() {
+        int fila = 0;
         System.out.println("Seleccione una fila");
-        return scanner.nextInt();
+        fila = scanner.nextInt();
+        if (scanner.hasNextLine()) scanner.nextLine();
+        return fila;
     }
     @Override
     public void mostrarTableroEnemigo(Partida partida){
@@ -130,14 +133,13 @@ public class GameDisplay implements IGameDisplay, GameMenu {
                     x++;
                 }
 
-                if(casilla.isRevelada() && !casilla.isImpactada()){
+                if(casilla.isRevelada()){
                     if(casilla.getBarco().isPresent()){
                         System.out.print(" 🚢 "); // Barco revelado
                     }else {
                         System.out.print(" 🌊 "); //Agua revelada
                     }
-                }
-                if (casilla.isImpactada()) {
+                }else if (casilla.isImpactada()) {
                     if (ocupado) {
                         System.out.print(" 💥 ");  // Barco impactado
                     } else {
