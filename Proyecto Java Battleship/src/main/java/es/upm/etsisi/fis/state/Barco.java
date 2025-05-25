@@ -30,7 +30,7 @@ public abstract class Barco {
         this.hundido = hundido;
     }
 
-    public int getTamanio() {
+    public int getSize() {
         return tamanio;
     }
 

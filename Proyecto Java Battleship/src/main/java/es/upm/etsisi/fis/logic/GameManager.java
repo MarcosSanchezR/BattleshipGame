@@ -1,10 +1,12 @@
 package es.upm.etsisi.fis.logic;
 
 import es.upm.etsisi.fis.display.GameDisplay;
+import es.upm.etsisi.fis.logic.factory.*;
 import es.upm.etsisi.fis.state.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class GameManager implements IGameManager {
 
@@ -45,7 +47,31 @@ public class GameManager implements IGameManager {
         jugadorHumano.setCurrentGame(partida);
         maquina.setCurrentGame(partida);
 
+        crearYColocarBarcos(jugadorHumano.getTablero(), maquina.getTablero());
+
         jugarPartida(partida);
+    }
+
+    private void crearYColocarBarcos(Tablero unTablero, Tablero otroTablero) {
+        List<ShipFactory> creadoresBarco = List.of(
+                new PortaavionesFactory(),
+                new SubmarinoFactory(),
+                new AcorazadoFactory(),
+                new PatrulleroFactory()
+        );
+        for (ShipFactory factory : creadoresBarco) {
+            Barco unBarco = factory.crearBarco();
+            Barco otroBarco = factory.crearBarco();
+            colocarBarco(unBarco, unTablero);
+            colocarBarco(otroBarco, otroTablero);
+        }
+    }
+
+    //@TODO: Implementar esto
+    private void colocarBarco(Barco barco, Tablero tablero) {
+        int size = barco.getSize();
+        Random random = new Random();
+        // Mirar API random.nextInt(int origin, int bound) y tener en cuenta el size del barco
     }
 
     private Maquina crearMaquina() {
