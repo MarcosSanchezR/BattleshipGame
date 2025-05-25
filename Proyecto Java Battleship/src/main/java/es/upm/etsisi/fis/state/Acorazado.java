@@ -12,12 +12,9 @@ public class Acorazado extends Barco {
     }
 
     @Override
-    public boolean usarHabilidadEspecial() {
-        boolean puedeUsarHabilidad = super.usarHabilidadEspecial();
-        if (puedeUsarHabilidad) {
-            habilidadAcorazado();
-        }
-        return puedeUsarHabilidad;
+    public void usarHabilidadEspecial() {
+        super.usarHabilidadEspecial();
+        habilidadAcorazado();
     }
 
 
