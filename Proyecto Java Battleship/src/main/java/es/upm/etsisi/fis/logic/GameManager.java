@@ -123,7 +123,10 @@ public class GameManager implements IGameManager {
         do {
             gameDisplay.mostrarMiTablero(partida);
             gameDisplay.mostrarTableroEnemigo(partida);
-            Ataque ataque = realizarAtaqueReglamentario(leToca, getTableroRival(leToca));
+            Ataque ataque;
+            do {
+                ataque = realizarAtaqueReglamentario(leToca, getTableroRival(leToca));
+            }while (casillaImpactada(ataque, leToca));
             Jugador victima = ataque.tableroAtacado().getPropietario();
             if(ataque.barcoImpactado().isPresent()){
                 Barco barcoAtacado = ataque.barcoImpactado().get();
@@ -152,6 +155,19 @@ public class GameManager implements IGameManager {
         gameDisplay.mostrarPuntuacion(ganador, puntuacionHumano, puntuacionMaquina);
 
 
+    }
+
+    private boolean casillaImpactada(Ataque ataque, Jugador jugador){
+        List<Ataque> ataques = jugador.getAtaquesRealizados();
+        boolean hayImpacto = false;
+        int i = 0;
+        do{
+            if (ataques.get(i).getCasilla().equals(ataque.getCasilla())){
+                hayImpacto = true;
+            }
+            i++;
+        }while (i<ataques.size() && !hayImpacto);
+        return hayImpacto;
     }
 
     public Tablero getTableroRival(Jugador jugadorAtacante) {

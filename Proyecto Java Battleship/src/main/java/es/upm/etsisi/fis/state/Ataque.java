@@ -18,4 +18,8 @@ Ataque(
         this(id_counter++, barcoImpactado, casillaAtacada, atacante, tableroAtacado);
     }
 
+    public Casilla getCasilla(){
+        return this.casillaAtacada;
+    }
+
 }
