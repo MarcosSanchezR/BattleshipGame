@@ -60,14 +60,18 @@ public class Tablero {
             return new Ataque(Optional.empty(), casilla, jugadorAtacante, tableroAtacado);
         }
         casilla.marcarComoImpactada();
-
         Optional<Barco> barcoImpactado = Optional.empty();
-        for (Barco barco : barcosPropios) {
+        int i = 0;
+
+        while (i < barcosPropios.size()) {
+            Barco barco = barcosPropios.get(i);
             if (barco.getCasillasOcupadas().contains(casilla)) {
                 barcoImpactado = Optional.of(barco);
-                barco.actualizarEstado(); // Se actualiza el estado de todos los barcos
+                barco.actualizarEstado(); // Se actualiza el estado del barco impactado
+                i = barcosPropios.size(); // Finaliza el bucle sin usar break
+            } else {
+                i++;
             }
-            //@FIXME: Corregir este for anidado con un while/do-while
         }
 
         return new Ataque(barcoImpactado, casilla, jugadorAtacante, tableroAtacado);
@@ -81,14 +85,16 @@ public class Tablero {
                 Casilla casilla = casillas[i][j];
                 boolean ocupado = false;
 
-                // Comprobar si la casilla está ocupada por algún barco enemigo
-                for (Barco barco : barcosPropios) { // Aquí barcosPropios serían los barcos del rival en este tablero
+                int x = 0;
+                while (x < barcosPropios.size() && !ocupado) {
+                    Barco barco = barcosPropios.get(x);
                     if (barco.getCasillasOcupadas().contains(casilla)) {
                         ocupado = true;
-                        //@FIXME: Corregir este for anidado con un while/do-while
                     }
+                    x++;
                 }
-            if(casilla.isRevelada()){
+
+                if(casilla.isRevelada()){
                 if(casilla.getBarco().isPresent()){
                 System.out.print(" 🚢 "); // Barco revelado
             }else {
@@ -116,12 +122,13 @@ public class Tablero {
                 Casilla casilla = casillas[i][j];
                 boolean ocupado = false;
 
-                // Recorremos los barcos para ver si la casilla está ocupada
-                for (Barco barco : barcosPropios) {
+                int k = 0;
+                while (k < barcosPropios.size() && !ocupado) {
+                    Barco barco = barcosPropios.get(k);
                     if (barco.getCasillasOcupadas().contains(casilla)) {
                         ocupado = true;
-
                     }
+                    k++;
                 }
 
                 if (ocupado) {
