@@ -4,8 +4,8 @@ import es.upm.etsisi.fis.logic.GameManager;
 
 public class Acorazado extends Barco {
 
-    private static final int TAMANIO_ACORAZADO = 4;
-    private static final int HABILIDADES_ACORAZADO = TAMANIO_ACORAZADO;
+    private static final int TAMANIO_ACORAZADO = 3;
+    private static final int HABILIDADES_ACORAZADO = 2;
 
     public Acorazado() {
         super(TAMANIO_ACORAZADO, HABILIDADES_ACORAZADO, "acorazado");
@@ -26,10 +26,18 @@ public class Acorazado extends Barco {
         int fila = atacada.getFila();
         int columna = atacada.getColumna();
         Tablero tableroEnemigo = ataqueRealizado.tableroAtacado();
-        jugador.aniadirAtaque(tableroEnemigo.atacarCasilla(fila + 1, columna, jugador));
-        jugador.aniadirAtaque(tableroEnemigo.atacarCasilla(fila, columna + 1, jugador));
-        jugador.aniadirAtaque(tableroEnemigo.atacarCasilla(fila - 1, columna, jugador));
-        jugador.aniadirAtaque(tableroEnemigo.atacarCasilla(fila, columna - 1, jugador));
+        if (fila+1 < 10) {
+            jugador.aniadirAtaque(tableroEnemigo.atacarCasilla(fila + 1, columna, jugador));
+        }
+        if (columna+1 < 10) {
+            jugador.aniadirAtaque(tableroEnemigo.atacarCasilla(fila, columna + 1, jugador));
+        }
+        if (fila-1 > -1) {
+            jugador.aniadirAtaque(tableroEnemigo.atacarCasilla(fila - 1, columna, jugador));
+        }
+        if (columna-1 > -1) {
+            jugador.aniadirAtaque(tableroEnemigo.atacarCasilla(fila, columna - 1, jugador));
+        }
     }
 
 }

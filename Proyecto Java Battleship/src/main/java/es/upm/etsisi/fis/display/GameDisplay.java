@@ -130,7 +130,7 @@ public class GameDisplay implements IGameDisplay, GameMenu {
                     x++;
                 }
 
-                if(casilla.isRevelada()){
+                if(casilla.isRevelada() && !casilla.isImpactada()){
                     if(casilla.getBarco().isPresent()){
                         System.out.print(" 🚢 "); // Barco revelado
                     }else {

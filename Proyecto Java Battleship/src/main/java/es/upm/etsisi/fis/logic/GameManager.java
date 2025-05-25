@@ -134,6 +134,7 @@ public class GameManager implements IGameManager {
                     barcoAtacado.usarHabilidadEspecial();
                 }
             }
+            leToca.aniadirAtaque(ataque);
             partidaAcabada = comprobarFinPartida(partida);
             leToca = partida.cambiarTurnos();
         } while (!partidaAcabada);
@@ -160,13 +161,15 @@ public class GameManager implements IGameManager {
     private boolean casillaImpactada(Ataque ataque, Jugador jugador){
         List<Ataque> ataques = jugador.getAtaquesRealizados();
         boolean hayImpacto = false;
-        int i = 0;
-        do{
-            if (ataques.get(i).getCasilla().equals(ataque.getCasilla())){
-                hayImpacto = true;
-            }
-            i++;
-        }while (i<ataques.size() && !hayImpacto);
+        if (!ataques.isEmpty()) {
+            int i = 0;
+            do {
+                if (ataques.get(i).getCasilla().equals(ataque.getCasilla())) {
+                    hayImpacto = true;
+                }
+                i++;
+            } while (i < ataques.size() && !hayImpacto);
+        }
         return hayImpacto;
     }
 
@@ -221,7 +224,7 @@ public class GameManager implements IGameManager {
         int fila;
         do {
             fila = gameDisplay.getFila();
-        } while (coordenadaValida(fila));
+        } while (!coordenadaValida(fila));
 
         return fila;
     }

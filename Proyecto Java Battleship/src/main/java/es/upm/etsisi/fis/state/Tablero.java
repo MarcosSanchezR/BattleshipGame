@@ -53,11 +53,8 @@ public class Tablero {
         Casilla casilla = casillas[fila][columna];
         Tablero tableroAtacado = GameManager.getInstance().getTableroRival(jugadorAtacante);
 
-        //@FIXME: Lógica mal hecha; la casilla no se puede atacar si ya está impactada (el submarino la marca como no
-        // impactada de nuevo)
         if (casilla.isImpactada()) {
             System.out.println("La casilla ya fue atacada.");
-            return new Ataque(Optional.empty(), casilla, jugadorAtacante, tableroAtacado);
         }
         casilla.marcarComoImpactada();
         Optional<Barco> barcoImpactado = Optional.empty();
