@@ -6,6 +6,7 @@ import es.upm.etsisi.fis.state.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.Random;
 
 public class GameManager implements IGameManager {
@@ -71,7 +72,38 @@ public class GameManager implements IGameManager {
     private void colocarBarco(Barco barco, Tablero tablero) {
         int size = barco.getTamanio();
         Random random = new Random();
-        // Mirar API random.nextInt(int origin, int bound) y tener en cuenta el size del barco
+        boolean colocado = false;
+
+        while (!colocado){
+            boolean horizontal = random.nextBoolean();
+            int fila = horizontal ? random.nextInt(10) : random.nextInt(11-size);
+            int columna = horizontal ? random.nextInt(11-size) : random.nextInt(10);
+
+            List<Casilla> posibles = posiblesCasillas(horizontal, fila, columna, size, tablero);
+
+            boolean puedeColocar = posibles.stream().noneMatch(c -> c.getBarco().isEmpty());
+
+            if (puedeColocar){
+                for (Casilla c : posibles){
+                    c.setBarco(Optional.of(barco));
+                    barco.getCasillasOcupadas().add(c);
+                }
+                tablero.getBarcosPropios().add(barco);
+                colocado = true;
+            }
+        }
+    }
+
+    private List<Casilla> posiblesCasillas (boolean horizontal, int fila, int columna, int size, Tablero tablero){
+        List<Casilla> posibles = new ArrayList<>();
+
+        for (int i = 0; i < size; i++) {
+            int f = horizontal ? fila : fila + i;
+            int c = horizontal ? columna + i : columna;
+            Casilla casilla = tablero.getCasillas()[f][c];
+            posibles.add(casilla);
+        }
+        return posibles;
     }
 
     private Maquina crearMaquina() {
