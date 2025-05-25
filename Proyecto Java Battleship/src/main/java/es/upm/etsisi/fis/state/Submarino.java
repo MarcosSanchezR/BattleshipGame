@@ -12,12 +12,9 @@ public class Submarino extends Barco {
     }
 
     @Override
-    public boolean usarHabilidadEspecial() {
-        boolean puedeUsarHabilidad = super.usarHabilidadEspecial();
-        if (puedeUsarHabilidad) {
-            habilidadSubmarino();
-        }
-        return puedeUsarHabilidad;
+    public void usarHabilidadEspecial() {
+        super.usarHabilidadEspecial();
+        habilidadSubmarino();
     }
 
     //@TODO: Implementar RF #18739

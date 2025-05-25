@@ -12,12 +12,9 @@ public class Portaviones extends Barco {
     }
 
     @Override
-    public boolean usarHabilidadEspecial() {
-        boolean puedeUsarHabilidad = super.usarHabilidadEspecial();
-        if (puedeUsarHabilidad) {
-            Ataque ataque = habilidadPortaaviones();
-        }
-        return puedeUsarHabilidad;
+    public void usarHabilidadEspecial() {
+        super.usarHabilidadEspecial();
+        habilidadPortaaviones();
     }
 
     //@TODO: Implementar RF #18745
