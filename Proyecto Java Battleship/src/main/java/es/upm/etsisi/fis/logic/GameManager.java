@@ -84,9 +84,11 @@ public class GameManager implements IGameManager {
         do {
             Ataque ataque = realizarAtaqueReglamentario(leToca, getTableroRival(leToca));
             Jugador victima = ataque.tableroAtacado().getPropietario();
-            if(ataque.barcoImpactado().isPresent() && victima.confirmacionHabilidad()){
+            if(ataque.barcoImpactado().isPresent()){
                 Barco barcoAtacado = ataque.barcoImpactado().get();
-                barcoAtacado.usarHabilidadEspecial();
+                if(barcoAtacado.tieneHabilidadesRestantes() && victima.confirmacionHabilidad()) {
+                    barcoAtacado.usarHabilidadEspecial();
+                }
             }
             partidaAcabada = comprobarFinPartida(partida);
             leToca = partida.cambiarTurnos();
