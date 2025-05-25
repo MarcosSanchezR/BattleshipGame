@@ -4,6 +4,7 @@ import es.upm.etsisi.fis.logic.IGameManager;
 import es.upm.etsisi.fis.logic.IPlayerManager;
 import es.upm.etsisi.fis.state.Barco;
 import es.upm.etsisi.fis.state.JugadorHumano;
+import es.upm.etsisi.fis.state.Partida;
 
 import java.util.Scanner;
 
@@ -34,7 +35,8 @@ public class GameDisplay implements IGameDisplay, GameMenu {
     @Override
     public void jugar() {
         JugadorHumano jugadorHumano = playerManager.getLoggedUser();
-        gameManager.crearPartida(jugadorHumano);
+        Partida partida = gameManager.crearPartida(jugadorHumano);
+        gameManager.jugarPartida(partida);
     }
 
     @Override
@@ -42,30 +44,14 @@ public class GameDisplay implements IGameDisplay, GameMenu {
 
     }
 
-    // @TODO: Implementar RF #18769
     @Override
-    public String realizarAtaque() {
-        // Leer coordenadas (fila, columna)
-        System.out.print("VAS A REALIZAR UN ATAQUE");
-        return getCoordenadas();
+    public void mostrarTop10Puntuaciones(){
+
     }
 
     @Override
-    public boolean getConfirmacionHabilidad(Barco barco) {
-        System.out.print("¿Quieres activar la habilidad especial de tu barco" + barco.getNombre() + "? (S/N)");
-        return scanner.nextLine().trim().equalsIgnoreCase("S");
-    }
+    public void mostrarTablero() {
 
-    @Override
-    public int pedirFila() {
-        System.out.println("Seleccione una fila");
-        return scanner.nextInt();
-    }
-
-    @Override
-    public int pedirColumna() {
-        System.out.println("Seleccione una columna");
-        return scanner.nextInt();
     }
 
     @Override
@@ -75,18 +61,17 @@ public class GameDisplay implements IGameDisplay, GameMenu {
         return scanner.nextLine();
     }
 
+    // @TODO: Implementar RF #18769
     @Override
-    public void mostrarTop10Puntuaciones(){
+    public boolean getConfirmacionHabilidad(Barco barco) {
+        System.out.print("¿Quieres activar la habilidad especial de tu barco" + barco.getNombre() + "? (S/N)");
+        return scanner.nextLine().trim().equalsIgnoreCase("S");
     }
 
     @Override
-    public void mostrarTablero() {
-
-    }
-
-    @Override
-    public void mostrarTableroEnemigo(){
-
+    public int getFila() {
+        System.out.println("Seleccione una fila");
+        return scanner.nextInt();
     }
 
 }

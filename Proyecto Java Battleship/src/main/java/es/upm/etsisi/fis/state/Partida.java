@@ -101,16 +101,16 @@ public class Partida {
         this.gameManager = gameManager;
     }
 
+    public Jugador getJugadorConTurno() {
+        return (jugador.isTurno()) ? jugador : this.maquina;
+    }
+
     public Jugador cambiarTurnos() {
         boolean turnoJugador = jugador.isTurno();
         this.jugador.setTurno(!turnoJugador);
         this.maquina.setTurno(turnoJugador);
         this.turnos++;
         return (this.jugador.isTurno()) ? this.jugador : this.maquina;
-    }
-
-    public Jugador getJugadorConTurno() {
-        return (jugador.isTurno()) ? jugador : this.maquina;
     }
 
     public double calcularPuntuacion(Jugador jugador){

@@ -10,13 +10,6 @@ public interface IGameDisplay {
 
     void mostrarTablero();
 
-    void mostrarTableroEnemigo();
-
-    String realizarAtaque();
-
-    int pedirFila();
-
-    int pedirColumna();
-
+    int getFila();
 
 }

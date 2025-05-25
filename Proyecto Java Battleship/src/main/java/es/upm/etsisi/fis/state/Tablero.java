@@ -21,17 +21,6 @@ public class Tablero {
         casillas = inicializarCasillas();
     }
 
-    private Casilla[][] inicializarCasillas() {
-        Casilla[][] result = new Casilla[DIMENSION_TABLERO][DIMENSION_TABLERO];
-        for (int i = 0; i < DIMENSION_TABLERO; i++) {
-            for (int j = 0; j < DIMENSION_TABLERO; j++) {
-                Casilla casilla = new Casilla(i, j);
-                result[i][j] = casilla;
-            }
-        }
-        return result;
-    }
-
     public Jugador getPropietario() {
         return propietario;
     }
@@ -46,6 +35,17 @@ public class Tablero {
 
     public Casilla[] getFila(int i) {
         return casillas[i];
+    }
+
+    private Casilla[][] inicializarCasillas() {
+        Casilla[][] result = new Casilla[DIMENSION_TABLERO][DIMENSION_TABLERO];
+        for (int i = 0; i < DIMENSION_TABLERO; i++) {
+            for (int j = 0; j < DIMENSION_TABLERO; j++) {
+                Casilla casilla = new Casilla(i, j);
+                result[i][j] = casilla;
+            }
+        }
+        return result;
     }
 
     public Ataque atacarCasilla(int fila, int columna, Jugador jugadorAtacante) {

@@ -37,7 +37,7 @@ public class GameManager implements IGameManager {
     }
 
     @Override
-    public void crearPartida(JugadorHumano jugadorHumano) {
+    public Partida crearPartida(JugadorHumano jugadorHumano) {
         Maquina maquina = crearMaquina();
         Partida partida = new Partida(jugadorHumano, maquina);
 
@@ -50,7 +50,7 @@ public class GameManager implements IGameManager {
 
         crearYColocarBarcos(jugadorHumano.getTablero(), maquina.getTablero());
 
-        jugarPartida(partida);
+        return partida;
     }
 
     private void crearYColocarBarcos(Tablero unTablero, Tablero otroTablero) {
@@ -111,7 +111,8 @@ public class GameManager implements IGameManager {
         return new Maquina();
     }
 
-    private void jugarPartida(Partida partida) {
+    @Override
+    public void jugarPartida(Partida partida) {
         boolean partidaAcabada;
         Jugador leToca = partida.getJugadorConTurno();
         do {
@@ -180,7 +181,7 @@ public class GameManager implements IGameManager {
     public int pedirFila() {
         int fila;
         do {
-            fila = gameDisplay.pedirFila();
+            fila = gameDisplay.getFila();
         } while (coordenadaValida(fila));
 
         return fila;
