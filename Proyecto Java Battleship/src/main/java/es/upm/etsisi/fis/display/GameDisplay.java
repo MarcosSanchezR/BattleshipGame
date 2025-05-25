@@ -94,7 +94,7 @@ public class GameDisplay implements IGameDisplay, GameMenu {
                     }
                 } else {
                     if (casilla.isImpactada()) {
-                        System.out.print(" X ");    // Agua impactada (fuego fallido)
+                        System.out.print(" ❌ ");    // Agua impactada (fuego fallido)
                     } else {
                         System.out.print(" 🌊 ");   // Agua sin impacto
                     }
@@ -141,7 +141,7 @@ public class GameDisplay implements IGameDisplay, GameMenu {
                     if (ocupado) {
                         System.out.print(" 💥 ");  // Barco impactado
                     } else {
-                        System.out.print(" X ");    // Agua impactada (fuego fallido)
+                        System.out.print(" ❌ ");    // Agua impactada (fuego fallido)
                     }
                 } else {
                     System.out.print(" ☁️ ");       // Agua sin impacto (niebla de guerra)
