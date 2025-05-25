@@ -51,27 +51,27 @@ public class Tablero {
     public Ataque atacarCasilla(int fila, int columna, Jugador jugadorAtacante) {
         // Comprobación de coordenadas ya realizada al tomar las coordenadas; no puede comprobar el modelo
         Casilla casilla = casillas[fila][columna];
-        Tablero tableroAtacado = GameManager.getInstance().getTableroRival(jugadorAtacante);
 
         if (casilla.isImpactada()) {
             System.out.println("La casilla ya fue atacada.");
-        }
-        casilla.marcarComoImpactada();
-        Optional<Barco> barcoImpactado = Optional.empty();
-        int i = 0;
+            return null;
+        } else {
+            casilla.marcarComoImpactada();
+            Optional<Barco> barcoImpactado = Optional.empty();
+            int i = 0;
 
-        while (i < barcosPropios.size()) {
-            Barco barco = barcosPropios.get(i);
-            if (barco.getCasillasOcupadas().contains(casilla)) {
-                barcoImpactado = Optional.of(barco);
-                barco.actualizarEstado(); // Se actualiza el estado del barco impactado
-                i = barcosPropios.size(); // Finaliza el bucle sin usar break
-            } else {
-                i++;
+            while (i < barcosPropios.size()) {
+                Barco barco = barcosPropios.get(i);
+                if (barco.getCasillasOcupadas().contains(casilla)) {
+                    barcoImpactado = Optional.of(barco);
+                    barco.actualizarEstado(); // Se actualiza el estado del barco impactado
+                    i = barcosPropios.size(); // Finaliza el bucle sin usar break
+                } else {
+                    i++;
+                }
             }
+            return new Ataque(barcoImpactado, casilla, jugadorAtacante, this);
         }
-
-        return new Ataque(barcoImpactado, casilla, jugadorAtacante, tableroAtacado);
     }
 
 }
