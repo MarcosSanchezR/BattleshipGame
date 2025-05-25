@@ -20,7 +20,8 @@ public class Portaviones extends Barco {
     //@TODO: Implementar RF #18745
     private Ataque habilidadPortaaviones() {
         Jugador jugador = super.getTablero().getPropietario();
-        Ataque ataqueRealizado = GameManager.getInstance().realizarAtaqueReglamentario(jugador);
+        Tablero tableroObjetivo = GameManager.getInstance().getTableroRival(jugador);
+        Ataque ataqueRealizado = GameManager.getInstance().realizarAtaqueReglamentario(jugador, tableroObjetivo);
         jugador.aniadirAtaque(ataqueRealizado);
         return ataqueRealizado;
     }
