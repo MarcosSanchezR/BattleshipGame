@@ -55,7 +55,6 @@ public class GameDisplay implements IGameDisplay, GameMenu {
     @Override
     public String getCoordenadas() {
         System.out.println("Introduce la coordenada (formato: x,y): ");
-        if (scanner.hasNextLine()) scanner.nextLine();
         return scanner.nextLine();
     }
 

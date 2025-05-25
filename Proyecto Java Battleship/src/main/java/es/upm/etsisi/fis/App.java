@@ -17,11 +17,12 @@ public class App {
 
     public static void main(String[] args) {
 
-       GameManager gameManager = new GameManager();
+        GameManager gameManager = GameManager.getInstance();
         PlayerManager playerManager = new PlayerManager();
 
         GameDisplay gameDisplay = new GameDisplay(gameManager, playerManager);
         PlayerDisplay playerDisplay = new PlayerDisplay(playerManager);
+        gameManager.setGameDisplay(gameDisplay);
 
         App battleship = new App(new UI(playerDisplay, gameDisplay));
 

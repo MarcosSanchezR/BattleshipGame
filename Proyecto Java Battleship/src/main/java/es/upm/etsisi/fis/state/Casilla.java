@@ -8,7 +8,7 @@ public class Casilla {
     private boolean revelada;
     private final int fila;
     private final int columna;
-    private Optional<Barco> barco;
+    private Optional<Barco> barco = Optional.empty();
 
     public Casilla(int fila, int columna) {
         this.impactada = false;
@@ -46,7 +46,7 @@ public class Casilla {
     }
 
     public void setBarco(Optional<Barco> barco) {
-        this.barco = barco.isPresent() ? barco : Optional.empty();
+        this.barco = barco;
     }
 
     public void marcarComoImpactada() {

@@ -11,17 +11,21 @@ import java.util.Random;
 
 public class GameManager implements IGameManager {
 
-    private static final GameManager instance = new GameManager();
+    private static GameManager instance;
 
     private final List<Partida> partidas;
     private GameDisplay gameDisplay;
 
     public GameManager() {
         this.partidas = new ArrayList<>();
+        setGameDisplay(gameDisplay);
 
     }
 
     public static GameManager getInstance() {
+        if (instance == null){
+            instance = new GameManager();
+        }
         return instance;
     }
 
@@ -82,7 +86,7 @@ public class GameManager implements IGameManager {
 
             List<Casilla> posibles = posiblesCasillas(horizontal, fila, columna, size, tablero);
 
-            boolean puedeColocar = posibles.stream().noneMatch(c -> c.getBarco().isEmpty());
+            boolean puedeColocar = posibles.stream().allMatch(casilla -> casilla.getBarco().isEmpty());
 
             if (puedeColocar){
                 for (Casilla c : posibles){
