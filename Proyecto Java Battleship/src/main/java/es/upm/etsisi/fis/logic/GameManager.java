@@ -66,6 +66,23 @@ public class GameManager implements IGameManager {
             leToca = partida.cambiarTurnos();
         } while (!partidaAcabada);
         //@TODO: Lógica de puntuaciones AQUÍ
+        Jugador humano = partida.getJugador();
+        Jugador maquina = partida.getMaquina();
+        double puntuacionHumano = partida.calcularPuntuacion(humano);
+        double puntuacionMaquina = partida.calcularPuntuacion(maquina);
+        Jugador ganador;
+        if(puntuacionHumano > puntuacionMaquina){
+            puntuacionHumano += 20;
+            puntuacionMaquina -= 20;
+            ganador = humano;
+        } else {
+            puntuacionHumano -= 20;
+            puntuacionMaquina += 20;
+            ganador = maquina;
+        }
+        gameDisplay.mostrarPuntuacion(ganador);
+
+
     }
 
     public Tablero getTableroRival(Jugador jugadorAtacante) {

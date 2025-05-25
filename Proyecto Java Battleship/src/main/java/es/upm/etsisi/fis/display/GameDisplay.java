@@ -2,6 +2,7 @@ package es.upm.etsisi.fis.display;
 
 import es.upm.etsisi.fis.logic.IGameManager;
 import es.upm.etsisi.fis.logic.IPlayerManager;
+import es.upm.etsisi.fis.state.Jugador;
 import es.upm.etsisi.fis.state.JugadorHumano;
 
 import java.util.Scanner;
@@ -74,7 +75,7 @@ public class GameDisplay implements IGameDisplay, GameMenu {
         return scanner.nextLine();
     }
 
-    public void mostrarPuntuacion() {
+    public void mostrarPuntuacion(Jugador ganador) {
     }
 
     public void mostrarTop10Puntuaciones(){

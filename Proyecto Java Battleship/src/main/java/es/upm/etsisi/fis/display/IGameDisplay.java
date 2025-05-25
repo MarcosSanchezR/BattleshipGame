@@ -1,5 +1,7 @@
 package es.upm.etsisi.fis.display;
 
+import es.upm.etsisi.fis.state.Jugador;
+
 public interface IGameDisplay {
 
     String realizarAtaque();
@@ -14,5 +16,6 @@ public interface IGameDisplay {
 
     void mostrarTableroEnemigo();
 
+    void mostrarPuntuacion(Jugador jugador);
 
 }
