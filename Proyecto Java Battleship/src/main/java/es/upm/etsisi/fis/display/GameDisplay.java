@@ -2,8 +2,9 @@ package es.upm.etsisi.fis.display;
 
 import es.upm.etsisi.fis.logic.IGameManager;
 import es.upm.etsisi.fis.logic.IPlayerManager;
-import es.upm.etsisi.fis.state.Jugador;
+import es.upm.etsisi.fis.state.Barco;
 import es.upm.etsisi.fis.state.JugadorHumano;
+import es.upm.etsisi.fis.state.Partida;
 
 import java.util.Scanner;
 
@@ -34,7 +35,8 @@ public class GameDisplay implements IGameDisplay, GameMenu {
     @Override
     public void jugar() {
         JugadorHumano jugadorHumano = playerManager.getLoggedUser();
-        gameManager.crearPartida(jugadorHumano);
+        Partida partida = gameManager.crearPartida(jugadorHumano);
+        gameManager.jugarPartida(partida);
     }
 
     @Override
@@ -42,33 +44,17 @@ public class GameDisplay implements IGameDisplay, GameMenu {
 
     }
 
-    // @TODO: Implementar RF #18769
     @Override
-    public String realizarAtaque() {
-        // Leer coordenadas (fila, columna)
-        System.out.print("VAS A REALIZAR UN ATAQUE");
-        return getCoordenadas();
+    public void mostrarTop10Puntuaciones(){
+
     }
 
     @Override
-    public boolean getConfirmacionHabilidad() {
-        System.out.print("¿Quieres activar la habilidad especial de tu barco? (S/N)");
-        return scanner.nextLine().trim().equalsIgnoreCase("S");
+    public void mostrarTablero() {
+
     }
 
     @Override
-    public int pedirFila() {
-        System.out.println("Seleccione una fila");
-        return scanner.nextInt();
-    }
-
-    @Override
-    public int pedirColumna() {
-        System.out.println("Seleccione una columna");
-        return scanner.nextInt();
-    }
-
-
     public String getCoordenadas() {
         System.out.println("Introduce la coordenada (formato: x,y): ");
         if (scanner.hasNextLine()) scanner.nextLine();
@@ -81,14 +67,17 @@ public class GameDisplay implements IGameDisplay, GameMenu {
     public void mostrarTop10Puntuaciones(){
     }
 
+    // @TODO: Implementar RF #18769
     @Override
-    public void mostrarTablero() {
-
+    public boolean getConfirmacionHabilidad(Barco barco) {
+        System.out.print("¿Quieres activar la habilidad especial de tu barco" + barco.getNombre() + "? (S/N)");
+        return scanner.nextLine().trim().equalsIgnoreCase("S");
     }
 
     @Override
-    public void mostrarTableroEnemigo(){
-
+    public int getFila() {
+        System.out.println("Seleccione una fila");
+        return scanner.nextInt();
     }
 
 }

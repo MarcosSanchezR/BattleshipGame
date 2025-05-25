@@ -4,28 +4,25 @@ import es.upm.etsisi.fis.logic.GameManager;
 
 public class Portaviones extends Barco {
 
-    public static final int TAMANIO_PORTAAVIONES = 4;
-    public static final int HABILIDADES_PORTAAVIONES = TAMANIO_PORTAAVIONES;
+    private static final int TAMANIO_PORTAAVIONES = 4;
+    private static final int HABILIDADES_PORTAAVIONES = TAMANIO_PORTAAVIONES;
 
     public Portaviones() {
         super(TAMANIO_PORTAAVIONES, HABILIDADES_PORTAAVIONES, "portaaviones");
     }
 
     @Override
-    public boolean usarHabilidadEspecial() {
-        boolean puedeUsarHabilidad = super.usarHabilidadEspecial();
-        if (puedeUsarHabilidad) {
-            Ataque ataque = habilidadPortaaviones();
-        }
-        return puedeUsarHabilidad;
+    public void usarHabilidadEspecial() {
+        super.usarHabilidadEspecial();
+        habilidadPortaaviones();
     }
 
     //@TODO: Implementar RF #18745
-    private Ataque habilidadPortaaviones() {
+    private void habilidadPortaaviones() {
         Jugador jugador = super.getTablero().getPropietario();
-        Ataque ataqueRealizado = GameManager.getInstance().realizarAtaqueReglamentario(jugador);
+        Tablero tableroObjetivo = GameManager.getInstance().getTableroRival(jugador);
+        Ataque ataqueRealizado = GameManager.getInstance().realizarAtaqueReglamentario(jugador, tableroObjetivo);
         jugador.aniadirAtaque(ataqueRealizado);
-        return ataqueRealizado;
     }
 
 }

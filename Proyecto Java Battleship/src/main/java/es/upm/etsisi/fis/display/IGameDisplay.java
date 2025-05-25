@@ -2,15 +2,13 @@ package es.upm.etsisi.fis.display;
 
 import es.upm.etsisi.fis.state.Jugador;
 
+import es.upm.etsisi.fis.state.Barco;
+
 public interface IGameDisplay {
 
-    String realizarAtaque();
+    String getCoordenadas();
 
-    boolean getConfirmacionHabilidad();
-
-    int pedirFila();
-
-    int pedirColumna();
+    boolean getConfirmacionHabilidad(Barco barco);
 
     void mostrarTablero();
 

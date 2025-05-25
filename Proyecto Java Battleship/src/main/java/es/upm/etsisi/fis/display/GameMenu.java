@@ -6,4 +6,6 @@ public interface GameMenu {
 
     void mostrarPuntuaciones();
 
+    void mostrarTop10Puntuaciones();
+
 }

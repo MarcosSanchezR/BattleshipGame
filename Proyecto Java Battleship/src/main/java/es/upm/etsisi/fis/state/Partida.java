@@ -101,6 +101,10 @@ public class Partida {
         this.gameManager = gameManager;
     }
 
+    public Jugador getJugadorConTurno() {
+        return (jugador.isTurno()) ? jugador : this.maquina;
+    }
+
     public Jugador cambiarTurnos() {
         boolean turnoJugador = jugador.isTurno();
         this.jugador.setTurno(!turnoJugador);
@@ -109,11 +113,7 @@ public class Partida {
         return (this.jugador.isTurno()) ? this.jugador : this.maquina;
     }
 
-    public Jugador getJugadorConTurno() {
-        return (jugador.isTurno()) ? jugador : this.maquina;
-    }
-
-    public double calcularPuntuacion(Jugador jugador) {
+    public double calcularPuntuacion(Jugador jugador){
         List<Ataque> ataquesRealizados = jugador.getAtaquesRealizados();
         Tablero tableroEnemigo = getTableroMaquina();
         double puntuacion = 0;

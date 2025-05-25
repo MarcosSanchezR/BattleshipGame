@@ -4,20 +4,17 @@ import es.upm.etsisi.fis.logic.GameManager;
 
 public class Patrullero extends Barco {
 
-    public static final int TAMANIO_PATRULLERO = 2;
-    public static final int HABILIDADES_PATRULLERO = 1;
+    private static final int TAMANIO_PATRULLERO = 2;
+    private static final int HABILIDADES_PATRULLERO = 1;
 
     public Patrullero() {
         super(TAMANIO_PATRULLERO, HABILIDADES_PATRULLERO, "patrullero");
     }
 
     @Override
-    public boolean usarHabilidadEspecial() {
-        boolean puedeUsarHabilidad = super.usarHabilidadEspecial();
-        if (puedeUsarHabilidad) {
-            habilidadPatrullero();
-        }
-        return puedeUsarHabilidad;
+    public void usarHabilidadEspecial() {
+        super.usarHabilidadEspecial();
+        habilidadPatrullero();
     }
 
     //@TODO: Implementar RF #18752

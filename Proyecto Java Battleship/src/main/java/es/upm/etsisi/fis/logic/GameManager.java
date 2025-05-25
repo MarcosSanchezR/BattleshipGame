@@ -1,10 +1,13 @@
 package es.upm.etsisi.fis.logic;
 
 import es.upm.etsisi.fis.display.GameDisplay;
+import es.upm.etsisi.fis.logic.factory.*;
 import es.upm.etsisi.fis.state.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+import java.util.Random;
 
 public class GameManager implements IGameManager {
 
@@ -34,7 +37,7 @@ public class GameManager implements IGameManager {
     }
 
     @Override
-    public void crearPartida(JugadorHumano jugadorHumano) {
+    public Partida crearPartida(JugadorHumano jugadorHumano) {
         Maquina maquina = crearMaquina();
         Partida partida = new Partida(jugadorHumano, maquina);
 
@@ -45,22 +48,81 @@ public class GameManager implements IGameManager {
         jugadorHumano.setCurrentGame(partida);
         maquina.setCurrentGame(partida);
 
-        jugarPartida(partida);
+        crearYColocarBarcos(jugadorHumano.getTablero(), maquina.getTablero());
+
+        return partida;
+    }
+
+    private void crearYColocarBarcos(Tablero unTablero, Tablero otroTablero) {
+        List<ShipFactory> creadoresBarco = List.of(
+                new PortaavionesFactory(),
+                new SubmarinoFactory(),
+                new AcorazadoFactory(),
+                new PatrulleroFactory()
+        );
+        for (ShipFactory factory : creadoresBarco) {
+            Barco unBarco = factory.crearBarco();
+            Barco otroBarco = factory.crearBarco();
+            colocarBarco(unBarco, unTablero);
+            colocarBarco(otroBarco, otroTablero);
+        }
+    }
+
+    //@TODO: Implementar esto
+    private void colocarBarco(Barco barco, Tablero tablero) {
+        int size = barco.getTamanio();
+        Random random = new Random();
+        boolean colocado = false;
+
+        while (!colocado){
+            boolean horizontal = random.nextBoolean();
+            int fila = horizontal ? random.nextInt(10) : random.nextInt(11-size);
+            int columna = horizontal ? random.nextInt(11-size) : random.nextInt(10);
+
+            List<Casilla> posibles = posiblesCasillas(horizontal, fila, columna, size, tablero);
+
+            boolean puedeColocar = posibles.stream().noneMatch(c -> c.getBarco().isEmpty());
+
+            if (puedeColocar){
+                for (Casilla c : posibles){
+                    c.setBarco(Optional.of(barco));
+                    barco.getCasillasOcupadas().add(c);
+                }
+                tablero.getBarcosPropios().add(barco);
+                barco.setTablero(tablero);
+                colocado = true;
+            }
+        }
+    }
+
+    private List<Casilla> posiblesCasillas (boolean horizontal, int fila, int columna, int size, Tablero tablero){
+        List<Casilla> posibles = new ArrayList<>();
+
+        for (int i = 0; i < size; i++) {
+            int f = horizontal ? fila : fila + i;
+            int c = horizontal ? columna + i : columna;
+            Casilla casilla = tablero.getCasillas()[f][c];
+            posibles.add(casilla);
+        }
+        return posibles;
     }
 
     private Maquina crearMaquina() {
         return new Maquina();
     }
 
-    private void jugarPartida(Partida partida) {
+    @Override
+    public void jugarPartida(Partida partida) {
         boolean partidaAcabada;
         Jugador leToca = partida.getJugadorConTurno();
         do {
             Ataque ataque = realizarAtaqueReglamentario(leToca, getTableroRival(leToca));
             Jugador victima = ataque.tableroAtacado().getPropietario();
-            if(ataque.barcoImpactado().isPresent() && victima.confirmacionHabilidad()){
+            if(ataque.barcoImpactado().isPresent()){
                 Barco barcoAtacado = ataque.barcoImpactado().get();
-                barcoAtacado.usarHabilidadEspecial();
+                if(barcoAtacado.tieneHabilidadesRestantes() && victima.confirmacionHabilidad(barcoAtacado)) {
+                    barcoAtacado.usarHabilidadEspecial();
+                }
             }
             partidaAcabada = comprobarFinPartida(partida);
             leToca = partida.cambiarTurnos();
@@ -109,16 +171,24 @@ public class GameManager implements IGameManager {
         return (usuarioHundido || maquinaHundida);
     }
 
+    //@FIXME: Corregir este for anidado con un while/do-while
     private boolean comprobarTableroHundido(Tablero tablero){
         boolean hundido = true;
+        int i = 0;
 
-        for (Barco barco:tablero.getBarcosPropios()){
-            for (Casilla casilla: barco.getCasillasOcupadas()){
-                if (casilla.isImpactada()){
+        while (i< tablero.getBarcosPropios().size() && hundido){
+            Barco barco =  tablero.getBarcosPropios().get(i);
+            int j = 0;
+
+            while (j < barco.getCasillasOcupadas().size() && hundido){
+                Casilla casilla = barco.getCasillasOcupadas().get(j);
+
+                if (!casilla.isImpactada()){
                     hundido = false;
                 }
-                //@FIXME: Corregir este for anidado con un while/do-while
+                j++;
             }
+            i++;
         }
 
         return hundido;
@@ -128,7 +198,7 @@ public class GameManager implements IGameManager {
     public int pedirFila() {
         int fila;
         do {
-            fila = gameDisplay.pedirFila();
+            fila = gameDisplay.getFila();
         } while (coordenadaValida(fila));
 
         return fila;
@@ -152,7 +222,7 @@ public class GameManager implements IGameManager {
         return coordenada >= 1 && coordenada <= Tablero.DIMENSION_TABLERO;
     }
 
-    public boolean pedirConfirmacionHabilidad() {
-        return gameDisplay.getConfirmacionHabilidad();
+    public boolean pedirConfirmacionHabilidad(Barco barco) {
+        return gameDisplay.getConfirmacionHabilidad(barco);
     }
 }

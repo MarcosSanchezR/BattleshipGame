@@ -4,16 +4,13 @@ import es.upm.etsisi.fis.logic.IPlayerManager;
 
 public interface PlayerMenu {
 
-    IPlayerManager getPlayerManager();
-
-    void mostrarBajaUsuario();
-
-    void mostrarCerrarSesion();
-
     void mostrarAltaUsuario();
 
     void mostrarIniciarSesion();
 
-    void mostrarMenu();
+    void mostrarCerrarSesion();
 
+    void mostrarBajaUsuario();
+
+    IPlayerManager getPlayerManager();
 }

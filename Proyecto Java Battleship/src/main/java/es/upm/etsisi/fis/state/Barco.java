@@ -14,12 +14,12 @@ public abstract class Barco {
 
     private List<Casilla> casillasOcupadas;
 
-    public Barco(int tamanio, int habilidadesRestantes, Tablero tablero, String nombre) {
+    protected Barco(int tamanio, int habilidadesRestantes, String nombre) {
         this.hundido = false;
         this.tamanio = tamanio;
         this.habilidadesRestantes = habilidadesRestantes;
-        this.casillasOcupadas = new ArrayList<>(tamanio);
         this.nombre = nombre;
+        this.casillasOcupadas = new ArrayList<>(tamanio);
     }
 
     public boolean isHundido() {
@@ -40,6 +40,10 @@ public abstract class Barco {
 
     public void setHabilidadesRestantes(int habilidadesRestantes) {
         this.habilidadesRestantes = habilidadesRestantes;
+    }
+
+    public String getNombre() {
+        return nombre;
     }
 
     public List<Casilla> getCasillasOcupadas() {

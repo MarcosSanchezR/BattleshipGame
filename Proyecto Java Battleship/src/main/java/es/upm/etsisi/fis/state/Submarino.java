@@ -4,20 +4,17 @@ import java.util.List;
 
 public class Submarino extends Barco {
 
-    public static final int TAMANIO_SUBMARINO = 3;
-    public static final int HABILIDADES_SUBMARINO = 1;
+    private static final int TAMANIO_SUBMARINO = 3;
+    private static final int HABILIDADES_SUBMARINO = 1;
 
     public Submarino() {
         super(TAMANIO_SUBMARINO, HABILIDADES_SUBMARINO, "submarino");
     }
 
     @Override
-    public boolean usarHabilidadEspecial() {
-        boolean puedeUsarHabilidad = super.usarHabilidadEspecial();
-        if (puedeUsarHabilidad) {
-            habilidadSubmarino();
-        }
-        return puedeUsarHabilidad;
+    public void usarHabilidadEspecial() {
+        super.usarHabilidadEspecial();
+        habilidadSubmarino();
     }
 
     //@TODO: Implementar RF #18739

@@ -7,16 +7,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PlayerManager implements IPlayerManager {
-    private ExternalLDAP ldap;
 
     private final List<JugadorHumano> jugadores;
     private JugadorHumano loggedUser;
 
    public PlayerManager() {
-        this.jugadores = new ArrayList<>();
-    }
-    public PlayerManager(ExternalLDAP ldap){
-        this.ldap = ldap;
         this.jugadores = new ArrayList<>();
     }
 
@@ -34,9 +29,8 @@ public class PlayerManager implements IPlayerManager {
     }
 
     //metodo que devuelve true si se da de alta un jugador
-    @Override
     public boolean darDeAlta(String username, String correo, String contra) {
-        String nombreCifrado = ldap.LoginLDAP();
+        String nombreCifrado = ExternalLDAP.LoginLDAP();
         if (nombreCifrado == null) {
             return false;
         }
@@ -60,7 +54,6 @@ public class PlayerManager implements IPlayerManager {
     }
 
     //devuelve true si te puedes dar de baja false si no puedes
-    @Override
     public boolean darDeBaja(String correo, String contra) {
         JugadorHumano jugador = JugadorExistente(correo, contra);
         if (jugador != null) {
@@ -72,7 +65,6 @@ public class PlayerManager implements IPlayerManager {
     }
 
     //devuelve true si ha podido iniciar sesion false si no ha podido
-    @Override
     public boolean iniciarSesion(String correo, String contra) {
         JugadorHumano jugadorEncontrado = JugadorExistente(correo, contra);
         if (jugadorEncontrado == null) {
@@ -84,7 +76,6 @@ public class PlayerManager implements IPlayerManager {
     }
 
     //pone el usuario actual a null
-    @Override
     public void cerrarSesion() {
         if (loggedUser != null) {
             setLoggedUser(null);

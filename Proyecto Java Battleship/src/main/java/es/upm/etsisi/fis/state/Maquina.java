@@ -25,7 +25,7 @@ public class Maquina extends Jugador {
     }
 
     @Override
-    public boolean confirmacionHabilidad() {
+    public boolean confirmacionHabilidad(Barco barco) {
         return true;
     }
 }
