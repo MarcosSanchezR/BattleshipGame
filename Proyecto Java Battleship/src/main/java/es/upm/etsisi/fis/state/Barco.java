@@ -18,8 +18,8 @@ public abstract class Barco {
         this.hundido = false;
         this.tamanio = tamanio;
         this.habilidadesRestantes = habilidadesRestantes;
-        this.casillasOcupadas = new ArrayList<>(tamanio);
         this.nombre = nombre;
+        this.casillasOcupadas = new ArrayList<>(tamanio);
     }
 
     public boolean isHundido() {
@@ -30,7 +30,7 @@ public abstract class Barco {
         this.hundido = hundido;
     }
 
-    public int getSize() {
+    public int getTamanio() {
         return tamanio;
     }
 
@@ -40,6 +40,10 @@ public abstract class Barco {
 
     public void setHabilidadesRestantes(int habilidadesRestantes) {
         this.habilidadesRestantes = habilidadesRestantes;
+    }
+
+    public String getNombre() {
+        return nombre;
     }
 
     public List<Casilla> getCasillasOcupadas() {

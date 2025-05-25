@@ -70,5 +70,5 @@ public abstract class Jugador {
         return this.ataquesRealizados.add(ataqueRealizado);
     }
 
-    public abstract boolean confirmacionHabilidad();
+    public abstract boolean confirmacionHabilidad(Barco barco);
 }

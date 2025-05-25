@@ -69,7 +69,7 @@ public class GameManager implements IGameManager {
 
     //@TODO: Implementar esto
     private void colocarBarco(Barco barco, Tablero tablero) {
-        int size = barco.getSize();
+        int size = barco.getTamanio();
         Random random = new Random();
         // Mirar API random.nextInt(int origin, int bound) y tener en cuenta el size del barco
     }
@@ -86,7 +86,7 @@ public class GameManager implements IGameManager {
             Jugador victima = ataque.tableroAtacado().getPropietario();
             if(ataque.barcoImpactado().isPresent()){
                 Barco barcoAtacado = ataque.barcoImpactado().get();
-                if(barcoAtacado.tieneHabilidadesRestantes() && victima.confirmacionHabilidad()) {
+                if(barcoAtacado.tieneHabilidadesRestantes() && victima.confirmacionHabilidad(barcoAtacado)) {
                     barcoAtacado.usarHabilidadEspecial();
                 }
             }
