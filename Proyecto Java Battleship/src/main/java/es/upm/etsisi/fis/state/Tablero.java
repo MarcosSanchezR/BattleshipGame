@@ -73,6 +73,7 @@ public class Tablero {
         return new Ataque(barcoImpactado, casilla, jugadorAtacante, tableroAtacado);
     }
 
+    //@FIXME: El modelo no puede imprimir. Mover a GameDisplay
     private void mostrarTableroRival() {
         System.out.println("Tablero del Rival:");
         for (int i = 0; i < DIMENSION_TABLERO; i++) {
