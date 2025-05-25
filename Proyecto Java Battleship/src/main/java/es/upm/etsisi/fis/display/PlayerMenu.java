@@ -12,4 +12,5 @@ public interface PlayerMenu {
 
     void mostrarBajaUsuario();
 
+    IPlayerManager getPlayerManager();
 }
