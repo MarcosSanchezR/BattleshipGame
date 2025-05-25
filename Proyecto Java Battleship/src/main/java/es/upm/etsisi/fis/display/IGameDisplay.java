@@ -4,23 +4,23 @@ import es.upm.etsisi.fis.state.Barco;
 
 public interface IGameDisplay {
 
-    String realizarAtaque();
+    String getCoordenadas();
 
     boolean getConfirmacionHabilidad(Barco barco);
 
+    void mostrarTablero();
+
+    void mostrarTableroEnemigo();
+
+    String realizarAtaque();
+
     int pedirFila();
-
-    int pedirColumna();
-
-    String getCoordenadas();
 
     void mostrarPuntuacion();
 
     void mostrarTop10Puntuaciones();
 
-    void mostrarTablero();
-
-    void mostrarTableroEnemigo();
+    int pedirColumna();
 
 
 }
