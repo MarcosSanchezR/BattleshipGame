@@ -89,6 +89,7 @@ public class GameManager implements IGameManager {
                     barco.getCasillasOcupadas().add(c);
                 }
                 tablero.getBarcosPropios().add(barco);
+                barco.setTablero(tablero);
                 colocado = true;
             }
         }
