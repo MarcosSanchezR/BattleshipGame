@@ -117,6 +117,8 @@ public class GameManager implements IGameManager {
         boolean partidaAcabada;
         Jugador leToca = partida.getJugadorConTurno();
         do {
+            gameDisplay.mostrarMiTablero(partida);
+            gameDisplay.mostrarTableroEnemigo(partida);
             Ataque ataque = realizarAtaqueReglamentario(leToca, getTableroRival(leToca));
             Jugador victima = ataque.tableroAtacado().getPropietario();
             if(ataque.barcoImpactado().isPresent()){
@@ -128,7 +130,7 @@ public class GameManager implements IGameManager {
             partidaAcabada = comprobarFinPartida(partida);
             leToca = partida.cambiarTurnos();
         } while (!partidaAcabada);
-        //@TODO: Lógica de puntuaciones AQUÍ
+
         Jugador humano = partida.getJugador();
         Jugador maquina = partida.getMaquina();
         double puntuacionHumano = partida.calcularPuntuacion(humano);
