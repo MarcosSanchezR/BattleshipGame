@@ -4,8 +4,6 @@ import es.upm.etsisi.fis.logic.IPlayerManager;
 
 public interface PlayerMenu {
 
-    IPlayerManager getPlayerManager();
-
     void mostrarAltaUsuario();
 
     void mostrarIniciarSesion();
