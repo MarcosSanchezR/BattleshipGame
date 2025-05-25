@@ -16,4 +16,5 @@ public interface IGameDisplay {
 
     void mostrarPuntuacion(Jugador jugador);
 
+    int getFila();
 }

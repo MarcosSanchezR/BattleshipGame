@@ -172,7 +172,6 @@ public class GameManager implements IGameManager {
         return (usuarioHundido || maquinaHundida);
     }
 
-    //@FIXME: Corregir este for anidado con un while/do-while
     private boolean comprobarTableroHundido(Tablero tablero){
         boolean hundido = true;
         int i = 0;

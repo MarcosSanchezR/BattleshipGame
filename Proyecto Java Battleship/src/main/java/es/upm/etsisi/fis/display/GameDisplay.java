@@ -7,7 +7,6 @@ import es.upm.etsisi.fis.state.*;
 import java.util.List;
 import java.util.Scanner;
 
-
 public class GameDisplay implements IGameDisplay, GameMenu {
 
     private final Scanner scanner = new Scanner(System.in);
@@ -45,26 +44,14 @@ public class GameDisplay implements IGameDisplay, GameMenu {
 
     }
 
-    // @TODO: Implementar RF #18769
     @Override
-    public void mostrarTop10Puntuaciones(){
+    public void mostrarTop10Puntuaciones() {
+    }
 
     @Override
     public boolean getConfirmacionHabilidad(Barco barco) {
         System.out.print("¿Quieres activar la habilidad especial de tu barco" + barco.getNombre() + "? (S/N)");
         return scanner.nextLine().trim().equalsIgnoreCase("S");
-    }
-
-    @Override
-    public int pedirFila() {
-        System.out.println("Seleccione una fila");
-        return scanner.nextInt();
-    }
-
-    @Override
-    public int pedirColumna() {
-        System.out.println("Seleccione una columna");
-        return scanner.nextInt();
     }
 
     @Override
@@ -75,11 +62,10 @@ public class GameDisplay implements IGameDisplay, GameMenu {
     }
 
     public void mostrarPuntuacion(Jugador ganador) {
+        System.out.println("La partida ha acabado y el ganador es "+ganador);
     }
 
-    public void mostrarTop10Puntuaciones(){
-    }
-
+    // @TODO: Implementar RF #18769
     @Override
     public void mostrarMiTablero() {
         System.out.println("Mi Tablero:");
@@ -117,16 +103,14 @@ public class GameDisplay implements IGameDisplay, GameMenu {
             }
             System.out.println();
         }
-    public boolean getConfirmacionHabilidad(Barco barco) {
-        System.out.print("¿Quieres activar la habilidad especial de tu barco" + barco.getNombre() + "? (S/N)");
-        return scanner.nextLine().trim().equalsIgnoreCase("S");
     }
 
     @Override
     public int getFila() {
         System.out.println("Seleccione una fila");
         return scanner.nextInt();
-    public void mostrarTableroEnemigo(){
     }
+        public void mostrarTableroEnemigo () {
+        }
 
 }
