@@ -101,6 +101,10 @@ public class Partida {
         this.gameManager = gameManager;
     }
 
+    public Jugador getJugadorConTurno() {
+        return (jugador.isTurno()) ? jugador : this.maquina;
+    }
+
     public Jugador cambiarTurnos() {
         boolean turnoJugador = jugador.isTurno();
         this.jugador.setTurno(!turnoJugador);
@@ -109,44 +113,26 @@ public class Partida {
         return (this.jugador.isTurno()) ? this.jugador : this.maquina;
     }
 
-    public Jugador getJugadorConTurno() {
-        return (jugador.isTurno()) ? jugador : this.maquina;
-    }
-
     public double calcularPuntuacion(Jugador jugador){
         List<Ataque> ataquesRealizados = jugador.getAtaquesRealizados();
         Tablero tableroEnemigo = getTableroMaquina();
         double puntuacion = 0;
 
-        for (Ataque ataque : ataquesRealizados){
+        for (Ataque ataque : ataquesRealizados) {
             Casilla casilla = ataque.casillaAtacada();
-            if(casilla.getBarco().isPresent()){
+            if (casilla.getBarco().isPresent()) {
                 Barco barco = casilla.getBarco().get();
                 barco.actualizarEstado();
-                if(barco.isHundido()){
+                if (barco.isHundido()) {
                     puntuacion += 5;
-                } else{
+                } else {
                     puntuacion += 2;
                 }
             } else {
                 puntuacion -= 1;
             }
         }
-
-        /*
-        if(jugador ha ganado){
-            puntuacion += 20;
-        }
-
-        else{
-            puntuacion -= 20;
-        }
-
-        HAY QUE TENER EN CUENTA TAMBIEN EL EMPATE.
-
-         */
-
         return puntuacion;
     }
-
 }
+

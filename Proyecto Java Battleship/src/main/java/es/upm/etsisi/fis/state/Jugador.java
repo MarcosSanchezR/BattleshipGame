@@ -60,8 +60,6 @@ public abstract class Jugador {
         this.currentGame = currentGame;
     }
 
-    public abstract int[] getCoordenadasAtaque();
-
     public void aniadirPartida(Partida partida) {
         partidasJugadas.add(partida);
     }
@@ -69,6 +67,8 @@ public abstract class Jugador {
     public boolean aniadirAtaque(Ataque ataqueRealizado) {
         return this.ataquesRealizados.add(ataqueRealizado);
     }
+
+    public abstract int[] getCoordenadasAtaque();
 
     public abstract boolean confirmacionHabilidad(Barco barco);
 }

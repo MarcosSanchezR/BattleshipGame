@@ -36,7 +36,8 @@ public class GameDisplay implements IGameDisplay, GameMenu {
     @Override
     public void jugar() {
         JugadorHumano jugadorHumano = playerManager.getLoggedUser();
-        gameManager.crearPartida(jugadorHumano);
+        Partida partida = gameManager.crearPartida(jugadorHumano);
+        gameManager.jugarPartida(partida);
     }
 
     @Override
@@ -46,11 +47,7 @@ public class GameDisplay implements IGameDisplay, GameMenu {
 
     // @TODO: Implementar RF #18769
     @Override
-    public String realizarAtaque() {
-        // Leer coordenadas (fila, columna)
-        System.out.print("VAS A REALIZAR UN ATAQUE");
-        return getCoordenadas();
-    }
+    public void mostrarTop10Puntuaciones(){
 
     @Override
     public boolean getConfirmacionHabilidad(Barco barco) {
@@ -77,7 +74,9 @@ public class GameDisplay implements IGameDisplay, GameMenu {
         return scanner.nextLine();
     }
 
-    @Override
+    public void mostrarPuntuacion(Jugador ganador) {
+    }
+
     public void mostrarTop10Puntuaciones(){
     }
 
@@ -118,10 +117,15 @@ public class GameDisplay implements IGameDisplay, GameMenu {
             }
             System.out.println();
         }
+    public boolean getConfirmacionHabilidad(Barco barco) {
+        System.out.print("¿Quieres activar la habilidad especial de tu barco" + barco.getNombre() + "? (S/N)");
+        return scanner.nextLine().trim().equalsIgnoreCase("S");
     }
 
-
     @Override
+    public int getFila() {
+        System.out.println("Seleccione una fila");
+        return scanner.nextInt();
     public void mostrarTableroEnemigo(){
     }
 

@@ -1,13 +1,12 @@
 package es.upm.etsisi.fis.logic;
 
-import es.upm.etsisi.fis.state.Ataque;
-import es.upm.etsisi.fis.state.Jugador;
-import es.upm.etsisi.fis.state.JugadorHumano;
-import es.upm.etsisi.fis.state.Tablero;
+import es.upm.etsisi.fis.state.*;
 
 public interface IGameManager {
 
-    void crearPartida(JugadorHumano jugadorHumano);
+    Partida crearPartida(JugadorHumano jugadorHumano);
+
+    void jugarPartida(Partida partida);
 
     Ataque realizarAtaqueReglamentario(Jugador jugadorAtacante, Tablero tableroObjetivo);
 

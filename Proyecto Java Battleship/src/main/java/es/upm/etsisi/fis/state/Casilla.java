@@ -41,12 +41,6 @@ public class Casilla {
         return columna;
     }
 
-    public void marcarComoImpactada() {
-        impactada = true;
-    }
-
-    public void marcarRevelada(){ revelada=true;}
-
     public Optional<Barco> getBarco() {
         return barco;
     }
@@ -54,5 +48,11 @@ public class Casilla {
     public void setBarco(Optional<Barco> barco) {
         this.barco = barco.isPresent() ? barco : Optional.empty();
     }
+
+    public void marcarComoImpactada() {
+        impactada = true;
+    }
+
+    public void marcarRevelada(){ revelada=true;}
 
 }

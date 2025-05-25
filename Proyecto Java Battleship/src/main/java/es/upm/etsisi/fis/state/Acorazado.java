@@ -26,10 +26,10 @@ public class Acorazado extends Barco {
         int fila = atacada.getFila();
         int columna = atacada.getColumna();
         Tablero tableroEnemigo = ataqueRealizado.tableroAtacado();
-        tableroEnemigo.atacarCasilla(fila + 1, columna, jugador);
-        tableroEnemigo.atacarCasilla(fila, columna + 1, jugador);
-        tableroEnemigo.atacarCasilla(fila - 1, columna, jugador);
-        tableroEnemigo.atacarCasilla(fila, columna - 1, jugador);
+        jugador.aniadirAtaque(tableroEnemigo.atacarCasilla(fila + 1, columna, jugador));
+        jugador.aniadirAtaque(tableroEnemigo.atacarCasilla(fila, columna + 1, jugador));
+        jugador.aniadirAtaque(tableroEnemigo.atacarCasilla(fila - 1, columna, jugador));
+        jugador.aniadirAtaque(tableroEnemigo.atacarCasilla(fila, columna - 1, jugador));
     }
 
 }

@@ -1,5 +1,7 @@
 package es.upm.etsisi.fis.display;
 
+import es.upm.etsisi.fis.state.Jugador;
+
 import es.upm.etsisi.fis.state.Barco;
 
 public interface IGameDisplay {
@@ -12,11 +14,6 @@ public interface IGameDisplay {
 
     void mostrarTableroEnemigo();
 
-    String realizarAtaque();
-
-    int pedirFila();
-
-    int pedirColumna();
-
+    void mostrarPuntuacion(Jugador jugador);
 
 }
