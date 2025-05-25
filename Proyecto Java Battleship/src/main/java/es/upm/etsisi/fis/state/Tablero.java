@@ -60,14 +60,18 @@ public class Tablero {
             return new Ataque(Optional.empty(), casilla, jugadorAtacante, tableroAtacado);
         }
         casilla.marcarComoImpactada();
-
         Optional<Barco> barcoImpactado = Optional.empty();
-        for (Barco barco : barcosPropios) {
+        int i = 0;
+
+        while (i < barcosPropios.size()) {
+            Barco barco = barcosPropios.get(i);
             if (barco.getCasillasOcupadas().contains(casilla)) {
                 barcoImpactado = Optional.of(barco);
-                barco.actualizarEstado(); // Se actualiza el estado de todos los barcos
+                barco.actualizarEstado(); // Se actualiza el estado del barco impactado
+                i = barcosPropios.size(); // Finaliza el bucle sin usar break
+            } else {
+                i++;
             }
-            //@FIXME: Corregir este for anidado con un while/do-while
         }
 
         return new Ataque(barcoImpactado, casilla, jugadorAtacante, tableroAtacado);
