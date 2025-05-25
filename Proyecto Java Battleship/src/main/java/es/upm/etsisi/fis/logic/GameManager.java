@@ -18,6 +18,7 @@ public class GameManager implements IGameManager {
 
     public GameManager() {
         this.partidas = new ArrayList<>();
+
     }
 
     public static GameManager getInstance() {

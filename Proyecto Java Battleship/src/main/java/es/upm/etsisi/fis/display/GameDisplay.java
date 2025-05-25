@@ -2,21 +2,23 @@ package es.upm.etsisi.fis.display;
 
 import es.upm.etsisi.fis.logic.IGameManager;
 import es.upm.etsisi.fis.logic.IPlayerManager;
-import es.upm.etsisi.fis.state.Barco;
-import es.upm.etsisi.fis.state.JugadorHumano;
+import es.upm.etsisi.fis.state.*;
 
+import java.util.List;
 import java.util.Scanner;
+
 
 public class GameDisplay implements IGameDisplay, GameMenu {
 
     private final Scanner scanner = new Scanner(System.in);
-
+    private final Partida partida;
     private final IGameManager gameManager;
     private final IPlayerManager playerManager;
 
     public GameDisplay(IGameManager gameManager, IPlayerManager playerManager) {
         this.gameManager = gameManager;
         this.playerManager = playerManager;
+        this.partida = null;
     }
 
     public Scanner getScanner() {
@@ -80,13 +82,47 @@ public class GameDisplay implements IGameDisplay, GameMenu {
     }
 
     @Override
-    public void mostrarTablero() {
+    public void mostrarMiTablero() {
+        System.out.println("Mi Tablero:");
+        Tablero miTablero = partida.getTableroJugador();
+        List<Barco> barcosPropios = partida.getTableroJugador().getBarcosPropios();
+        Casilla[][] casillas = miTablero.getCasillas();
 
+        for (int i = 0; i < Tablero.DIMENSION_TABLERO; i++) {
+            for (int j = 0; j < Tablero.DIMENSION_TABLERO; j++) {
+                Casilla casilla = casillas[i][j];
+                boolean ocupado = false;
+
+                int k = 0;
+                while (k < barcosPropios.size() && !ocupado) {
+                    Barco barco = barcosPropios.get(k);
+                    if (barco.getCasillasOcupadas().contains(casilla)) {
+                        ocupado = true;
+                    }
+                    k++;
+                }
+
+                if (ocupado) {
+                    if (casilla.isImpactada()) {
+                        System.out.print(" 💥 ");  // Barco impactado
+                    } else {
+                        System.out.print(" 🚢 ");  // Barco intacto
+                    }
+                } else {
+                    if (casilla.isImpactada()) {
+                        System.out.print(" X ");    // Agua impactada (fuego fallido)
+                    } else {
+                        System.out.print(" 🌊 ");   // Agua sin impacto
+                    }
+                }
+            }
+            System.out.println();
+        }
     }
+
 
     @Override
     public void mostrarTableroEnemigo(){
-
     }
 
 }

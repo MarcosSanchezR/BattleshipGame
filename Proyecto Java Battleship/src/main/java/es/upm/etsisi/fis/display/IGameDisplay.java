@@ -8,7 +8,7 @@ public interface IGameDisplay {
 
     boolean getConfirmacionHabilidad(Barco barco);
 
-    void mostrarTablero();
+    void mostrarMiTablero();
 
     void mostrarTableroEnemigo();
 
