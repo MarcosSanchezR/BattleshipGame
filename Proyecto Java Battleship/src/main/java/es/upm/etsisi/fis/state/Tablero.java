@@ -57,6 +57,9 @@ public class Tablero {
             return null;
         } else {
             casilla.marcarComoImpactada();
+            if(!casilla.isRevelada()){
+                casilla.setRevelada(true);
+            }
             Optional<Barco> barcoImpactado = Optional.empty();
             int i = 0;
 
