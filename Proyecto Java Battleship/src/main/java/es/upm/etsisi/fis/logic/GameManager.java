@@ -72,6 +72,8 @@ public class GameManager implements IGameManager {
         int size = barco.getTamanio();
         Random random = new Random();
         // Mirar API random.nextInt(int origin, int bound) y tener en cuenta el size del barco
+
+        //IMPORTANTE SETEAR EL TABLERO DEL BARCO AL TABLERO PASADO POR PARÁMETRO AL FINAL
     }
 
     private Maquina crearMaquina() {
