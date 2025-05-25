@@ -68,16 +68,18 @@ public class GameDisplay implements IGameDisplay, GameMenu {
         return scanner.nextInt();
     }
 
-
+    @Override
     public String getCoordenadas() {
         System.out.println("Introduce la coordenada (formato: x,y): ");
         if (scanner.hasNextLine()) scanner.nextLine();
         return scanner.nextLine();
     }
 
+    @Override
     public void mostrarPuntuacion() {
     }
 
+    @Override
     public void mostrarTop10Puntuaciones(){
     }
 

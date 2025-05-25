@@ -12,6 +12,12 @@ public interface IGameDisplay {
 
     int pedirColumna();
 
+    String getCoordenadas();
+
+    void mostrarPuntuacion();
+
+    void mostrarTop10Puntuaciones();
+
     void mostrarTablero();
 
     void mostrarTableroEnemigo();

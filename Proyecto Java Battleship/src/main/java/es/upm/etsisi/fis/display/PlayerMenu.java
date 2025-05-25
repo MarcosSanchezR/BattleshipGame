@@ -6,12 +6,12 @@ public interface PlayerMenu {
 
     IPlayerManager getPlayerManager();
 
-    void mostrarBajaUsuario();
-
-    void mostrarCerrarSesion();
-
     void mostrarAltaUsuario();
 
     void mostrarIniciarSesion();
+
+    void mostrarCerrarSesion();
+
+    void mostrarBajaUsuario();
 
 }
