@@ -71,4 +71,9 @@ public class JugadorHumano extends Jugador {
     public boolean confirmacionHabilidad(Barco barco) {
         return GameManager.getInstance().pedirConfirmacionHabilidad(barco);
     }
+
+    @Override
+    public String getNombre(){
+        return nombreUsuario;
+    }
 }

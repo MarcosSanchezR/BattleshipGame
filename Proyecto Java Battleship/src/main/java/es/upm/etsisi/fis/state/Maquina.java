@@ -28,4 +28,9 @@ public class Maquina extends Jugador {
     public boolean confirmacionHabilidad(Barco barco) {
         return true;
     }
+
+    @Override
+    public String getNombre(){
+        return "Maquina";
+    }
 }

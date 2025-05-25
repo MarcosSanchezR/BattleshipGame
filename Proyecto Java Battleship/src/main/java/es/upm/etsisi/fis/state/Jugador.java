@@ -6,10 +6,10 @@ import java.util.List;
 public abstract class Jugador {
 
     private boolean turno;
-
     private Tablero tablero;
     private List<Ataque> ataquesRealizados;
     private List<Partida> partidasJugadas;
+    private String nombre;
 
     private Partida currentGame;
 
@@ -66,6 +66,14 @@ public abstract class Jugador {
 
     public boolean aniadirAtaque(Ataque ataqueRealizado) {
         return this.ataquesRealizados.add(ataqueRealizado);
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     public abstract int[] getCoordenadasAtaque();

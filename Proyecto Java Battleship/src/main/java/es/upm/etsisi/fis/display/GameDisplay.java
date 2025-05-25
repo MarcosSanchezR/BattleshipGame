@@ -59,7 +59,7 @@ public class GameDisplay implements IGameDisplay, GameMenu {
     }
 
     public void mostrarPuntuacion(Jugador ganador, double jugador, double maquina) {
-        System.out.println("La partida ha acabado y el ganador es "+ganador+
+        System.out.println("La partida ha acabado y el ganador es "+ganador.getNombre()+
                 "\nLa maquina ha conseguido: "+maquina+" puntos\nHas conseguido: "+jugador+" puntos");
 
     }
