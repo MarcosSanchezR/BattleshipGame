@@ -143,7 +143,7 @@ public class GameManager implements IGameManager {
             puntuacionMaquina += 20;
             ganador = maquina;
         }
-        gameDisplay.mostrarPuntuacion(ganador);
+        gameDisplay.mostrarPuntuacion(ganador, puntuacionHumano, puntuacionMaquina);
 
 
     }

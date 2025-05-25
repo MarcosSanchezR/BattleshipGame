@@ -61,8 +61,10 @@ public class GameDisplay implements IGameDisplay, GameMenu {
         return scanner.nextLine();
     }
 
-    public void mostrarPuntuacion(Jugador ganador) {
-        System.out.println("La partida ha acabado y el ganador es "+ganador);
+    public void mostrarPuntuacion(Jugador ganador, double maquina, double jugador) {
+        System.out.println("La partida ha acabado y el ganador es "+ganador+
+                "\nLa maquina ha conseguido: "+maquina+" puntos\nHas conseguido: "+jugador+" puntos");
+
     }
 
     // @TODO: Implementar RF #18769

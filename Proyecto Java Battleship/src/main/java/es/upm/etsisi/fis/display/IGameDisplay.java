@@ -14,7 +14,7 @@ public interface IGameDisplay {
 
     void mostrarTableroEnemigo();
 
-    void mostrarPuntuacion(Jugador jugador);
+    void mostrarPuntuacion(Jugador jugador, double m, double j);
 
     int getFila();
 }
