@@ -163,21 +163,6 @@ public class GameManager implements IGameManager {
 
     }
 
-    private boolean casillaImpactada(Ataque ataque, Jugador jugador){
-        List<Ataque> ataques = jugador.getAtaquesRealizados();
-        boolean hayImpacto = false;
-        if (!ataques.isEmpty()) {
-            int i = 0;
-            do {
-                if (ataques.get(i).getCasilla().equals(ataque.getCasilla())) {
-                    hayImpacto = true;
-                }
-                i++;
-            } while (i < ataques.size() && !hayImpacto);
-        }
-        return hayImpacto;
-    }
-
     public Tablero getTableroRival(Jugador jugadorAtacante) {
         Partida partida = jugadorAtacante.getCurrentGame();
         Jugador unJugador = partida.getJugador();
