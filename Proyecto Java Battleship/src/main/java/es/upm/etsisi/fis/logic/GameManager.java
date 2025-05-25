@@ -172,6 +172,6 @@ public class GameManager implements IGameManager {
     }
 
     public boolean pedirConfirmacionHabilidad(Barco barco) {
-        return gameDisplay.getConfirmacionHabilidad();
+        return gameDisplay.getConfirmacionHabilidad(barco);
     }
 }
