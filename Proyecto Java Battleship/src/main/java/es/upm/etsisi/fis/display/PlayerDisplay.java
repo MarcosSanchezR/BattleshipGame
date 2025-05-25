@@ -24,8 +24,20 @@ public class PlayerDisplay implements PlayerMenu {
         System.out.println("---------- REGISTRO USUARIO ----------");
         System.out.println("Username: ");
         String username = sc.nextLine();
-        System.out.println("Correo: ");
-        String correo = sc.nextLine();
+        String correo;
+        String[] partes;
+        do {
+            System.out.println("Correo: ");
+            correo = sc.nextLine();
+            partes = correo.split("@");
+
+            if (partes.length < 2 ||
+                    !(partes[1].equals("upm.es") || partes[1].equals("alumnos.upm.es"))) {
+                System.out.println("El correo debe ser @upm.es o @alumnos.upm.es");
+            } else {
+                break;
+            }
+        } while (true);
         System.out.println("Contraseña: ");
         String contrasena = sc.nextLine();
         boolean registro = playerManager.darDeAlta(username, correo, contrasena);
