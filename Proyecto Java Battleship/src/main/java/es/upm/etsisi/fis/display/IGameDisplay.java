@@ -6,8 +6,6 @@ public interface IGameDisplay {
 
     String realizarAtaque();
 
-    boolean getConfirmacionHabilidad();
-
     boolean getConfirmacionHabilidad(Barco barco);
 
     int pedirFila();
