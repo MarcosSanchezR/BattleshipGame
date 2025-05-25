@@ -14,7 +14,7 @@ public abstract class Barco {
 
     private List<Casilla> casillasOcupadas;
 
-    public Barco(int tamanio, int habilidadesRestantes, Tablero tablero, String nombre) {
+    protected Barco(int tamanio, int habilidadesRestantes, String nombre) {
         this.hundido = false;
         this.tamanio = tamanio;
         this.habilidadesRestantes = habilidadesRestantes;
