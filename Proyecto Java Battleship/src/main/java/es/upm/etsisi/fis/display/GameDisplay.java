@@ -10,14 +10,12 @@ import java.util.Scanner;
 public class GameDisplay implements IGameDisplay, GameMenu {
 
     private final Scanner scanner = new Scanner(System.in);
-    private final Jugador jugador;
     private final IGameManager gameManager;
     private final IPlayerManager playerManager;
 
     public GameDisplay(IGameManager gameManager, IPlayerManager playerManager) {
         this.gameManager = gameManager;
         this.playerManager = playerManager;
-        this.jugador = null;
     }
 
     public Scanner getScanner() {
@@ -67,10 +65,10 @@ public class GameDisplay implements IGameDisplay, GameMenu {
 
     // @TODO: Implementar RF #18769
     @Override
-    public void mostrarMiTablero(){
+    public void mostrarMiTablero(Partida partida){
         System.out.println("Mi Tablero:");
-        Tablero miTablero = jugador.getCurrentGame().getTableroJugador();
-        List<Barco> barcosPropios = jugador.getCurrentGame().getTableroJugador().getBarcosPropios();
+        Tablero miTablero = partida.getTableroJugador();
+        List<Barco> barcosPropios = partida.getTableroJugador().getBarcosPropios();
         Casilla[][] casillas = miTablero.getCasillas();
 
         for (int i = 0; i < Tablero.DIMENSION_TABLERO; i++) {
@@ -111,10 +109,10 @@ public class GameDisplay implements IGameDisplay, GameMenu {
         return scanner.nextInt();
     }
     @Override
-    public void mostrarTableroEnemigo(){
+    public void mostrarTableroEnemigo(Partida partida){
         System.out.println("Tablero del Rival:");
-        Tablero miTablero = jugador.getCurrentGame().getTableroMaquina();
-        List<Barco> barcosPropios = jugador.getCurrentGame().getTableroMaquina().getBarcosPropios();
+        Tablero miTablero = partida.getTableroMaquina();
+        List<Barco> barcosPropios = partida.getTableroMaquina().getBarcosPropios();
         Casilla[][] casillas = miTablero.getCasillas();
 
         for (int i = 0; i < Tablero.DIMENSION_TABLERO; i++) {
