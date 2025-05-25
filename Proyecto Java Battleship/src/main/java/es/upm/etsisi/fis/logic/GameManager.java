@@ -92,16 +92,24 @@ public class GameManager implements IGameManager {
         return (usuarioHundido || maquinaHundida);
     }
 
+    //@FIXME: Corregir este for anidado con un while/do-while
     private boolean comprobarTableroHundido(Tablero tablero){
         boolean hundido = true;
+        int i = 0;
 
-        for (Barco barco:tablero.getBarcosPropios()){
-            for (Casilla casilla: barco.getCasillasOcupadas()){
-                if (casilla.isImpactada()){
+        while (i< tablero.getBarcosPropios().size() && hundido){
+            Barco barco =  tablero.getBarcosPropios().get(i);
+            int j = 0;
+
+            while (j < barco.getCasillasOcupadas().size() && hundido){
+                Casilla casilla = barco.getCasillasOcupadas().get(j);
+
+                if (!casilla.isImpactada()){
                     hundido = false;
                 }
-                //@FIXME: Corregir este for anidado con un while/do-while
+                j++;
             }
+            i++;
         }
 
         return hundido;
