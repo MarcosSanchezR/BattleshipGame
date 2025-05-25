@@ -171,7 +171,7 @@ public class GameManager implements IGameManager {
         return coordenada >= 1 && coordenada <= Tablero.DIMENSION_TABLERO;
     }
 
-    public boolean pedirConfirmacionHabilidad() {
+    public boolean pedirConfirmacionHabilidad(Barco barco) {
         return gameDisplay.getConfirmacionHabilidad();
     }
 }
