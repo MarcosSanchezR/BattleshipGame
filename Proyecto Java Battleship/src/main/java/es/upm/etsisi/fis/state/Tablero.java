@@ -60,19 +60,8 @@ public class Tablero {
             if(!casilla.isRevelada()){
                 casilla.setRevelada(true);
             }
-            Optional<Barco> barcoImpactado = Optional.empty();
-            int i = 0;
+            Optional<Barco> barcoImpactado = casilla.getBarco();
 
-            while (i < barcosPropios.size()) {
-                Barco barco = barcosPropios.get(i);
-                if (barco.getCasillasOcupadas().contains(casilla)) {
-                    barcoImpactado = Optional.of(barco);
-                    barco.actualizarEstado(); // Se actualiza el estado del barco impactado
-                    i = barcosPropios.size(); // Finaliza el bucle sin usar break
-                } else {
-                    i++;
-                }
-            }
             return new Ataque(barcoImpactado, casilla, jugadorAtacante, this);
         }
     }
