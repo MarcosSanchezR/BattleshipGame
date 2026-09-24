@@ -17,7 +17,7 @@ public class App {
 
     public static void main(String[] args) {
 
-        GameManager gameManager = GameManager.getInstance();
+        GameManager gameManager = GameManager.getInstance() ;
         PlayerManager playerManager = new PlayerManager();
 
         GameDisplay gameDisplay = new GameDisplay(gameManager, playerManager);
